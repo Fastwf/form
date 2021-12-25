@@ -6,6 +6,7 @@ use Fastwf\Form\Entity\Control;
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Constraint\Api\Validator;
 use Fastwf\Constraint\Api\Constraint;
+use Fastwf\Constraint\Data\Violation;
 
 abstract class FormControl extends Control
 {
@@ -32,18 +33,18 @@ abstract class FormControl extends Control
     protected $value;
 
     /**
-     * The constraint to use to validate the value
+     * The constraint to use to validate the value.
      *
      * @var Constraint
      */
     protected $constraint;
 
     /**
-     * The array of errors
+     * The violation to apply to this form control.
      *
-     * @var array
+     * @var Violation
      */
-    protected $errors = [];
+    protected $violation = [];
 
     public function __construct($parameters = [])
     {
@@ -53,6 +54,7 @@ abstract class FormControl extends Control
         $this->readonly = ArrayUtil::getSafe($parameters, 'readonly', false);
         $this->value = ArrayUtil::getSafe($parameters, 'value');
         $this->constraint = ArrayUtil::getSafe($parameters, 'constraint');
+        $this->violation = ArrayUtil::getSafe($parameters, 'violation');
     }
 
     public function setDisabled($disabled)
@@ -83,6 +85,26 @@ abstract class FormControl extends Control
     public function getValue()
     {
         return $this->value;
+    }
+
+    public function setConstraint($constraint)
+    {
+        $this->constraint = $constraint;
+    }
+
+    public function getConstraint()
+    {
+        return $this->constraint;
+    }
+
+    public function setViolation($violation)
+    {
+        $this->violation = $violation;
+    }
+
+    public function getViolation()
+    {
+        return $this->violation;
     }
 
 }

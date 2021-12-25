@@ -9,9 +9,20 @@ use Fastwf\Form\Entity\Containers\FormGroup;
 class FormGroupTest extends TestCase
 {
 
-    /**  
+    /**
      * @covers Fastwf\Form\Entity\Control
-     * @covers Fastwf\Form\Entity\Containers\FormContainer
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testGetTag()
+    {
+        $container = new FormGroup(['controls' => []]);
+
+        $this->assertNull($container->getTag());
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
@@ -22,9 +33,8 @@ class FormGroupTest extends TestCase
         $this->assertEquals('object', $container->getContainerType());
     }
 
-    /**  
+    /**
      * @covers Fastwf\Form\Entity\Control
-     * @covers Fastwf\Form\Entity\Containers\FormContainer
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Utils\ArrayUtil
      */

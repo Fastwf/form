@@ -3,6 +3,12 @@
     "description": "Form handler library",
     "type": "library",
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/Fastwf/constraint"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "Fastwf\\Form\\": "src/"
@@ -19,7 +25,9 @@
             "email": "david.belbeze@gmail.com"
         }
     ],
-    "require": {},
+    "require": {
+        "fastwf/constraint": "dev-master"
+    },
     "require-dev": {
         "phpunit/phpunit": "^9.5"
     }

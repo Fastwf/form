@@ -5,6 +5,8 @@ namespace Fastwf\Form\Entity;
 use Fastwf\Form\Entity\Element;
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Constraint\Api\Validator;
+use Fastwf\Constraint\Api\Constraint;
+use Fastwf\Constraint\Data\Violation;
 
 abstract class Control implements Element
 {
@@ -48,5 +50,20 @@ abstract class Control implements Element
     {
         return $this->attributes;
     }
+
+    /**
+     * Get the constraints attached to this control node.
+     *
+     * @return Constraint|null
+     */
+    public abstract function getConstraint();
+
+    /**
+     * Set violation on this control node.
+     *
+     * @param Violation $violation the violation object
+     * @return void
+     */
+    public abstract function setViolation($violation);
 
 }

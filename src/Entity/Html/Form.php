@@ -3,6 +3,8 @@
 namespace Fastwf\Form\Entity\Html;
 
 use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Constraint\Api\Validator;
+use Fastwf\Constraint\Api\Constraint;
 use Fastwf\Form\Entity\Containers\FormGroup;
 
 class Form extends FormGroup
@@ -67,6 +69,37 @@ class Form extends FormGroup
     public function getEnctype()
     {
         return $this->enctype;
+    }
+
+    /**
+     * Validate the value according to the constraint provided.
+     *
+     * @param Validator|null $validator the validator to use to validate data
+     * @param Constraint|null $constraint the constraint to apply to the value
+     * @return boolean true when the form is valid
+     */
+    public function validate($constraint = null, $validator = null)
+    {
+        if ($constraint === null)
+        {
+            // Collect constraints from each control nodes
+            $constraint = $this->getConstraint();
+        }
+
+        // Create/use Validator instance and validate value
+        if ($validator === null)
+        {
+            $validator = new Validator($constraint);
+        }
+        $isValid = $validator->validate($this->getValue());
+
+        // When validation failed set child errors
+        if (!$isValid)
+        {
+            $this->setViolation($validator->getViolations());
+        }
+
+        return $isValid;
     }
 
     public function getTag()

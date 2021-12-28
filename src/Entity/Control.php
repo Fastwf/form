@@ -66,4 +66,26 @@ abstract class Control implements Element
      */
     public abstract function setViolation($violation);
 
+    /**
+     * Set the value attached to this control.
+     *
+     * @param mixed $value
+     * @return void
+     */
+    public abstract function setValue($value);
+
+    /**
+     * Get the value attached to this control.
+     *
+     * @return mixed the value
+     */
+    public abstract function getValue();
+
+    /**
+     * Get the value attached to the control element after data type conversion.
+     *
+     * @return mixed the converted value.
+     */
+    public abstract function getData();
+
 }

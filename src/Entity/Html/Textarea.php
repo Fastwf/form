@@ -12,4 +12,14 @@ class Textarea extends FormControl
         return 'textarea';
     }
 
+    /**
+     * Return always the value as string.
+     *
+     * @return string
+     */
+    public function getData()
+    {
+        return $this->value === null ? "" : $this->value;
+    }
+
 }

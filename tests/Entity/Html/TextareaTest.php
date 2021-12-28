@@ -21,4 +21,17 @@ class TextareaTest extends TestCase
         $this->assertEquals('textarea', $html->getTag());
     }
 
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Textarea
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testGetData()
+    {
+        $control = new Textarea(['value' => 'Hello world!']);
+
+        $this->assertEquals('Hello world!', $control->getData());
+    }
+
 }

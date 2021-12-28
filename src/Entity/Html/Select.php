@@ -72,9 +72,35 @@ class Select extends FormControl
         }
     }
 
+    public function getName()
+    {
+        // For multiple mode, the name must be an array
+        $name = $this->name;
+        if ($this->multiple)
+        {
+            if (\preg_match('/^.+\\[\\]$/', $name) !== 1)
+            {
+                $name .= '[]';
+            }
+        }
+        
+        return $name;
+    }
+
     public function setValue($value)
     {
-        $this->value = \gettype($value) === 'array' ? $value : [$value];
+        if ($value === null)
+        {
+            $this->value = [];
+        }
+        else if (\gettype($value) === 'array')
+        {
+            $this->value = $value;
+        }
+        else
+        {
+            $this->value = [$value];
+        }
 
         $this->updateSelection();
     }
@@ -109,6 +135,29 @@ class Select extends FormControl
     public function getTag()
     {
         return 'select';
+    }
+
+    /**
+     * For select with multiple flag, the value returned is an array of choices.
+     * For single choice, the value is the choice as string or null when the selection is empty.
+     * 
+     * @return array|string|null
+     */
+    public function getData()
+    {
+        if  ($this->multiple)
+        {
+            $data = $this->value;
+        }
+        else if (empty($this->value)) {
+            $data = null;
+        } 
+        else
+        {
+            $data = $this->value[0];
+        }
+
+        return $data;
     }
 
 }

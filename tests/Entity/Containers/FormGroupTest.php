@@ -4,6 +4,7 @@ namespace Fastwf\Tests\Entity\Containers;
 
 use PHPUnit\Framework\TestCase;
 use Fastwf\Form\Entity\Html\Input;
+use Fastwf\Form\Entity\Html\Radio;
 use Fastwf\Form\Entity\Containers\FormGroup;
 
 class FormGroupTest extends TestCase
@@ -43,6 +44,58 @@ class FormGroupTest extends TestCase
         $container = new FormGroup(['controls' => []]);
 
         $this->assertNull($container->findControl('test'));
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testGetData()
+    {
+        $container = new FormGroup(['controls' => [
+            new Input(['name' => 'birthday', 'type' => 'date', 'value' => '2021-01-01']),
+            new Input(['name' => 'username', 'type' => 'text', 'value' => 'user']),
+            new Input(['name' => 'wallets', 'type' => 'number', 'value' => '2']),
+        ]]);
+
+        $this->assertEquals(
+            [
+                'birthday' => new \DateTime('2021-01-01 00:00:00.000'),
+                'username' => 'user',
+                'wallets' => 2,
+            ],
+            $container->getData(),
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Entity\Html\CheckableInput
+     * @covers Fastwf\Form\Entity\Html\Radio
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testGetDataRadio()
+    {
+        $container = new FormGroup(['controls' => [
+            new Radio(['name' => 'fruit', 'attributes' => ['value' => 'apple']]),
+            new Radio(['name' => 'fruit', 'attributes' => ['value' => 'banana']]),
+            new Radio(['name' => 'fruit', 'attributes' => ['value' => 'raspberry']]),
+        ]]);
+
+        $container->setValue(['fruit' => 'raspberry']);
+
+        $this->assertEquals(
+            [
+                'fruit' => 'raspberry',
+            ],
+            $container->getData(),
+        );
     }
 
 }

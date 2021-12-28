@@ -144,4 +144,31 @@ class FormGroup extends Control implements Container
         }
     }
 
+    /**
+     * Collect data from each controls and return it as array of key/value.
+     *
+     * @return array the array of data
+     */
+    public function getData() {
+        // Collect data from each controls elements.
+        $data = [];
+
+        foreach ($this->controls as $control) {
+            if (\array_key_exists($control->name, $data))
+            {
+                $controlData = $control->getData();
+                if ($controlData !== null)
+                {
+                    $data[$control->name] = $controlData;
+                }
+            }
+            else
+            {
+                $data[$control->name] = $control->getData();
+            }
+        }
+
+        return $data;
+    }
+
 }

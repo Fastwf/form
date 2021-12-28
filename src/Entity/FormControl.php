@@ -107,4 +107,10 @@ abstract class FormControl extends Control
         return $this->violation;
     }
 
+    public function getData()
+    {
+        // By default the form control must return the associated string value (or null)
+        return $this->value;
+    }
+
 }

@@ -67,4 +67,37 @@ class SelectTest extends TestCase
         $this->assertEquals('select', $html->getTag());
     }
 
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Select
+     * @covers Fastwf\Form\Entity\Options\AOption
+     * @covers Fastwf\Form\Entity\Options\Option
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testGetData()
+    {
+        $control = new Select([
+            'options' => [
+                new Option(['value' => 'apple']),
+                new Option(['value' => 'banana']),
+                new Option(['value' => 'orange']),
+            ],
+            'value' => ['apple', 'orange'],
+            'multiple' => true,
+        ]);
+
+        $this->assertEquals(
+            ['apple', 'orange'],
+            $control->getData(),
+        );
+
+        $control->setMultiple(false);
+        $control->setValue('apple');
+        $this->assertEquals('apple', $control->getData());
+
+        $control->setValue(null);
+        $this->assertEquals(null, $control->getData());
+    }
+
 }

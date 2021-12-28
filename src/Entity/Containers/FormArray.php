@@ -91,4 +91,18 @@ class FormArray extends Control implements Container
         $this->violation = $violation;
     }
 
+    public function getData() {
+        // Assign values to the control and perform data conversion.
+        $data = [];
+
+        foreach ($this->value as $item) {
+            // Set the value
+            $this->control->setValue($item);
+            // Get value converted
+            \array_push($data, $this->control->getData());
+        }
+
+        return $data;
+    }
+
 }

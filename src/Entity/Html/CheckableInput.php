@@ -5,7 +5,10 @@ namespace Fastwf\Form\Entity\Html;
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Entity\Html\Input;
 
-class CheckableInput extends Input
+/**
+ * Base class for checkbox and radio inputs.
+ */
+abstract class CheckableInput extends Input
 {
 
     /**
@@ -15,11 +18,34 @@ class CheckableInput extends Input
      */
     protected $checked;
 
+    /**
+     * This value is the value to associate to the checkbox.
+     * 
+     * ...input value="$valueAttribute"...
+     *
+     * @var string
+     */
+    protected $valueAttribute;
+
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);
 
-        $this->checked = ArrayUtil::getSafe($parameters, 'checked', false);
+        $this->synchronizeValue();
+    }
+
+    public function setAttributes($attributes)
+    {
+        parent::setAttributes($attributes);
+
+        $this->synchronizeValue();
+    }
+
+    public function setValue($value)
+    {
+        parent::setValue($value);
+
+        $this->synchronizeValue();
     }
 
     public function setChecked($checked)
@@ -31,5 +57,12 @@ class CheckableInput extends Input
     {
         return $this->checked;
     }
+
+    /**
+     * Synchronise internal state to match the real state (correct checked and value properties).
+     *
+     * @return void
+     */
+    protected abstract function synchronizeValue();
 
 }

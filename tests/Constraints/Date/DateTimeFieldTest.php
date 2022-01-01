@@ -16,7 +16,7 @@ class DateTimeFieldTest extends ConstraintTestCase
      */
     public function testValid()
     {
-        $constraint = new DateTimeField('Y-m-d\\TH:i');
+        $constraint = new DateTimeField();
         $node = Node::from(['value' => '2021-01-20T12:00']);
 
         $this->assertNull($constraint->validate($node, $this->context));

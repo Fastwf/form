@@ -100,7 +100,7 @@ class InputTest extends TestCase
      */
     public function testGetDataDateTime()
     {
-        $control = new Input(['type' => 'datetime-local', 'value' => "2021-01-01 12:00"]);
+        $control = new Input(['type' => 'datetime-local', 'value' => "2021-01-01T12:00"]);
         $this->assertEquals(strtotime("2021-01-01 12:00"), $control->getData()->getTimestamp());
 
         $control = new Input(['type' => 'datetime-local', 'value' => "01/01/2021 12h30"]);

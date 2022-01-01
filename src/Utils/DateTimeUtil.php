@@ -16,7 +16,7 @@ class DateTimeUtil
     /**
      * The datetime format of input datetime-local fields.
      */
-    const HTML_DATETIME_FORMAT = "Y-m-d H:i";
+    const HTML_DATETIME_FORMAT = "Y-m-d\\TH:i";
 
     /**
      * Try to parse the date using the format.

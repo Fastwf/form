@@ -77,6 +77,7 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testGetDataDate()
     {
@@ -95,6 +96,7 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testGetDataDateTime()
     {

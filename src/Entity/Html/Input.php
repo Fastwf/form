@@ -4,6 +4,7 @@ namespace Fastwf\Form\Entity\Html;
 
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Entity\FormControl;
+use Fastwf\Form\Utils\DateTimeUtil;
 
 class Input extends FormControl
 {
@@ -51,81 +52,6 @@ class Input extends FormControl
         return $isInteger ? (int) $value : (double) $value;
     }
 
-    /**
-     * Try to parse the date using the format.
-     *
-     * @param string|null $value the datetime formatted
-     * @param string $format the format of the value
-     * @return \DateTime|null the value parsed or null (error or value null)
-     */
-    private function getDate($value, $format)
-    {
-        // Control nullity of the value
-        if ($value === null)
-        {
-            return null;
-        }
-
-        $parseResult = \date_parse_from_format($format, $value);
-
-        if (empty($parseResult['errors']))
-        {
-            $date = new \DateTime();
-            $date->setDate(
-                $parseResult['year'],
-                $parseResult['month'],
-                $parseResult['day'],
-            );
-            $date->setTime(0, 0, 0, 0);
-        }
-        else
-        {
-            $date = null;
-        }
-
-        return $date;
-    }
-
-    /**
-     * Try to parse the datetime using the format.
-     *
-     * @param string|null $value the datetime formatted
-     * @param string $format the format of the value
-     * @return \DateTime|null the value parsed or null (error or value null)
-     */
-    private function getDateTime($value, $format)
-    {
-        // Control nullity of the value
-        if ($value === null)
-        {
-            return null;
-        }
-
-        $parseResult = \date_parse_from_format($format, $value);
-
-        if (empty($parseResult['errors']))
-        {
-            $dateTime = new \DateTime();
-            $dateTime->setDate(
-                $parseResult['year'],
-                $parseResult['month'],
-                $parseResult['day'],
-            );
-            $dateTime->setTime(
-                $parseResult['hour'],
-                $parseResult['minute'],
-                $parseResult['second'],
-                $parseResult['fraction'] * 1000000,
-            );
-        }
-        else
-        {
-            $dateTime = null;
-        }
-
-        return $dateTime;
-    }
-
     public function setType($type)
     {
         $this->type = $type;
@@ -153,7 +79,7 @@ class Input extends FormControl
         switch ($this->type)
         {
             case 'date':
-                $data = $this->getDate($this->value, "Y-m-d");
+                $data = DateTimeUtil::getDate($this->value, DateTimeUtil::HTML_DATE_FORMAT);
                 break;
             case 'number':
             case 'range':
@@ -161,7 +87,7 @@ class Input extends FormControl
                 break;
             case 'datetime':
             case 'datetime-local':
-                $data = $this->getDateTime($this->value, "Y-m-d H:i");
+                $data = DateTimeUtil::getDateTime($this->value, DateTimeUtil::HTML_DATETIME_FORMAT);
                 break;
             default:
                 $data = $this->value;

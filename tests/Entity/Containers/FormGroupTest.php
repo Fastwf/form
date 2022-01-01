@@ -52,6 +52,7 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testGetData()
     {

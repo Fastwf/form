@@ -12,6 +12,13 @@ abstract class FormControl extends Control
 {
 
     /**
+     * The label value associated to the form control.
+     *
+     * @var string
+     */
+    protected $label;
+
+    /**
      * Allows to disable or not the form control.
      *
      * @var boolean
@@ -50,11 +57,22 @@ abstract class FormControl extends Control
     {
         parent::__construct($parameters);
 
+        $this->label = ArrayUtil::getSafe($parameters, 'label', '');
         $this->disabled = ArrayUtil::getSafe($parameters, 'disabled', false);
         $this->readonly = ArrayUtil::getSafe($parameters, 'readonly', false);
         $this->value = ArrayUtil::getSafe($parameters, 'value');
         $this->constraint = ArrayUtil::getSafe($parameters, 'constraint');
         $this->violation = ArrayUtil::getSafe($parameters, 'violation');
+    }
+
+    public function setLabel($label)
+    {
+        $this->label = $label;
+    }
+
+    public function getLabel()
+    {
+        return $this->label;
     }
 
     public function setDisabled($disabled)

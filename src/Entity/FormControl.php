@@ -40,6 +40,13 @@ abstract class FormControl extends Control
     protected $value;
 
     /**
+     * The help message or description of this current form control.
+     *
+     * @var string
+     */
+    protected $help;
+
+    /**
      * The constraint to use to validate the value.
      *
      * @var Constraint
@@ -103,6 +110,16 @@ abstract class FormControl extends Control
     public function getValue()
     {
         return $this->value;
+    }
+
+    public function setHelp($help)
+    {
+        $this->help = $help;
+    }
+
+    public function getHelp()
+    {
+        return $this->help;
     }
 
     public function setConstraint($constraint)

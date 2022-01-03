@@ -9,13 +9,6 @@ class OptionGroup extends AOption
 {
 
     /**
-     * The section name.
-     *
-     * @var string
-     */
-    protected $label;
-
-    /**
      * The list of options hold by this group.
      *
      * @var array
@@ -26,18 +19,7 @@ class OptionGroup extends AOption
     {
         parent::__construct($parameters);
 
-        $this->label = (string) ArrayUtil::getSafe($parameters, 'label', null);
         $this->options = ArrayUtil::get($parameters, 'options');
-    }
-
-    public function setLabel($label)
-    {
-        $this->label = $label;
-    }
-
-    public function getLabel()
-    {
-        return $this->label;
     }
 
     public function setOptions($options)

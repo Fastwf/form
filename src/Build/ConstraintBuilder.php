@@ -225,14 +225,11 @@ class ConstraintBuilder
     public function build()
     {
         // Chain required / nullable and other constraints as global constraint
+        $chain = new Chain(false, ...$this->constraints);
+        $nullable = new Nullable($this->nullable, $chain);
+
         return [
-            self::CSTRT => new Required(
-                $this->required,
-                new Nullable(
-                    $this->nullable,
-                    new Chain(false, ...$this->constraints),
-                ),
-            ),
+            self::CSTRT => new Required($this->required, $nullable),
             self::ATTRS => $this->htmlAttributes,
         ];
     }

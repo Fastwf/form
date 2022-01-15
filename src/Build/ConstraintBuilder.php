@@ -2,15 +2,15 @@
 
 namespace Fastwf\Form\Build;
 
-use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Exceptions\KeyError;
 use Fastwf\Form\Exceptions\ValueError;
 use Fastwf\Constraint\Constraints\Chain;
-use Fastwf\Form\Constraints\Number\Step;
 use Fastwf\Form\Constraints\StringField;
 use Fastwf\Constraint\Constraints\Nullable;
 use Fastwf\Constraint\Constraints\Required;
-use Fastwf\Constraint\Constraints\Number\Minimum;
+use Fastwf\Form\Constraints\Date\DateField;
+use Fastwf\Form\Build\Factory\NumericFactory;
+use Fastwf\Form\Constraints\Date\DateTimeField;
 use Fastwf\Constraint\Constraints\String\Pattern;
 use Fastwf\Constraint\Constraints\String\MaxLength;
 use Fastwf\Constraint\Constraints\String\MinLength;
@@ -152,10 +152,30 @@ class ConstraintBuilder
                 break;
             case 'input':
                 // Prepare the basic constraint according to the input type
+                $this->fromInput($type);
                 break;
         }
 
         return $this;
+    }
+
+    /**
+     * Initialize the builder from input type.
+     *
+     * @param string $type the input type
+     * @return void
+     */
+    private function fromInput($type)
+    {
+        switch ($type)
+        {
+            case 'date':
+                \array_push($this->constraints, new DateField());
+                break;
+            case 'datetime-local':
+                \array_push($this->constraints, new DateTimeField());
+                break;
+        }
     }
 
     /**
@@ -210,7 +230,7 @@ class ConstraintBuilder
                 $this->required,
                 new Nullable(
                     $this->nullable,
-                    new Chain(false, $this->constraints),
+                    new Chain(false, ...$this->constraints),
                 ),
             ),
             self::ATTRS => $this->htmlAttributes,
@@ -241,17 +261,17 @@ class ConstraintBuilder
             })
 
             // Basic number constraints
-            ->register('min', function ($_1, $_2, $min, $_3) {
-                // Expect a minimum value (int or double) as options
-                return [self::CSTRT => new Minimum($min), self::ATTRS => ["min" => $min]];
+            ->register('min', function ($control, $type, $min, $_1) {
+                // Expect a minimum value (int, double, string or \DateTime) as options
+                return NumericFactory::of($control, $type, 'min')->min($min);
             })
-            ->register('max', function ($_1, $_2, $max, $_3) {
-                // Expect a maximum value (int or double) as options
-                return [self::CSTRT => new Maximum($max), self::ATTRS => ["max" => $max]];
+            ->register('max', function ($control, $type, $max, $_1) {
+                // Expect a minimum value (int, double, string or \DateTime) as options
+                return NumericFactory::of($control, $type, 'max')->max($max);
             })
-            ->register('step', function ($_1, $_2, $step, $constraints) {
+            ->register('step', function ($control, $type, $step, $constraints) {
                 // Expect a step value (int or double) as options
-                return [self::CSTRT => new Step($step, ArrayUtil::getSafe($constraints, 'min', 0)), self::ATTRS => ["step" => $step]];
+                return NumericFactory::of($control, $type, 'step')->step($step, $constraints);
             });
         
         // Email => multiple ?

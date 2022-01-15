@@ -61,6 +61,8 @@ abstract class NumericFactory
                 case 'range':
                     $factory = new NumberFactory();
                     break;
+                default:
+                    break;
             }
         }
 

@@ -46,8 +46,6 @@ class Step implements Constraint
         return ((int) $quotient) == $quotient
             ? null
             : $context->violation($value, 'step', ['step' => $this->step]);
-
-        return $violation;
     }
 
 }

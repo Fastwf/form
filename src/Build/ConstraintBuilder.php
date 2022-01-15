@@ -154,6 +154,8 @@ class ConstraintBuilder
                 // Prepare the basic constraint according to the input type
                 $this->fromInput($type);
                 break;
+            default:
+                break;
         }
 
         return $this;
@@ -174,6 +176,8 @@ class ConstraintBuilder
                 break;
             case 'datetime-local':
                 \array_push($this->constraints, new DateTimeField());
+                break;
+            default:
                 break;
         }
     }
@@ -225,11 +229,11 @@ class ConstraintBuilder
     public function build()
     {
         // Chain required / nullable and other constraints as global constraint
-        $chain = new Chain(false, ...$this->constraints);
-        $nullable = new Nullable($this->nullable, $chain);
+        $cChain = new Chain(false, ...$this->constraints);
+        $cNullable = new Nullable($this->nullable, $cChain);
 
         return [
-            self::CSTRT => new Required($this->required, $nullable),
+            self::CSTRT => new Required($this->required, $cNullable),
             self::ATTRS => $this->htmlAttributes,
         ];
     }

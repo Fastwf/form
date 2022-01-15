@@ -5,7 +5,7 @@ namespace Fastwf\Tests\Constraints;
 use PHPUnit\Framework\TestCase;
 use Fastwf\Constraint\Api\ValidationContext;
 
-class ConstraintTestCase extends TestCase
+abstract class ConstraintTestCase extends TestCase
 {
 
     protected $context;

@@ -49,11 +49,11 @@ class Select extends FormControl
     {
         $length = \count($this->options);
 
-        $options = $this->options;
+        $optionsCopy = $this->options;
         $index = 0;
         while ($index < $length)
         {
-            $option = $options[$index];
+            $option = $optionsCopy[$index];
 
             if ($option instanceof OptionGroup)
             {
@@ -61,7 +61,7 @@ class Select extends FormControl
                 $childOptions = $option->getOptions();
                 $length += (\count($childOptions) - 1);
 
-                \array_splice($options, $index, 1, $childOptions);
+                \array_splice($optionsCopy, $index, 1, $childOptions);
             }
             else
             {

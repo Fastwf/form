@@ -83,7 +83,7 @@ class FormArray extends Control implements Container
             \array_push($constraints, new Items($constraint));
         }
 
-        new Chain(true, ...$constraints);
+        return new Chain(true, ...$constraints);
     }
 
     public function setViolation($violation)

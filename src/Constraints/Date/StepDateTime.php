@@ -60,8 +60,6 @@ class StepDateTime implements Constraint
         return ((int) $quotient) == $quotient
             ? null
             : $context->violation($value, 'step-datetime', ['step' => $this->step]);
-
-        return $violation;
     }
 
 }

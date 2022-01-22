@@ -104,10 +104,38 @@ class DateTimeUtil
     }
 
     /**
+     * Parse the month and convert to datetime.
+     * 
+     * The date correspond to the first day of the week.
+     *
+     * @param string $month the month to parse.
+     * @return \DateTime|null the datetime corresponding to the month (example '2020-02' -> '2020-02-01 00:00:00.000') or null when the 
+     *                        format is invalid.
+     */
+    public static function getMonth($month)
+    {
+        $datetime = null;
+
+        $match = [];
+        if (preg_match('/^(\d{4})-(\d{2})$/', $month, $match) === 1)
+        {
+            $month = (int) $match[2];
+
+            // Even if php can parse a month equals to 13, wee don't authorize because the format is invalid
+            if (1 <= $month && $month < 13)
+            {
+                $datetime = \DateTime::createFromFormat('Y-m-d\TH:i:s.u', $match[1]."-" . $match[2] . "-01T00:00:00.000");
+            }
+        }
+        
+        return $datetime;
+    }
+
+    /**
      * Parse the week string and convert to datetime.
      *
      * @param string $week the week string to parse (must respect the HTML week format "<year>-W<week>")
-     * @return \DateTime|null the datetime corresponding to the week (example '2022-W01' -> '2022-01-01 00:00:00.000') or null when format
+     * @return \DateTime|null the datetime corresponding to the week (example '2022-W01' -> '2022-01-03 00:00:00.000') or null when format
      *                        is invalid
      */
     public static function getWeek($week)

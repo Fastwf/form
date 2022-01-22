@@ -65,6 +65,25 @@ class DateTimeUtilTest extends TestCase
     /**
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
+    public function testGetMonth()
+    {
+        $this->assertEquals(
+            "2020-02-01",
+            DateTimeUtil::getMonth("2020-02")->format(DateTimeUtil::HTML_DATE_FORMAT),
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testGetMonthError()
+    {
+        $this->assertNull(DateTimeUtil::getMonth("2020-13"));
+    }
+
+    /**
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
     public function testGetWeek()
     {
         // The date must correspond to the first day of the ISO week

@@ -62,4 +62,24 @@ class DateTimeUtilTest extends TestCase
         $this->assertNull(DateTimeUtil::getDateTime("2021-01-01 12h00", "Y-m-d\\TH:i"));
     }
 
+    /**
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testGetWeek()
+    {
+        // The date must correspond to the first day of the year + 53 weeks
+        $this->assertEquals(
+            "2020-12-30",
+            DateTimeUtil::getWeek("2020-W53")->format(DateTimeUtil::HTML_DATE_FORMAT),
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testGetWeekError()
+    {
+        $this->assertNull(DateTimeUtil::getWeek("test"));
+    }
+
 }

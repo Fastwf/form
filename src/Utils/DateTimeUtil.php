@@ -93,4 +93,27 @@ class DateTimeUtil
         return $dateTime;
     }
 
+    /**
+     * Parse the week string and convert to datetime.
+     *
+     * @param string $week the week string to parse (must respect the HTML week format "<year>-W<week>")
+     * @return \DateTime|null the datetime corresponding to the week (example '2022-W01' -> '2022-01-01 00:00:00.000') or null when format
+     *                        is invalid
+     */
+    public static function getWeek($week)
+    {
+        $datetime = null;
+
+        $match = [];
+        if (preg_match('/^(\d{4})-W(\d{2})$/', $week, $match) === 1)
+        {
+            $datetime = \DateTime::createFromFormat('Y-m-d\TH:i:s.u', $match[1]."-01-01T00:00:00.000");
+
+            $intWeek = (int) $match[2];
+            $datetime->add(new \DateInterval("P" . ($intWeek - 1) . "W"));
+        }
+
+        return $datetime;
+    }
+
 }

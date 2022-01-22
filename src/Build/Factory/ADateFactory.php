@@ -53,7 +53,7 @@ abstract class ADateFactory extends NumericFactory
      * @return \DateTime the parsed datetime.
      * @throws ValueError when parsing is not possible.
      */
-    private function getDateTimeOf($value)
+    protected function getDateTimeOf($value)
     {
         if (!($value instanceof \DateTime))
         {

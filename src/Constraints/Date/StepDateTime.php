@@ -23,12 +23,19 @@ class StepDateTime implements Constraint
     protected $from;
 
     /**
+     * The name of the violation to provide when validation failed.
+     *
+     * @var string
+     */
+    private $violationCode;
+
+    /**
      * Constructor
      *
      * @param int|double $step the step in seconds 
      * @param \DateTime $from
      */
-    public function __construct($step, $from = null)
+    public function __construct($step, $from = null, $violationCode = "step-datetime")
     {
         if ($step === 0)
         {
@@ -48,6 +55,8 @@ class StepDateTime implements Constraint
         {
             $this->from = $from;
         }
+
+        $this->violationCode = $violationCode;
     }
 
     public function validate($node, $context)
@@ -59,7 +68,7 @@ class StepDateTime implements Constraint
         // Modulus cannot be used for double divider
         return ((int) $quotient) == $quotient
             ? null
-            : $context->violation($value, 'step-datetime', ['step' => $this->step]);
+            : $context->violation($value, $this->violationCode, ['step' => $this->step]);
     }
 
 }

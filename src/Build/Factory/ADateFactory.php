@@ -15,6 +15,13 @@ abstract class ADateFactory extends NumericFactory
 {
 
     /**
+     * According to the implementation, return the step violation code to use.
+     *
+     * @return string
+     */
+    protected abstract function getViolationCode();
+
+    /**
      * Try to parse the value as datetime.
      *
      * @param string $value the date time to parse
@@ -83,11 +90,11 @@ abstract class ADateFactory extends NumericFactory
 
         if (\array_key_exists('min', $constraints))
         {
-            $constraint = new StepDateTime($stepSeconds, $this->getDateTimeOf($constraints['min']));
+            $constraint = new StepDateTime($stepSeconds, $this->getDateTimeOf($constraints['min']), $this->getViolationCode());
         }
         else
         {
-            $constraint = new StepDateTime($stepSeconds);
+            $constraint = new StepDateTime($stepSeconds, null, $this->getViolationCode());
         }
 
         return [

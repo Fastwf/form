@@ -11,6 +11,11 @@ use Fastwf\Form\Build\Factory\ADateFactory;
 class WeekFactory extends ADateFactory
 {
 
+    protected function getViolationCode()
+    {
+        return 'step-week';
+    }
+
     protected function toDateTime($value)
     {
         return DateTimeUtil::getWeek($value);

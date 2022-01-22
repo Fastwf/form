@@ -11,6 +11,11 @@ use Fastwf\Form\Build\Factory\ADateFactory;
 class DateTimeFactory extends ADateFactory
 {
 
+    protected function getViolationCode()
+    {
+        return 'step-datetime';
+    }
+
     protected function toDateTime($value)
     {
         return DateTimeUtil::getDateTime($value, DateTimeUtil::HTML_DATETIME_FORMAT);

@@ -20,7 +20,7 @@ class WeekFieldTest extends ConstraintTestCase
 
         $this->assertNull($constraint->validate($node, $this->context));
         $this->assertEquals(
-            \strtotime('2021-01-01'),
+            \strtotime('2021-01-04'),
             $node->get()->getTimestamp()
         );
     }

@@ -4,6 +4,7 @@ namespace Fastwf\Tests\Build\Factory;
 
 use PHPUnit\Framework\TestCase;
 use Fastwf\Form\Build\Factory\DateFactory;
+use Fastwf\Form\Build\Factory\WeekFactory;
 use Fastwf\Form\Build\Factory\NumberFactory;
 use Fastwf\Form\Exceptions\FactoryException;
 use Fastwf\Form\Build\Factory\NumericFactory;
@@ -42,8 +43,27 @@ class NumericFactoryTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      */
-    public function testFactoryException()
+    public function testOfWeek()
+    {
+        $this->assertTrue(NumericFactory::of('input', 'week', 'any') instanceof WeekFactory);
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\Factory\NumericFactory
+     */
+    public function testFactoryExceptionInput()
+    {
+        $this->expectException(FactoryException::class);
+
+        NumericFactory::of('input', 'text', null);
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\Factory\NumericFactory
+     */
+    public function testFactoryExceptionNotInput()
     {
         $this->expectException(FactoryException::class);
 

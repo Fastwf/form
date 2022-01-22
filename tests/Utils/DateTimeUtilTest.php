@@ -67,9 +67,10 @@ class DateTimeUtilTest extends TestCase
      */
     public function testGetWeek()
     {
-        // The date must correspond to the first day of the year + 53 weeks
+        // The date must correspond to the first day of the ISO week
+        //  For the week 2020-W53, 2021-01-01 is friday, the monday is the 2020-12-28
         $this->assertEquals(
-            "2020-12-30",
+            "2020-12-28",
             DateTimeUtil::getWeek("2020-W53")->format(DateTimeUtil::HTML_DATE_FORMAT),
         );
     }
@@ -80,6 +81,15 @@ class DateTimeUtilTest extends TestCase
     public function testGetWeekError()
     {
         $this->assertNull(DateTimeUtil::getWeek("test"));
+    }
+
+    /**
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testFormatIsoWeek()
+    {
+        $this->assertEquals("2020-W01", DateTimeUtil::formatIsoWeek(DateTimeUtil::getWeek("2020-W01"))); // -> the date is 2019-12-28
+        $this->assertEquals("2022-W01", DateTimeUtil::formatIsoWeek(DateTimeUtil::getWeek("2022-W01"))); // -> the date is 2022-01-03
     }
 
 }

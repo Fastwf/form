@@ -11,12 +11,22 @@ class DateTimeUtil
     /**
      * The date format of input date fields.
      */
-    const HTML_DATE_FORMAT = "Y-m-d";
+    public const HTML_DATE_FORMAT = "Y-m-d";
 
     /**
      * The datetime format of input datetime-local fields.
      */
-    const HTML_DATETIME_FORMAT = "Y-m-d\\TH:i";
+    public const HTML_DATETIME_FORMAT = "Y-m-d\\TH:i";
+
+    /**
+     * The number of seconds in a day (24 * 60 * 60).
+     */
+    public const DAY_IN_SECONDS = 86400;
+
+    /**
+     * The number of seconds in a day (7 * 24 * 60 * 60).
+     */
+    public const WEEK_IN_SECONDS = 604800;
 
     /**
      * Try to parse the date using the format.
@@ -109,11 +119,45 @@ class DateTimeUtil
         {
             $datetime = \DateTime::createFromFormat('Y-m-d\TH:i:s.u', $match[1]."-01-01T00:00:00.000");
 
-            $intWeek = (int) $match[2];
-            $datetime->add(new \DateInterval("P" . ($intWeek - 1) . "W"));
+            // Analyse the week day to adjust the first week
+            $dayOfWeek = (int) $datetime->format('N');
+
+            // [3 - (dayOfWeek + 2) % 7] result in the number of days required to move to the first day of the week 
+            $period = (3 - ($dayOfWeek + 2) % 7) * self::DAY_IN_SECONDS
+                + (((int) $match[2]) - 1) * self::WEEK_IN_SECONDS;
+
+            if ($period !== 0)
+            {
+                $datetime->setTimestamp($datetime->getTimestamp() + $period);
+            }
         }
 
         return $datetime;
+    }
+
+    /**
+     * Format the datetime as ISO Week format.
+     *
+     * @param \DateTime $datetime the datetime to format.
+     * @return string
+     */
+    public static function formatIsoWeek($datetime)
+    {
+        $year = (int) $datetime->format('Y');
+        $week = (int) $datetime->format('W');
+
+        // When the week is 1 and the month is 12 -> the year must be corrected
+        if ($week === 1)
+        {
+            $month = (int) $datetime->format('n');
+            if ($month === 12)
+            {
+                $year += 1;
+            }
+        }
+        
+        // Return the correct string
+        return \sprintf("%04d-W%02d", $year, $week);
     }
 
 }

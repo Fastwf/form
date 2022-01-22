@@ -6,24 +6,24 @@ use Fastwf\Form\Utils\DateTimeUtil;
 use Fastwf\Form\Build\Factory\ADateFactory;
 
 /**
- * Factory responsible of date constraints.
+ * Constraints factory for week input type.
  */
-class DateFactory extends ADateFactory
+class WeekFactory extends ADateFactory
 {
 
     protected function toDateTime($value)
     {
-        return DateTimeUtil::getDateTime($value, DateTimeUtil::HTML_DATE_FORMAT);
+        return DateTimeUtil::getWeek($value);
     }
 
     protected function toString($date)
     {
-        return $date->format(DateTimeUtil::HTML_DATE_FORMAT);
+        return DateTimeUtil::formatIsoWeek($date);
     }
 
     protected function stepToSeconds($step)
     {
-        return DateTimeUtil::DAY_IN_SECONDS * $step;
+        return DateTimeUtil::WEEK_IN_SECONDS * $step;
     }
 
 }

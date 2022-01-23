@@ -4,6 +4,7 @@ namespace Fastwf\Tests\Build\Factory;
 
 use PHPUnit\Framework\TestCase;
 use Fastwf\Form\Build\Factory\DateFactory;
+use Fastwf\Form\Build\Factory\TimeFactory;
 use Fastwf\Form\Build\Factory\WeekFactory;
 use Fastwf\Form\Build\Factory\MonthFactory;
 use Fastwf\Form\Build\Factory\NumberFactory;
@@ -40,6 +41,15 @@ class NumericFactoryTest extends TestCase
     public function testOfDateTime()
     {
         $this->assertTrue(NumericFactory::of('input', 'datetime-local', 'any') instanceof DateTimeFactory);
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     */
+    public function testOfTime()
+    {
+        $this->assertTrue(NumericFactory::of('input', 'time', 'any') instanceof TimeFactory);
     }
 
     /**

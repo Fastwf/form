@@ -3,6 +3,7 @@
 namespace Fastwf\Form\Build\Factory;
 
 use Fastwf\Form\Build\Factory\DateFactory;
+use Fastwf\Form\Build\Factory\TimeFactory;
 use Fastwf\Form\Build\Factory\WeekFactory;
 use Fastwf\Form\Build\Factory\MonthFactory;
 use Fastwf\Form\Build\Factory\NumberFactory;
@@ -58,6 +59,9 @@ abstract class NumericFactory
                     break;
                 case 'datetime-local':
                     $factory = new DateTimeFactory();
+                    break;
+                case 'time':
+                    $factory = new TimeFactory();
                     break;
                 case 'month':
                     $factory = new MonthFactory();

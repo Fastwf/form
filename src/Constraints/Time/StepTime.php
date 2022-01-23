@@ -52,8 +52,6 @@ class StepTime implements Constraint
         {
             $this->from = $from;
         }
-
-        $this->violationCode = $violationCode;
     }
 
     public function validate($node, $context)

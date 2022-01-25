@@ -11,7 +11,7 @@ use Fastwf\Form\Constraints\Date\ADateTimeField;
 class DateTimeField extends ADateTimeField
 {
 
-    public function __construct($format = DateTimeUtil::HTML_DATETIME_FORMAT)
+    public function __construct($format = DateTimeUtil::AUTO_DATETIME_FORMAT)
     {
         parent::__construct($format);
     }

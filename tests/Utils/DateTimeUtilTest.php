@@ -4,6 +4,7 @@ namespace Fastwf\Tests\Utils;
 
 use PHPUnit\Framework\TestCase;
 use Fastwf\Form\Utils\DateTimeUtil;
+use Fastwf\Form\Utils\DateIntervalUtil;
 
 class DateTimeUtilTest extends TestCase
 {
@@ -51,6 +52,42 @@ class DateTimeUtilTest extends TestCase
         $this->assertEquals(
             strtotime("2021-01-01 12:00"),
             DateTimeUtil::getDateTime("2021-01-01T12:00", "Y-m-d\\TH:i")->getTimestamp()
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testGetDateTimeAuto()
+    {
+        $this->assertEquals(
+            strtotime("2021-01-01 12:00"),
+            DateTimeUtil::getDateTime("2021-01-01T12:00")->getTimestamp()
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testGetDateTimeWithSecondsAuto()
+    {
+        $this->assertEquals(
+            strtotime("2021-01-01 12:00:15"),
+            DateTimeUtil::getDateTime("2021-01-01T12:00:15")->getTimestamp()
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     * @covers Fastwf\Form\Utils\DateIntervalUtil
+     */
+    public function testGetDateTimeWithMicroSecondsAuto()
+    {
+        $date = DateTimeUtil::getDateTime("2021-01-01T12:00:15.123456");
+
+        $this->assertEquals(
+            strtotime("2021-01-01 00:00:00") + DateIntervalUtil::toSeconds(DateIntervalUtil::getTime("12:00:15.123456")),
+            $date->getTimestamp() + ((double) $date->format('u') / 1000000)
         );
     }
 

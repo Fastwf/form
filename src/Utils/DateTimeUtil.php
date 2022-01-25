@@ -2,11 +2,18 @@
 
 namespace Fastwf\Form\Utils;
 
+use Fastwf\Constraint\Utils\Range;
+
 /**
  * Date and DateTime util that help to parse date values
  */
 class DateTimeUtil
 {
+
+    /**
+     * The pattern of datetime-local expected.
+     */
+    private const HTML_DATETIME_PATTERN = "/^(\\d{4})-(\\d{2})-(\\d{2})T(\\d{2}):(\\d{2})(?::(\\d{2})(.\\d+)?)?$/";
 
     /**
      * The date format of input date fields.
@@ -17,6 +24,8 @@ class DateTimeUtil
      * The datetime format of input datetime-local fields.
      */
     public const HTML_DATETIME_FORMAT = "Y-m-d\\TH:i";
+
+    public const AUTO_DATETIME_FORMAT = 'auto';
 
     /**
      * The number of seconds in a day (24 * 60 * 60).
@@ -35,7 +44,7 @@ class DateTimeUtil
      * @param string $format the format of the value
      * @return \DateTime|null the value parsed or null (error or value null)
      */
-    public static function getDate($value, $format)
+    public static function getDate($value, $format = self::HTML_DATE_FORMAT)
     {
         // Control nullity of the value
         if ($value === null)
@@ -64,13 +73,57 @@ class DateTimeUtil
     }
 
     /**
+     * Parse the value as an HTML datetime.
+     *
+     * @param string $value the value to parse.
+     * @return array the array containing the parsing result ("errors" is provided in case of invalid date time or format).
+     */
+    private static function getAutoDateTime($value)
+    {
+        $result = [];
+
+        $matches = [];
+        if (\preg_match(self::HTML_DATETIME_PATTERN, $value, $matches) === 1)
+        {
+            // Add the default for seconds and microseconds
+            $corrected = \array_merge($matches, [6 => "0", 7 => ".0"]);
+
+            $result['year'] = (int) $corrected[1];
+            $result['month'] = (int) $corrected[2];
+            $result['day'] = (int) $corrected[3];
+            $result['hour'] = (int) $corrected[4];
+            $result['minute'] = (int) $corrected[5];
+            $result['second'] = (int) $corrected[6];
+            $result['fraction'] = ((double) $corrected[7]);
+
+            if (
+                // 2 - Is a valid date
+                !\checkdate($result['month'], $result['day'], $result['year'])
+                // 3 - Check the time validity
+                || !Range::inRange($result['hour'], 0, 23)
+                || !Range::inRange($result['minute'], 0, 60)
+                || !Range::inRange($result['second'], 0, 60)
+            )
+            {
+                $result['errors'] = 'Invalid datetime';
+            }
+        }
+        else
+        {
+            $result['errors'] = 'Invalid format';
+        }
+
+        return $result;
+    }
+
+    /**
      * Try to parse the datetime using the format.
      *
      * @param string|null $value the datetime formatted
      * @param string $format the format of the value
      * @return \DateTime|null the value parsed or null (error or value null)
      */
-    public static function getDateTime($value, $format)
+    public static function getDateTime($value, $format = self::AUTO_DATETIME_FORMAT)
     {
         // Control nullity of the value
         if ($value === null)
@@ -78,7 +131,14 @@ class DateTimeUtil
             return null;
         }
 
-        $parseResult = \date_parse_from_format($format, $value);
+        if (self::AUTO_DATETIME_FORMAT === $format)
+        {
+            $parseResult = self::getAutoDateTime($value);
+        }
+        else
+        {
+            $parseResult = \date_parse_from_format($format, $value);
+        }
 
         if (empty($parseResult['errors']))
         {

@@ -58,7 +58,7 @@ class StepTime implements Constraint
     {
         $value = $node->get();
 
-        $quotient = (DateIntervalUtil::toSeconds($value)  - DateIntervalUtil::toSeconds($this->from)) / $this->step;
+        $quotient = (DateIntervalUtil::toSeconds($value) - DateIntervalUtil::toSeconds($this->from)) / $this->step;
 
         // Modulus cannot be used for double divider
         return ((int) $quotient) == $quotient

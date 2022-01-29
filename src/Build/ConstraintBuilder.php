@@ -5,15 +5,32 @@ namespace Fastwf\Form\Build;
 use Fastwf\Form\Exceptions\KeyError;
 use Fastwf\Form\Exceptions\ValueError;
 use Fastwf\Constraint\Constraints\Chain;
+use Fastwf\Form\Constraints\DoubleField;
 use Fastwf\Form\Constraints\StringField;
+use Fastwf\Form\Constraints\BooleanField;
+use Fastwf\Form\Constraints\IntegerField;
+use Fastwf\Form\Constraints\RequiredField;
+use Fastwf\Form\Constraints\String\Equals;
 use Fastwf\Constraint\Constraints\Nullable;
 use Fastwf\Constraint\Constraints\Required;
 use Fastwf\Form\Constraints\Date\DateField;
+use Fastwf\Form\Constraints\Date\WeekField;
+use Fastwf\Form\Constraints\Time\TimeField;
+use Fastwf\Form\Constraints\Date\MonthField;
 use Fastwf\Form\Build\Factory\NumericFactory;
+use Fastwf\Constraint\Constraints\String\Enum;
+use Fastwf\Constraint\Constraints\Arrays\Items;
 use Fastwf\Form\Constraints\Date\DateTimeField;
+use Fastwf\Form\Constraints\String\ColorFormat;
 use Fastwf\Constraint\Constraints\String\Pattern;
+use Fastwf\Constraint\Constraints\Type\ArrayType;
+use Fastwf\Form\Constraints\String\SplitModifier;
+use Fastwf\Constraint\Constraints\Arrays\MinItems;
 use Fastwf\Constraint\Constraints\String\MaxLength;
 use Fastwf\Constraint\Constraints\String\MinLength;
+use Fastwf\Constraint\Constraints\String\UriFormat;
+use Fastwf\Constraint\Constraints\Arrays\UniqueItems;
+use Fastwf\Constraint\Constraints\String\EmailFormat;
 
 /**
  * Builder class that allows to create constraints and generate associated html 5 validation attributes.
@@ -50,13 +67,30 @@ class ConstraintBuilder
      * @var boolean
      */
     private $required = false;
-    
+
     /**
-     * A flag that indicate if the value is nullable.
+     * A flag that indicate if multiple is found in constraints.
      *
      * @var boolean
      */
-    private $nullable = true;
+    private $multiple = false;
+
+    /**
+     * The primary constraint is the first field constraint that allows to transform the incomming data (it must be StringField
+     * constraint or null).
+     *
+     * @var StringField|null
+     */
+    private $primaryConstraint = null;
+
+    /**
+     * The secondary constraint is the constraint that allows to transform the incomming data after RequiredField constraint validation.
+     * 
+     * It will not be chained with other constraints (when transformation failed, next constraint must not be validated)
+     *
+     * @var Constraint|null
+     */
+    private $secondaryConstraint = null;
 
     /**
      * The array of constraint to chain in safe mode.
@@ -130,29 +164,32 @@ class ConstraintBuilder
      *
      * @param string $control the name of the form control (input, textarea, ...).
      * @param string|null $type the type of the input (text, number, email) or null if the control is not an input.
+     * @param array $constraints optional array of unique constraint name associated to it's options (can be required during initialisation).
      * @return ConstraintBuilder the current builder.
      */
-    public function from($control, $type = null)
+    public function from($control, $type = null, $constraints = [])
     {
         // Reset values
         $this->control = $control;
         $this->type = $type;
 
         $this->required = false;
-        $this->nullable = true;
+        $this->multiple = false;
+        $this->primaryConstraint = null;
+        $this->secondaryConstraint = null;
         $this->constraints = [];
         $this->htmlAttributes = [];
 
         switch ($control) {
             case 'select':
-                # code...
+                $this->fromSelect($constraints);
                 break;
             case 'textarea':
                 \array_push($this->constraints, new StringField());
                 break;
             case 'input':
                 // Prepare the basic constraint according to the input type
-                $this->fromInput($type);
+                $this->fromInput($type, $constraints);
                 break;
             default:
                 break;
@@ -162,24 +199,106 @@ class ConstraintBuilder
     }
 
     /**
+     * Prepare the constraint for select input.
+     *
+     * @param array $asserts optional array of unique constraint name associated to it's options
+     * @return void
+     */
+    private function fromSelect($asserts)
+    {
+        // For select the constraints will depends on "multiple" attribute
+        // When it's multiple the data will be an array, else it's a simple string that respect enum constraint
+        if (!\array_key_exists('multiple', $asserts) || !$asserts['multiple'])
+        {
+            $this->primaryConstraint = new StringField();
+        }
+    }
+
+    /**
      * Initialize the builder from input type.
      *
      * @param string $type the input type
+     * @param array $asserts optional array of unique constraint name associated to it's options
      * @return void
      */
-    private function fromInput($type)
+    private function fromInput($type, $asserts)
     {
+        // TODO: input file
+
+        $isStringField = false;
+        $constraints = [];
+
         switch ($type)
         {
+            case 'color':
+                $isStringField = true;
+                $constraints = [new ColorFormat()];
+                break;
             case 'date':
-                \array_push($this->constraints, new DateField());
+                $this->secondaryConstraint = new DateField();
                 break;
             case 'datetime-local':
-                \array_push($this->constraints, new DateTimeField());
+                $this->secondaryConstraint = new DateTimeField();
+                break;
+            case 'email':
+                $isStringField = true;
+                $constraints = [new EmailFormat()];
+                break;
+            case 'month':
+                $this->secondaryConstraint = new MonthField();
+                break;
+            case 'number':
+            case 'range':
+                // Analyse the step constraint to know how to convert the field
+                $matches = [];
+                if (\array_key_exists('step', $asserts)
+                    && \preg_match("/^\d+\\.(\d+)$/", $asserts['step'], $matches)
+                    && ((int) $matches[1]) !== 0)
+                {
+                    // The step format match a float definition, the field must be converted to Double
+                    $this->secondaryConstraint = new DoubleField();
+                }
+                else
+                {
+                    // In other cases (no step, bad step format, ...), the value will be converted as Integer
+                    $this->secondaryConstraint = new IntegerField();
+                }
+                break;
+            case 'time':
+                $this->secondaryConstraint = new TimeField();
+                break;
+            case 'url':
+                $isStringField = true;
+                $constraints = [new UriFormat()];
+                break;
+            case 'week':
+                $this->secondaryConstraint = new WeekField();
+                break;
+            case 'checkbox':
+                // Control the 'equals' constraint to know how to initialize constraints
+                if (\array_key_exists('equals', $asserts) && !\in_array($asserts['equals'], BooleanField::POSITIVE_VALUES))
+                {
+                    // Require to validate a string value
+                    $isStringField = true;
+                }
+                else
+                {
+                    $this->secondaryConstraint = new BooleanField();
+                }
                 break;
             default:
+                // password, search, tel, text, ...
+                $isStringField = true;
                 break;
         }
+
+        // Add the primary string field convertion constraint
+        if ($isStringField)
+        {
+            $this->primaryConstraint = new StringField();
+        }
+
+        \array_push($this->constraints, ...$constraints);
     }
 
     /**
@@ -197,8 +316,9 @@ class ConstraintBuilder
                 $this->required = true;
                 $this->htmlAttributes['required'] = true;
                 break;
-            case 'nullable':
-                $this->nullable = true;
+            case 'multiple':
+                $this->multiple = true;
+                $this->htmlAttributes['multiple'] = true;
                 break;
             default:
                 // Use pre registered factory callable to create an instance of the constraint 
@@ -210,13 +330,132 @@ class ConstraintBuilder
                 {
                     $result = \call_user_func($this->factories[$name], $this->control, $this->type, $args, $constraints);
                     
+                    // Constraint must be provided, no control are performed
                     \array_push($this->constraints, $result[self::CSTRT]);
-                    $this->htmlAttributes = \array_merge($this->htmlAttributes, $result[self::ATTRS]);
+                    // Additionnal html attributes are not required, control the result key
+                    if (\array_key_exists(self::ATTRS, $result))
+                    {
+                        $this->htmlAttributes = \array_merge($this->htmlAttributes, $result[self::ATTRS]);
+                    }
                 }
                 break;
         }
 
         return $this;
+    }
+
+    /**
+     * Build the global constraint using default build system.
+     *
+     * @return Constraint the global constraint.
+     */
+    private function buildCommonSystem()
+    {
+        // Chain all constraints as global constraint
+        // Create the chain of secondary and final safe constraints.
+        $subConstraints = null;
+
+        if ($this->constraints)
+        {
+            $subConstraints = new Chain(false, ...$this->constraints);
+        }
+
+        if ($this->secondaryConstraint)
+        {
+            if ($subConstraints === null)
+            {
+                $subConstraints = $this->secondaryConstraint;
+            }
+            else
+            {
+                // Chain not safe the secondary constraint with other safe constraints
+                $subConstraints = new Chain(true, $this->secondaryConstraint, $subConstraints);
+            }
+        }
+
+        // Create the required field constraint
+        $requiredConstraint = new RequiredField($this->required, $subConstraints);
+
+        return $this->primaryConstraint === null
+            ? $requiredConstraint
+            : new Chain(true, $this->primaryConstraint, $requiredConstraint);
+    }
+
+    /**
+     * Allows to build the constraints for input email with multiple attribute.
+     *
+     * @return Constraint the constraint.
+     */
+    private function buildMultiEmailSystem()
+    {
+        // Build multiple constraint,
+        //  Perform split modification and than each items will be validated with defined constraints
+        $subConstraint = new Chain(
+            false,
+            new SplitModifier(
+                ",",
+                true,
+                new Chain(false, ...$this->constraints),
+            ),
+        );
+
+        return new Chain(
+            true,
+            $this->primaryConstraint,
+            new RequiredField($this->required, $subConstraint),
+        );
+    }
+
+    /**
+     * Build the constraint for select with multiple attribute.
+     *
+     * @return Constraint the select constraint.
+     */
+    private function buildMultiSelectSystem()
+    {
+        // Create the safe array constraints
+        $arrayConstraints = $this->required ? [new MinItems(1)] : [];
+        \array_push(
+            $arrayConstraints,
+            new Items(
+                new Chain(false, ...$this->constraints)
+            ),
+            new UniqueItems(),
+        );
+
+        // Create the non safe array constraint
+        $constraint = new Chain(
+            true,
+            new ArrayType(),
+            new Chain(false, ...$arrayConstraints),
+        );
+
+        // For required, check that the value is null and the number of items is at least 1
+        return new Nullable(!$this->required, $constraint);
+    }
+
+    /**
+     * Build the constraint for input[checkbox] control.
+     *
+     * @return Constraint the checkbox constraint.
+     */
+    private function buildCheckboxSystem()
+    {
+        if ($this->secondaryConstraint !== null)
+        {
+            // The BooleanField constraint is set, the global constraint must validate a boolean value
+            //  This is used for control <input type="checkbox" value="on" ...>
+            $globalConstraint = new Nullable(!$this->required, $this->secondaryConstraint);
+        }
+        else
+        {
+            // The checkbox must validate that the value is set and correspond to the reference value
+            //  This is used for control <input type="checkbox" value="any string value" ...>
+            $subConstraint = new Chain(false, ...$this->constraints);
+            $globalConstraint = new Chain(true, $this->primaryConstraint, new RequiredField($this->required, $subConstraint));
+        }
+
+        return $globalConstraint;
     }
 
     /**
@@ -228,12 +467,33 @@ class ConstraintBuilder
      */
     public function build()
     {
-        // Chain required / nullable and other constraints as global constraint
-        $cChain = new Chain(false, ...$this->constraints);
-        $cNullable = new Nullable($this->nullable, $cChain);
+        if ($this->multiple)
+        {
+            // When multiple flag is activated, override the default constraint build system.
+            if ($this->control === 'select')
+            {
+                $globalConstraint = $this->buildMultiSelectSystem();
+            }
+            else if ($this->control === 'input' && $this->type === 'email')
+            {
+                // Build multiple constraint for email
+                $globalConstraint = $this->buildMultiEmailSystem();
+            }
+            // TODO: input[file]
+        }
+        else if ($this->control === 'input' && $this->type === 'checkbox')
+        {
+            // Build the final checkbox constraint.
+            $globalConstraint = $this->buildCheckboxSystem();
+        }
+        else
+        {
+            // By default use the common build system
+            $globalConstraint = $this->buildCommonSystem();
+        }
 
         return [
-            self::CSTRT => new Required($this->required, $cNullable),
+            self::CSTRT => $globalConstraint,
             self::ATTRS => $this->htmlAttributes,
         ];
     }
@@ -273,9 +533,17 @@ class ConstraintBuilder
             ->register('step', function ($control, $type, $step, $constraints) {
                 // Expect a step value (int or double) as options
                 return NumericFactory::of($control, $type, 'step')->step($step, $constraints);
-            });
-        
-        // Email => multiple ?
+            })
+
+            ->register('enum', function ($_1, $_2, $enum, $_3) {
+                // Expect an array of string as enum
+                return [self::CSTRT => new Enum($enum)];
+            })
+            ->register('equals', function ($_1, $_2, $value, $_3) {
+                // Constraint that check if the value provided is the same $value parameter
+                return [self::CSTRT => new Equals($value)];
+            })
+            ;
 
         return $builder;
     }

@@ -9,12 +9,17 @@ use Fastwf\Constraint\Api\Constraint;
  */
 class BooleanField implements Constraint {
 
+    /**
+     * Constant that describe positive values.
+     */
+    public const POSITIVE_VALUES = ['true', 'on'];
+
     public function validate($node, $context)
     {
         $value = $node->get();
 
         $violation = null;
-        if (\in_array($value, ['true', 'on']))
+        if (\in_array($value, self::POSITIVE_VALUES))
         {
             // Set value to true
             $node->set(['value' => true]);

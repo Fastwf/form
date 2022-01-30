@@ -348,6 +348,7 @@ class ConstraintBuilderTest extends TestCase
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
      * @covers Fastwf\Form\Constraints\StringField
+     * @covers Fastwf\Form\Constraints\BooleanField
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\String\Equals
      */

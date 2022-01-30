@@ -55,6 +55,22 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Constraints\StringField
+     * @covers Fastwf\Form\Constraints\RequiredField
+     */
+    public function testBuildUrl()
+    {
+        $builder = ConstraintBuilder::getDefault()
+            ->from('input', 'url', []);
+        
+        $validator = new Validator($builder->build()[ConstraintBuilder::CSTRT]);
+
+        $this->assertTrue($validator->validate('http://localhost:8000/path/to/resource.json'));
+        $this->assertFalse($validator->validate('invalid url'));
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\DateFactory
      * @covers Fastwf\Form\Build\Factory\NumericFactory
@@ -219,6 +235,39 @@ class ConstraintBuilderTest extends TestCase
 
         $this->assertTrue($validator->validate('08:00:00.100'));
         $this->assertFalse($validator->validate('13:00:00.150'));
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
+     * @covers Fastwf\Form\Constraints\RequiredField
+     * @covers Fastwf\Form\Constraints\Date\WeekField
+     * @covers Fastwf\Form\Constraints\Date\MinDateTime
+     * @covers Fastwf\Form\Constraints\Date\MaxDateTime
+     * @covers Fastwf\Form\Constraints\Date\StepDateTime
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testBuildWeekInput()
+    {
+        $assert = [
+            'min' => '2020-W01',
+            'max' => '2020-W30',
+            'step' => 2,
+        ];
+
+        $builder = ConstraintBuilder::getDefault()
+            ->from('input', 'week');
+        
+        foreach ($assert as $name => $value) {
+            $builder->add($name, $value, $assert);
+        }
+
+        $validator = new Validator($builder->build()[ConstraintBuilder::CSTRT]);
+
+        $this->assertTrue($validator->validate('2020-W09'));
+        $this->assertFalse($validator->validate('2021-W10'));
     }
 
     /**

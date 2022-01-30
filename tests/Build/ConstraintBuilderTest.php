@@ -191,6 +191,38 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Build\Factory\TimeFactory
+     * @covers Fastwf\Form\Constraints\RequiredField
+     * @covers Fastwf\Form\Constraints\Time\TimeField
+     * @covers Fastwf\Form\Constraints\Time\MinTime
+     * @covers Fastwf\Form\Constraints\Time\MaxTime
+     * @covers Fastwf\Form\Constraints\Time\StepTime
+     * @covers Fastwf\Form\Utils\DateIntervalUtil
+     */
+    public function testBuildTimeInput()
+    {
+        $assert = [
+            'min' => '07:00:30.000',
+            'max' => '12:00:30.500',
+            'step' => 0.1,
+        ];
+
+        $builder = ConstraintBuilder::getDefault()
+            ->from('input', 'time');
+        
+        foreach ($assert as $name => $value) {
+            $builder->add($name, $value, $assert);
+        }
+
+        $validator = new Validator($builder->build()[ConstraintBuilder::CSTRT]);
+
+        $this->assertTrue($validator->validate('08:00:00.100'));
+        $this->assertFalse($validator->validate('13:00:00.150'));
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Constraints\String\SplitModifier

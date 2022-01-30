@@ -142,6 +142,33 @@ class DateTimeUtilTest extends TestCase
     /**
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
+    public function testFormatDateTime()
+    {
+        $this->assertEquals(
+            "2022-01-15T12:00",
+            DateTimeUtil::formatDateTime(new \DateTime("2022-01-15 12:00:00.000")),
+        );
+        $this->assertEquals(
+            "2022-01-15T12:00:15",
+            DateTimeUtil::formatDateTime(new \DateTime("2022-01-15 12:00:15.000")),
+        );
+        $this->assertEquals(
+            "2022-01-15T12:00:15.120",
+            DateTimeUtil::formatDateTime(new \DateTime("2022-01-15 12:00:15.12")),
+        );
+        $this->assertEquals(
+            "2022-01-15T12:00:15.123456",
+            DateTimeUtil::formatDateTime(new \DateTime("2022-01-15 12:00:15.1234567")),
+        );
+        $this->assertEquals(
+            "2022-01-15T12:00",
+            DateTimeUtil::formatDateTime(new \DateTime("2022-01-15 12:00:15.12345"), DateTimeUtil::HTML_DATETIME_FORMAT),
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
     public function testFormatIsoWeek()
     {
         $this->assertEquals("2020-W01", DateTimeUtil::formatIsoWeek(DateTimeUtil::getWeek("2020-W01"))); // -> the date is 2019-12-28

@@ -38,6 +38,23 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Constraints\StringField
+     * @covers Fastwf\Form\Constraints\RequiredField
+     * @covers Fastwf\Form\Constraints\String\ColorFormat
+     */
+    public function testBuildColor()
+    {
+        $builder = ConstraintBuilder::getDefault()
+            ->from('input', 'color', []);
+        
+        $validator = new Validator($builder->build()[ConstraintBuilder::CSTRT]);
+
+        $this->assertTrue($validator->validate('#FF0000'));
+        $this->assertFalse($validator->validate('#FF0'));
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\DateFactory
      * @covers Fastwf\Form\Build\Factory\NumericFactory
@@ -49,7 +66,7 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Constraints\Date\StepDateTime
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
-    public function testBuildNumericConstraint()
+    public function testBuildNumericDateConstraint()
     {
         $assert = [
             'min' => '2022-01-01',
@@ -67,6 +84,40 @@ class ConstraintBuilderTest extends TestCase
         $validator = new Validator($builder->build()[ConstraintBuilder::CSTRT]);
 
         $this->assertTrue($validator->validate('2022-01-15'));
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Constraints\RequiredField
+     * @covers Fastwf\Form\Constraints\Date\ADateTimeField
+     * @covers Fastwf\Form\Constraints\Date\DateTimeField
+     * @covers Fastwf\Form\Constraints\Date\MaxDateTime
+     * @covers Fastwf\Form\Constraints\Date\MinDateTime
+     * @covers Fastwf\Form\Constraints\Date\StepDateTime
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testBuildNumericDateTimeConstraint()
+    {
+        $assert = [
+            'min' => '2022-01-01T12:00:00.000',
+            'max' => '2022-01-01T12:00:00.500',
+            'step' => 0.100,
+        ];
+
+        $builder = ConstraintBuilder::getDefault()
+            ->from('input', 'datetime-local');
+        
+        foreach ($assert as $name => $value) {
+            $builder->add($name, $value, $assert);
+        }
+
+        $validator = new Validator($builder->build()[ConstraintBuilder::CSTRT]);
+
+        $this->assertTrue($validator->validate('2022-01-01T12:00:00.200'));
+        $this->assertFalse($validator->validate('2022-01-01T12:00:00.600'));
     }
 
     /**

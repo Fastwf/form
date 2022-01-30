@@ -25,6 +25,9 @@ class DateTimeUtil
      */
     public const HTML_DATETIME_FORMAT = "Y-m-d\\TH:i";
 
+    /**
+     * Format to use only for parsing (it allows to scan, seconds and microseconds if required).
+     */
     public const AUTO_DATETIME_FORMAT = 'auto';
 
     /**
@@ -221,6 +224,54 @@ class DateTimeUtil
         }
 
         return $datetime;
+    }
+
+    /**
+     * Allows to format the date according to the provided format.
+     * 
+     * It's possible to format using 'auto' parameter for HTML format with respect of seconds and microseconds if required.
+     * 
+     * Examples:
+     *  - 2022-01-01 12:00:00.000 -> 2022-01-01T12:00
+     *  - 2022-01-01 12:00:15.000 -> 2022-01-01T12:00:15
+     *  - 2022-01-01 12:00:15.12 -> 2022-01-01T12:00:15.120
+     *  - 2022-01-01 12:00:15.12345 -> 2022-01-01T12:00:15.12345
+     *
+     * @param \DateTime $dateTime the datetime to format
+     * @param string $format the format that respect DateTime::format pattern or 'auto' for minimal HTML date time format.
+     * @return string the date time formatted as HTML format.
+     */
+    public static function formatDateTime($dateTime, $format = self::AUTO_DATETIME_FORMAT)
+    {
+        $suffix = "";
+
+        if ($format === self::AUTO_DATETIME_FORMAT)
+        {
+            // Check each date time members to identify the shortest format
+            $microSeconds = (int) $dateTime->format('u');
+            if ($microSeconds > 0)
+            {
+                $format = 'H:i:s';
+ 
+                $microStr = \rtrim(\strval($microSeconds), '0');
+
+                // $microSeconds < 1000000 so the max length is always 6
+                $microLength = \max(3, \strlen($microStr));
+                $suffix = \sprintf(".%-0${microLength}s", $microStr);
+            }
+            else if (((int) $dateTime->format('s')) !== 0)
+            {
+                $format = 'H:i:s';
+            }
+            else
+            {
+                $format = 'H:i';
+            }
+
+            $format = "Y-m-d\\T" . $format;
+        }
+
+        return $dateTime->format($format) . $suffix;
     }
 
     /**

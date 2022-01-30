@@ -43,7 +43,9 @@ class Step implements Constraint
         $quotient = ($value - $this->from) / $this->step;
 
         // Modulus cannot be used for double divider
-        return ((int) $quotient) == $quotient
+        //  Use ceil to obtain the integer value
+        //  Convert the values to string to have better representation of double values
+        return ((string) \ceil($quotient)) == ((string) $quotient)
             ? null
             : $context->violation($value, 'step', ['step' => $this->step]);
     }

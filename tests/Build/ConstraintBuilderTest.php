@@ -122,6 +122,39 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Constraints\Date\MaxDateTime
+     * @covers Fastwf\Form\Constraints\Date\MinDateTime
+     * @covers Fastwf\Form\Constraints\Date\MonthField
+     * @covers Fastwf\Form\Constraints\Date\StepMonth
+     * @covers Fastwf\Form\Constraints\RequiredField
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testBuildNumericMonthConstraint()
+    {
+        $assert = [
+            'min' => '2022-01',
+            'max' => '2022-05',
+            'step' => 2,
+        ];
+
+        $builder = ConstraintBuilder::getDefault()
+            ->from('input', 'month');
+        
+        foreach ($assert as $name => $value) {
+            $builder->add($name, $value, $assert);
+        }
+
+        $validator = new Validator($builder->build()[ConstraintBuilder::CSTRT]);
+
+        $this->assertTrue($validator->validate('2022-03'));
+        $this->assertFalse($validator->validate('2022-04'));
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\IntegerField
      */
@@ -133,6 +166,27 @@ class ConstraintBuilderTest extends TestCase
         $validator = new Validator($builder->build()[ConstraintBuilder::CSTRT]);
 
         $this->assertTrue($validator->validate('15'));
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Build\Factory\NumberFactory
+     * @covers Fastwf\Form\Constraints\RequiredField
+     * @covers Fastwf\Form\Constraints\DoubleField
+     * @covers Fastwf\Form\Constraints\Number\Step
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testBuildInputRange()
+    {
+        $builder = ConstraintBuilder::getDefault()
+            ->from('input', 'range', ['step' => 0.2])
+            ->add('step', 0.2, []);
+
+        $validator = new Validator($builder->build()[ConstraintBuilder::CSTRT]);
+
+        $this->assertTrue($validator->validate('15.2'));
+        $this->assertFalse($validator->validate('15.3'));
     }
 
     /**

@@ -35,6 +35,17 @@ class StepTest extends ConstraintTestCase
     /**
      * @covers Fastwf\Form\Constraints\Number\Step
      */
+    public function testValidPrecision()
+    {
+        $constraint = new Step(0.0000000001);
+        $node = Node::from(['value' => 0.02]);
+
+        $this->assertNull($constraint->validate($node, $this->context));
+    }
+
+    /**
+     * @covers Fastwf\Form\Constraints\Number\Step
+     */
     public function testInvalid()
     {
         $constraint = new Step(2.5, -0.5);
@@ -51,6 +62,17 @@ class StepTest extends ConstraintTestCase
         $this->expectException(ValueError::class);
 
         $constraint = new Step(0);
+    }
+
+    /**
+     * @covers Fastwf\Form\Constraints\Number\Step
+     */
+    public function testInvalidPrecision()
+    {
+        $constraint = new Step(0.0000000001);
+        $node = Node::from(['value' => 0.02000000005]);
+
+        $this->assertNotNull($constraint->validate($node, $this->context));
     }
 
 }

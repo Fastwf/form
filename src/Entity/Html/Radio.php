@@ -17,17 +17,7 @@ class Radio extends CheckableInput
     {
         $this->valueAttribute = ArrayUtil::get($this->attributes, 'value');
 
-        if ($this->value === $this->valueAttribute)
-        {
-            $this->checked = true;
-        }
-        else
-        {
-            // When the value not match the value attribute the value of the control is invalid
-            //  -> Uncheck and reset value to null
-            $this->checked = false;
-            $this->value = null;
-        }
+        parent::synchronizeValue($priority);
     }
 
     public function setChecked($checked)

@@ -88,6 +88,39 @@ abstract class CheckableInput extends Input
      * @param integer $priority the priority to use for synchronisation.
      * @return void
      */
-    protected abstract function synchronizeValue($priority);
+    protected function synchronizeValue($priority)
+    {
+        switch ($priority)
+        {
+            case self::SYNC_VALUE:
+                // Set checked when value == attribute value
+                $this->checked = $this->value === $this->valueAttribute;
+                break;
+            case self::SYNC_CHECKED:
+                // Set the value as attribute value when it is checked
+                $this->value = $this->checked ? $this->valueAttribute : null;
+                break;
+            case self::SYNC_CONSTRUCT:
+            case self::SYNC_ATTRIBUTES:
+            default:
+                // The content of the value have the priority on checked attribute, check state depend on value equality.
+                //  When the value is null, the strategy is based on checked attribute,
+                //  else the value is reset to null and checked status to false
+                if ($this->value === $this->valueAttribute)
+                {
+                    $this->checked = true;
+                }
+                else if ($this->value === null && $this->checked)
+                {
+                    $this->value = $this->valueAttribute;
+                }
+                else
+                {
+                    $this->value = null;
+                    $this->checked = false;
+                }
+                break;
+        }
+    }
 
 }

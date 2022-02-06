@@ -9,6 +9,8 @@ use Fastwf\Form\Exceptions\KeyError;
 class RadioTest extends TestCase
 {
 
+    // CheckableInput->synchronizeValue is tested in Checkbox
+
     /**
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl

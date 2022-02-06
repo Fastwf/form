@@ -12,6 +12,26 @@ abstract class CheckableInput extends Input
 {
 
     /**
+     * The constant that indicate to synchronize using construct strategy.
+     */
+    protected const SYNC_CONSTRUCT = 0;
+
+    /**
+     * The constant that indicate to synchronize using attribute priority.
+     */
+    protected const SYNC_ATTRIBUTES = 1;
+
+    /**
+     * The constant that indicate to synchronize using value priority.
+     */
+    protected const SYNC_VALUE = 2;
+
+    /**
+     * The constant that indicate to synchronize using check priority.
+     */
+    protected const SYNC_CHECKED = 3;
+
+    /**
      * True when the input must be checked.
      *
      * @var boolean
@@ -31,26 +51,30 @@ abstract class CheckableInput extends Input
     {
         parent::__construct($parameters);
 
-        $this->synchronizeValue();
+        $this->checked = ArrayUtil::getSafe($parameters, 'checked', false);
+
+        $this->synchronizeValue(self::SYNC_CONSTRUCT);
     }
 
     public function setAttributes($attributes)
     {
         parent::setAttributes($attributes);
 
-        $this->synchronizeValue();
+        $this->synchronizeValue(self::SYNC_ATTRIBUTES);
     }
 
     public function setValue($value)
     {
         parent::setValue($value);
 
-        $this->synchronizeValue();
+        $this->synchronizeValue(self::SYNC_VALUE);
     }
 
     public function setChecked($checked)
     {
         $this->checked = $checked;
+
+        $this->synchronizeValue(self::SYNC_CHECKED);
     }
 
     public function isChecked()
@@ -61,8 +85,9 @@ abstract class CheckableInput extends Input
     /**
      * Synchronise internal state to match the real state (correct checked and value properties).
      *
+     * @param integer $priority the priority to use for synchronisation.
      * @return void
      */
-    protected abstract function synchronizeValue();
+    protected abstract function synchronizeValue($priority);
 
 }

@@ -13,7 +13,7 @@ class Radio extends CheckableInput
         parent::__construct(\array_merge($parameters, ['type' => 'radio']));
     }
 
-    protected function synchronizeValue()
+    protected function synchronizeValue($priority)
     {
         $this->valueAttribute = ArrayUtil::get($this->attributes, 'value');
 

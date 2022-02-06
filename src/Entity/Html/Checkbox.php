@@ -16,20 +16,40 @@ class Checkbox extends CheckableInput
         parent::__construct(\array_merge($parameters, ['type' => 'checkbox']));
     }
 
-    protected function synchronizeValue()
+    protected function synchronizeValue($priority)
     {
         $this->valueAttribute = ArrayUtil::getSafe($this->attributes, 'value', 'on');
 
-        if ($this->value === $this->valueAttribute)
+        switch ($priority)
         {
-            $this->checked = true;
-        }
-        else
-        {
-            // When the value not match the value attribute the value of the control is invalid
-            //  -> Uncheck and reset value to null
-            $this->checked = false;
-            $this->value = null;
+            case self::SYNC_VALUE:
+                // Set checked when value == attribute value
+                $this->checked = $this->value === $this->valueAttribute;
+                break;
+            case self::SYNC_CHECKED:
+                // Set the value as attribute value when it is checked
+                $this->value = $this->checked ? $this->valueAttribute : null;
+                break;
+            case self::SYNC_CONSTRUCT:
+            case self::SYNC_ATTRIBUTES:
+            default:
+                // The content of the value have the priority on checked attribute, check state depend on value equality.
+                //  When the value is null, the strategy is based on checked attribute,
+                //  else the value is reset to null and checked status to false
+                if ($this->value === $this->valueAttribute)
+                {
+                    $this->checked = true;
+                }
+                else if ($this->value === null && $this->checked)
+                {
+                    $this->value = $this->valueAttribute;
+                }
+                else
+                {
+                    $this->value = null;
+                    $this->checked = false;
+                }
+                break;
         }
     }
 

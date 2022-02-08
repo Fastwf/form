@@ -2,60 +2,13 @@
 
 namespace Fastwf\Form\Entity\Containers;
 
-use Fastwf\Form\Entity\Control;
-use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Constraint\Constraints\Chain;
-use Fastwf\Form\Entity\Containers\Container;
+use Fastwf\Form\Entity\Containers\AFormGroup;
 use Fastwf\Constraint\Constraints\Objects\Schema;
 use Fastwf\Constraint\Constraints\Type\ObjectType;
 
-class FormGroup extends Control implements Container
+class FormGroup extends AFormGroup
 {
-
-    /**
-     * The array of controls.
-     *
-     * @var array
-     */
-    protected $controls;
-    
-    public function __construct($parameters = [])
-    {
-        parent::__construct($parameters);
-
-        $this->controls = ArrayUtil::get($parameters, 'controls');
-    }
-
-    public function setControls($controls)
-    {
-        $this->controls = $controls;
-    }
-
-    public function getControls()
-    {
-        return $this->controls;
-    }
-
-    /**
-     * Add a new control node at the end of the container.
-     *
-     * @param Control $control
-     * @return void
-     */
-    public function addControl($control)
-    {
-        \array_push($this->controls, $control);
-    }
-
-    public function setControlAt($index, $control)
-    {
-        $this->controls[$index] = $control;
-    }
-
-    public function getControlAt($index)
-    {
-        return ArrayUtil::get($this->controls, $index);
-    }
 
     /**
      * Search the control associated to the $name.
@@ -73,11 +26,6 @@ class FormGroup extends Control implements Container
             }
         }
 
-        return null;
-    }
-
-    public function getTag()
-    {
         return null;
     }
 

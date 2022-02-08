@@ -13,6 +13,7 @@ class FormGroupTest extends TestCase
     /**
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetTag()
@@ -25,6 +26,7 @@ class FormGroupTest extends TestCase
     /**
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetContainerType()
@@ -37,6 +39,7 @@ class FormGroupTest extends TestCase
     /**
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testFindControlFail()
@@ -50,6 +53,7 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
@@ -76,6 +80,7 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Radio
@@ -97,6 +102,63 @@ class FormGroupTest extends TestCase
             ],
             $container->getData(),
         );
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testGetSetControl()
+    {
+        $container = new FormGroup(['controls' => []]);
+
+        $container->setControls([
+            new Input(['name' => 'username', 'type' => 'text', 'value' => 'user']),
+        ]);
+
+        $this->assertEquals(1, \count($container->getControls()));
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testAddControl()
+    {
+        $container = new FormGroup(['controls' => []]);
+
+        $container->addControl(new Input(['name' => 'username', 'type' => 'text', 'value' => 'user']));
+
+        $this->assertEquals(1, \count($container->getControls()));
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testSetControlAt()
+    {
+        $container = new FormGroup(['controls' => []]);
+
+        $container->addControl(new Input(['name' => 'username', 'type' => 'text', 'value' => 'user']));
+        $container->setControlAt(0, new Input(['name' => 'email', 'type' => 'email']));
+
+        $this->assertEquals('email', $container->getControlAt(0)->getName());
     }
 
 }

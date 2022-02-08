@@ -15,6 +15,7 @@ class FormTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input  
      * @covers Fastwf\Form\Utils\ArrayUtil
@@ -41,6 +42,7 @@ class FormTest extends TestCase
     /**  
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
@@ -55,6 +57,7 @@ class FormTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input  
      * @covers Fastwf\Form\Utils\ArrayUtil

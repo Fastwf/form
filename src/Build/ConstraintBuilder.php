@@ -226,13 +226,13 @@ class ConstraintBuilder
         // TODO: input file
 
         $isStringField = false;
-        $constraints = [];
+        $dataConstraints = [];
 
         switch ($type)
         {
             case 'color':
                 $isStringField = true;
-                $constraints = [new ColorFormat()];
+                $dataConstraints = [new ColorFormat()];
                 break;
             case 'date':
                 $this->secondaryConstraint = new DateField();
@@ -242,7 +242,7 @@ class ConstraintBuilder
                 break;
             case 'email':
                 $isStringField = true;
-                $constraints = [new EmailFormat()];
+                $dataConstraints = [new EmailFormat()];
                 break;
             case 'month':
                 $this->secondaryConstraint = new MonthField();
@@ -269,7 +269,7 @@ class ConstraintBuilder
                 break;
             case 'url':
                 $isStringField = true;
-                $constraints = [new UriFormat()];
+                $dataConstraints = [new UriFormat()];
                 break;
             case 'week':
                 $this->secondaryConstraint = new WeekField();
@@ -298,7 +298,7 @@ class ConstraintBuilder
             $this->primaryConstraint = new StringField();
         }
 
-        \array_push($this->constraints, ...$constraints);
+        \array_push($this->constraints, ...$dataConstraints);
     }
 
     /**
@@ -459,6 +459,19 @@ class ConstraintBuilder
     }
 
     /**
+     * Build the constraint for group or input[radio] control.
+     *
+     * @return Constraint the radio group constraint.
+     */
+    private function buildRadioGroupSystem()
+    {
+        // Build all constraints (for radio group, normally, it requires only enum constraint)
+        $subConstraint = new Chain(false, ...$this->constraints);
+
+        return new Nullable(!$this->required, $subConstraint);
+    }
+
+    /**
      * Build the constraint described by given constraints
      *
      * @return array an array containing:
@@ -480,6 +493,10 @@ class ConstraintBuilder
                 $globalConstraint = $this->buildMultiEmailSystem();
             }
             // TODO: input[file]
+        }
+        else if ($this->control === 'radio-group')
+        {
+            $globalConstraint = $this->buildRadioGroupSystem();
         }
         else if ($this->control === 'input' && $this->type === 'checkbox')
         {

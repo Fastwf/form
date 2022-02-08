@@ -366,6 +366,23 @@ class ConstraintBuilderTest extends TestCase
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
      */
+    public function testBuildRadioGroupSystem()
+    {
+        $constraint = ConstraintBuilder::getDefault()
+            ->from('radio-group')
+            ->add('enum', ['male', 'female'], [])
+            ->build();
+        
+        $validator = new Validator($constraint[ConstraintBuilder::CSTRT]);
+
+        $this->assertTrue($validator->validate(null));
+        $this->assertTrue($validator->validate('male'));
+        $this->assertFalse($validator->validate('invalid'));
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     */
     public function testNotFoundConstraint()
     {
         $this->expectException(KeyError::class);

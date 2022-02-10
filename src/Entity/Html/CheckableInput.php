@@ -83,6 +83,16 @@ abstract class CheckableInput extends Input
     }
 
     /**
+     * Get the html attribute value of the checkbox.
+     *
+     * @return string|mixed the value.
+     */
+    public function getValueAttribute()
+    {
+        return $this->valueAttribute;
+    }
+
+    /**
      * Synchronise internal state to match the real state (correct checked and value properties).
      *
      * @param integer $priority the priority to use for synchronisation.

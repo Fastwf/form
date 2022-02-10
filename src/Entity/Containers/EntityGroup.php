@@ -45,6 +45,11 @@ abstract class EntityGroup extends AFormGroup
 
     /// IMPLEMENT METHODS
 
+    public function getContainerType()
+    {
+        return 'widget';
+    }
+
     public function getConstraint()
     {
         return $this->constraint;

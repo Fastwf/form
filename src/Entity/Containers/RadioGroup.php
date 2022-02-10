@@ -18,11 +18,6 @@ class RadioGroup extends EntityGroup
 
     /// IMPLEMENT METHODS
 
-    public function getContainerType()
-    {
-        return 'widget';
-    }
-
     public function setValue($value)
     {
         // Apply the value to each radio input

@@ -102,6 +102,24 @@ class RadioGroupTest extends TestCase
         $this->assertEquals($help, $group->getHelp());
     }
 
+    /**
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Containers\EntityGroup
+     * @covers Fastwf\Form\Entity\Containers\RadioGroup
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\CheckableInput
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Entity\Html\Radio
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testGetContainerType()
+    {
+        $group = new RadioGroup(['controls' => []]);
+
+        $this->assertEquals('widget', $group->getContainerType());
+    }
+
     /// Test RadioGroup
 
     /**
@@ -178,24 +196,6 @@ class RadioGroupTest extends TestCase
         ]);
 
         $this->assertNull($group->getData());
-    }
-
-    /**
-     * @covers Fastwf\Form\Entity\Containers\AFormGroup
-     * @covers Fastwf\Form\Entity\Containers\EntityGroup
-     * @covers Fastwf\Form\Entity\Containers\RadioGroup
-     * @covers Fastwf\Form\Entity\Control
-     * @covers Fastwf\Form\Entity\FormControl
-     * @covers Fastwf\Form\Entity\Html\CheckableInput
-     * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
-     */
-    public function testGetContainerType()
-    {
-        $group = new RadioGroup(['controls' => []]);
-
-        $this->assertEquals('widget', $group->getContainerType());
     }
 
 }

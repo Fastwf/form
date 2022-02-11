@@ -47,4 +47,36 @@ class ArrayUtilTest extends TestCase
         $this->assertEquals('other', ArrayUtil::getSafe($this->array, 'not-found', 'other'));
     }
 
+    /**
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testMergeAll()
+    {
+        $from = ['a' => 'A', 'b' => 'B'];
+        $to = ['c' => 'C'];
+
+        ArrayUtil::merge($from, $to);
+
+        $this->assertEquals(
+            ['a' => 'A', 'b' => 'B', 'c' => 'C'],
+            $to,
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testMergeSubSet()
+    {
+        $from = ['a' => 'A', 'b' => 'B'];
+        $to = ['c' => 'C'];
+
+        ArrayUtil::merge($from, $to, ['b', 'd']);
+
+        $this->assertEquals(
+            ['b' => 'B', 'c' => 'C'],
+            $to,
+        );
+    }
+
 }

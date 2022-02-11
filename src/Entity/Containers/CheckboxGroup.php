@@ -21,7 +21,7 @@ class CheckboxGroup extends EntityGroup
             if ($index !== false)
             {
                 // Remove the value from the array and check the checkbox
-                $value = \array_splice($value, $index, 1);
+                \array_splice($value, $index, 1);
                 $checkbox->setChecked(true);
             }
             else

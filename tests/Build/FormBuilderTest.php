@@ -418,7 +418,6 @@ class FormBuilderTest extends TestCase
             ])
             ->build();
 
-        \var_dump($form);
         $this->assertTrue($form->getControlAt(0) instanceof CheckboxGroup);
         $this->assertEquals(3, \count($form->getControlAt(0)->getControls()));
         $this->assertEquals(

@@ -84,7 +84,7 @@ class FormBuilder extends AGroupBuilder
         }
 
         // Create constraints
-        $this->applyConstraints($fieldOptions, $options, 'input', $type);
+        $this->applyConstraints($fieldOptions, $options, $control, $type);
 
         return $fieldOptions;
     }
@@ -302,9 +302,9 @@ class FormBuilder extends AGroupBuilder
     {
         // Create options
         $fieldOptions = $this->createCommonOptions(ArrayUtil::getSafe($options, 'name'), $options);
-        $$fieldOptions['type'] = $type;
+        $fieldOptions['type'] = $type;
 
-        \array_push($this->formControls, new Button($$fieldOptions));
+        \array_push($this->formControls, new Button($fieldOptions));
 
         return $this;
     }

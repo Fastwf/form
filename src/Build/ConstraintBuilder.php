@@ -192,6 +192,7 @@ class ConstraintBuilder
                 $this->fromInput($type, $constraints);
                 break;
             default:
+                // Unknown type or specific control type
                 break;
         }
 
@@ -497,6 +498,11 @@ class ConstraintBuilder
         else if ($this->control === 'radio-group')
         {
             $globalConstraint = $this->buildRadioGroupSystem();
+        }
+        else if ($this->control === 'checkbox-group')
+        {
+            // Checkbox group and select in multiple mode have the same constraint build system
+            $globalConstraint = $this->buildMultiSelectSystem();
         }
         else if ($this->control === 'input' && $this->type === 'checkbox')
         {

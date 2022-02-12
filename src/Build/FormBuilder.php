@@ -145,7 +145,7 @@ class FormBuilder extends AGroupBuilder
      * @param array $options the array of textarea options.
      * @return FormBuilder the current form builder updated.
      */
-    public function addInput($name, $type = 'text', $options)
+    public function addInput($name, $type = 'text', $options = [])
     {
         // Create options
         $fieldOptions = $this->createStandardOptions('input', $type, $name, $options);

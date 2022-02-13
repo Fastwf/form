@@ -13,11 +13,16 @@ use Fastwf\Form\Build\AGroupBuilder;
 use Fastwf\Form\Entity\Html\Checkbox;
 use Fastwf\Form\Entity\Html\Textarea;
 use Fastwf\Form\Entity\Options\Option;
+use Fastwf\Constraint\Constraints\Chain;
 use Fastwf\Form\Build\ConstraintBuilder;
+use Fastwf\Form\Constraints\StringField;
+use Fastwf\Form\Constraints\String\Equals;
 use Fastwf\Form\Exceptions\BuildException;
 use Fastwf\Form\Entity\Options\OptionGroup;
 use Fastwf\Form\Entity\Containers\RadioGroup;
+use Fastwf\Form\Build\Security\SecurityPolicy;
 use Fastwf\Form\Build\Groups\RadioGroupBuilder;
+use Fastwf\Form\Build\Security\ISecurityPolicy;
 use Fastwf\Form\Build\Groups\EntityGroupBuilder;
 use Fastwf\Form\Build\Groups\CheckboxGroupBuilder;
 
@@ -26,6 +31,13 @@ use Fastwf\Form\Build\Groups\CheckboxGroupBuilder;
  */
 class FormBuilder extends AGroupBuilder
 {
+
+    /**
+     * The security policy implementation to use to build CSRF tokens.
+     *
+     * @var ISecurityPolicy
+     */
+    private $securityPolicy;
 
     /**
      * The form parameters array.
@@ -42,14 +54,22 @@ class FormBuilder extends AGroupBuilder
     private $formControls;
 
     /**
+     * The csrf specifications to use to inject CSRF token.
+     *
+     * @var array
+     */
+    private $csrfOptions;
+
+    /**
      * Constructor.
      *
      * @param string $action the action url
      * @param string $method the method to use to submit
      * @param string $encodingType the encoding type of the form (used when the method is Form::METHOD_POST)
      * @param ConstraintBuilder $constraintBuilder the constraint builder to use to add constraints to form controls
+     * @param ISecurityPolicy $securityPolicy the policy to use to securize the form
      */
-    public function __construct($action, $method, $encodingType, $constraintBuilder = null)
+    public function __construct($action, $method, $encodingType, $constraintBuilder = null, $securityPolicy = null)
     {
         parent::__construct($constraintBuilder);
 
@@ -59,6 +79,8 @@ class FormBuilder extends AGroupBuilder
             'enctype' => $encodingType,
         ];
         $this->formControls = [];
+
+        $this->securityPolicy = $securityPolicy === null ? new SecurityPolicy() : $securityPolicy;
     }
 
     /// PRIVATE METHODS
@@ -310,12 +332,58 @@ class FormBuilder extends AGroupBuilder
     }
 
     /**
+     * Set the form secure or not by injecting an hidden field that hold a CSRF token.
+     *
+     * @param boolean $secure true to add csrf token protected or false otherwise.
+     * @param string $seed the seed to use to generate the CSRF token.
+     * @param string|null (in/out) the token to use or to fill and inject in the form.
+     * @return FormBuilder the current form builder updated.
+     */
+    public function setSecure($secure, $seed = null, &$token = null, $name = "__token")
+    {
+        if ($secure)
+        {
+            if ($token === null)
+            {
+                // Generate the token
+                $token = $this->securityPolicy->newCsrfToken($seed === null ? \random_bytes(8) : $seed);
+            }
+
+            $this->csrfOptions = [
+                'token' => $token,
+                'name' => $name,
+            ];
+        }
+        else
+        {
+            // Remove all options
+            $this->csrfOptions = null;
+        }
+
+        return $this;
+    }
+
+    /**
      * Build the form.
      *
      * @return Form
      */
     public function build()
     {
+        // Set the security in form if it's required.
+        if ($this->csrfOptions !== null)
+        {
+            \array_unshift(
+                $this->formControls,
+                new Input([
+                    'name' => $this->csrfOptions['name'],
+                    'type' => 'hidden',
+                    'value' => $this->csrfOptions['token'],
+                    'constraint' => new Chain(false, new StringField(), new Equals($this->csrfOptions['token'])),
+                ])
+            );
+        }
+
         $parameters = $this->formParameters;
         $parameters['controls'] = $this->formControls;
 

@@ -427,4 +427,93 @@ class FormBuilderTest extends TestCase
         $this->assertTrue($form->validate());
     }
 
+    /**
+     * @covers Fastwf\Form\Build\FormBuilder
+     * @covers Fastwf\Form\Build\AGroupBuilder
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Security\SecurityPolicy
+     * @covers Fastwf\Form\Constraints\String\Equals
+     * @covers Fastwf\Form\Constraints\StringField
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Form
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\SecurityUtil
+     */
+    public function testSetSecureForm()
+    {
+        $token = null;
+
+        $form = FormBuilder::new("test")
+            ->setSecure(true, "application_seed", $token, "_csrf_token")
+            ->build();
+        
+        $this->assertEquals('hidden', $form->getControlAt(0)->getType());
+
+        $form->setValue(['_csrf_token' => '']);
+        $this->assertFalse($form->validate());
+
+        $form->setValue(['_csrf_token' => $token]);
+        $this->assertTrue($form->validate());
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\FormBuilder
+     * @covers Fastwf\Form\Build\AGroupBuilder
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Security\SecurityPolicy
+     * @covers Fastwf\Form\Constraints\String\Equals
+     * @covers Fastwf\Form\Constraints\StringField
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Form
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\SecurityUtil
+     */
+    public function testSetSecureFormUsingExistingToken()
+    {
+        $token = "test_token";
+
+        $form = FormBuilder::new("test")
+            ->setSecure(true, null, $token)
+            ->build();
+
+        $this->assertEquals(
+            ['__token' => $token],
+            $form->getData(),
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\FormBuilder
+     * @covers Fastwf\Form\Build\AGroupBuilder
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Security\SecurityPolicy
+     * @covers Fastwf\Form\Constraints\String\Equals
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Form
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\SecurityUtil
+     */
+    public function testSetInsecureForm()
+    {
+        $token = null;
+
+        $form = FormBuilder::new("test")
+            ->setSecure(true, "application_seed", $token, "_token")
+            ->setSecure(false)
+            ->build();
+        
+        $this->assertEquals([], $form->getControls());
+    }
+
 }

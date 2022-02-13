@@ -2,6 +2,8 @@
 
 namespace Fastwf\Form\Build\Groups;
 
+use Fastwf\Form\Build\ContainerBuilder;
+use Fastwf\Form\Build\Groups\ArrayBuilder;
 use Fastwf\Form\Build\ContainerGroupBuilder;
 use Fastwf\Form\Entity\Containers\FormGroup;
 
@@ -14,12 +16,12 @@ class GroupBuilder extends ContainerGroupBuilder
     /**
      * The parent builder.
      *
-     * @var AGroupBuilder
+     * @var GroupBuilder|ArrayBuilder
      */
     protected $builder;
 
     /**
-     * The callback to call when this builder call the "buildThenAdd" method.
+     * The callback to call when this builder call the "buildInParent" method.
      *
      * @var callable
      */
@@ -50,11 +52,11 @@ class GroupBuilder extends ContainerGroupBuilder
     /// PUBLIC METHODS
 
     /**
-     * Build the FormGroup from current specifications, add the orm group build then return the parent builder.
+     * Build the FormGroup from current specifications, add the form group build then return the parent builder.
      *
-     * @return AGroupBuilder the parent group builder.
+     * @return GroupBuilder|ArrayBuilder the parent group builder.
      */
-    public function buildThenAdd()
+    public function buildInParent()
     {
         $formGroup = $this->build();
 

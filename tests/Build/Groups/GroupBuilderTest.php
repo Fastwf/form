@@ -12,6 +12,7 @@ class GroupBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerBuilder
      * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\Groups\GroupBuilder
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
@@ -30,7 +31,7 @@ class GroupBuilderTest extends TestCase
                 ->addInput('lane')
                 ->addInput('zip_code', 'number')
                 ->addInput('city')
-                ->buildThenAdd()
+                ->buildInParent()
             ->build();
         
         $this->assertEquals(

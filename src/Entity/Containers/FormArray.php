@@ -42,7 +42,7 @@ class FormArray extends Control implements Container
         $this->value = ArrayUtil::getSafe($parameters, 'value', []);
         $this->violation = ArrayUtil::getSafe($parameters, 'violation');
     }
-    
+
     public function setValue($value)
     {
         $this->value = $value;

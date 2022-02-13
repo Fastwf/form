@@ -23,6 +23,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Containers\FormGroup
@@ -54,6 +55,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\DateFactory
      * @covers Fastwf\Form\Build\Factory\NumericFactory
@@ -101,6 +103,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
@@ -136,6 +139,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Constraints\BooleanField
      * @covers Fastwf\Form\Constraints\String\Equals
@@ -164,6 +168,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\String\Equals
      * @covers Fastwf\Form\Entity\Containers\FormGroup
@@ -195,6 +200,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Control
@@ -223,6 +229,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Control
@@ -261,6 +268,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Control
@@ -309,6 +317,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Select
@@ -344,6 +353,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\Groups\EntityGroupBuilder
      * @covers Fastwf\Form\Build\Groups\RadioGroupBuilder
      * @covers Fastwf\Form\Entity\Control
@@ -383,6 +393,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\Groups\EntityGroupBuilder
      * @covers Fastwf\Form\Build\Groups\CheckboxGroupBuilder
      * @covers Fastwf\Form\Entity\Control
@@ -431,6 +442,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\Security\SecurityPolicy
      * @covers Fastwf\Form\Constraints\String\Equals
      * @covers Fastwf\Form\Constraints\StringField
@@ -464,6 +476,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\Security\SecurityPolicy
      * @covers Fastwf\Form\Constraints\String\Equals
      * @covers Fastwf\Form\Constraints\StringField
@@ -494,6 +507,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\AGroupBuilder
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\Security\SecurityPolicy
      * @covers Fastwf\Form\Constraints\String\Equals
      * @covers Fastwf\Form\Entity\Containers\AFormGroup

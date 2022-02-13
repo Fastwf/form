@@ -86,10 +86,10 @@ abstract class ContainerBuilder extends AGroupBuilder
             }
 
             // Finalize option group parameters
-            $parameters = ['options' => $options];
-            ArrayUtil::merge($specifications, $parameters, ['label', 'disabled']);
+            $params = ['options' => $options];
+            ArrayUtil::merge($specifications, $params, ['label', 'disabled']);
 
-            $option = new OptionGroup($parameters);
+            $option = new OptionGroup($params);
         }
         else
         {

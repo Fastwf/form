@@ -31,7 +31,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
      * @param string $name the control name.
      * @param string $type the input type.
      * @param array $options the array of textarea options.
-     * @return ContainerGroupBuilder the current form builder updated.
+     * @return $this the current form builder updated.
      */
     public function addInput($name, $type = 'text', $options = [])
     {
@@ -46,7 +46,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
      *
      * @param string $name the control name.
      * @param array $options the array of textarea options.
-     * @return ContainerGroupBuilder the current form builder updated.
+     * @return $this the current form builder updated.
      */
     public function addTextarea($name, $options)
     {
@@ -60,7 +60,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
      *
      * @param string $name the control name.
      * @param array $options the array of select specifications.
-     * @return ContainerGroupBuilder the current form builder updated.
+     * @return $this the current form builder updated.
      */
     public function addSelect($name, $options)
     {
@@ -75,7 +75,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
      *
      * @param string $name the name of the input
      * @param array $options the array of checkbox options.
-     * @return ContainerGroupBuilder the current form builder updated.
+     * @return $this the current form builder updated.
      */
     public function addCheckbox($name, $options)
     {
@@ -90,7 +90,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
      *
      * @param string $name the name of the input.
      * @param array $options the array of checkbox group specifications.
-     * @return ContainerGroupBuilder the current builder updated.
+     * @return $this the current builder updated.
      */
     public function addCheckboxGroup($name, $options)
     {
@@ -108,7 +108,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
      *
      * @param string $name the name of the input.
      * @param array $options the array of radio group specifications.
-     * @return ContainerGroupBuilder the current builder updated.
+     * @return $this the current builder updated.
      */
     public function addRadioGroup($name, $options)
     {
@@ -126,7 +126,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
      *
      * @param string $type the button type.
      * @param array $options the button options.
-     * @return ContainerGroupBuilder the current form builder updated.
+     * @return $this the current form builder updated.
      */
     public function addButton($type = Button::TYPE_SUBMIT, $options = [])
     {
@@ -160,19 +160,19 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
     /**
      * Create a new array builder to allows to add a FormArray.
      *
-     * @return IArrayBuilder a new instance of array builder
+     * @return IArrayBuilder a new instance of array builder.
      */
     public function newArrayBuilder($name)
     {
-        $controls = &$this->controls;
+        $controlArray = &$this->controls;
         $index = \count($this->controls);
 
         return new ArrayBuilder(
             $name,
             $this,
-            function ($formArray) use ($index, &$controls) {
+            function ($formArray) use ($index, &$controlArray) {
                 // Insert the form group at the creation position
-                \array_splice($controls, $index, 0, [$formArray]);
+                \array_splice($controlArray, $index, 0, [$formArray]);
             },
             $this->constraintBuilder,
         );

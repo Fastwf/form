@@ -63,7 +63,7 @@ class FormBuilder extends ContainerGroupBuilder
      * @param boolean $secure true to add csrf token protected or false otherwise.
      * @param string $seed the seed to use to generate the CSRF token.
      * @param string|null (in/out) the token to use or to fill and inject in the form.
-     * @return FormBuilder the current form builder updated.
+     * @return $this the current form builder updated.
      */
     public function setSecure($secure, $seed = null, &$token = null, $name = "__token")
     {

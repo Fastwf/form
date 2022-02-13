@@ -2,6 +2,7 @@
 
 namespace Fastwf\Form\Build\Groups;
 
+use Fastwf\Form\Build\FormBuilder;
 use Fastwf\Form\Build\ContainerBuilder;
 use Fastwf\Form\Build\Groups\ArrayBuilder;
 use Fastwf\Form\Build\ContainerGroupBuilder;
@@ -16,7 +17,7 @@ class GroupBuilder extends ContainerGroupBuilder
     /**
      * The parent builder.
      *
-     * @var GroupBuilder|ArrayBuilder
+     * @var ContainerBuilder
      */
     protected $builder;
 
@@ -54,7 +55,7 @@ class GroupBuilder extends ContainerGroupBuilder
     /**
      * Build the FormGroup from current specifications, add the form group build then return the parent builder.
      *
-     * @return GroupBuilder|ArrayBuilder the parent group builder.
+     * @return FormBuilder|GroupBuilder|ArrayBuilder the parent group builder.
      */
     public function buildInParent()
     {

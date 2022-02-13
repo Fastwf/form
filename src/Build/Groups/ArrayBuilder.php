@@ -3,6 +3,7 @@
 namespace Fastwf\Form\Build\Groups;
 
 use Fastwf\Form\Entity\Control;
+use Fastwf\Form\Build\FormBuilder;
 use Fastwf\Form\Entity\Html\Button;
 use Fastwf\Form\Build\ContainerBuilder;
 use Fastwf\Form\Build\Groups\ArrayBuilder;
@@ -27,7 +28,7 @@ class ArrayBuilder extends ContainerBuilder implements IArrayBuilder
     /**
      * The parent builder.
      *
-     * @var ContainerGroupBuilder|ArrayBuilder
+     * @var ContainerBuilder
      */
     protected $builder;
 
@@ -99,14 +100,14 @@ class ArrayBuilder extends ContainerBuilder implements IArrayBuilder
 
     public function ofGroup()
     {
-        $control = &$this->control;
+        $groupControl = &$this->control;
 
         return new GroupBuilder(
             null,
             $this,
-            function ($formGroup) use (&$control) {
+            function ($formGroup) use (&$groupControl) {
                 // Set the control as $formGroup value using its reference
-                $control = $formGroup;
+                $groupControl = $formGroup;
             },
             $this->constraintBuilder,
         );
@@ -114,14 +115,14 @@ class ArrayBuilder extends ContainerBuilder implements IArrayBuilder
 
     public function ofArray()
     {
-        $control = &$this->control;
+        $arrayControl = &$this->control;
 
         return new ArrayBuilder(
             null,
             $this,
-            function ($formGroup) use (&$control) {
+            function ($formGroup) use (&$arrayControl) {
                 // Set the control as $formGroup value using its reference
-                $control = $formGroup;
+                $arrayControl = $formGroup;
             },
             $this->constraintBuilder,
         );
@@ -144,7 +145,7 @@ class ArrayBuilder extends ContainerBuilder implements IArrayBuilder
     /**
      * Build the FormArray from current specifications, add the form array build then return the parent builder.
      *
-     * @return ContainerGroupBuilder|ArrayBuilder the parent group builder.
+     * @return FormBuilder|GroupBuilder|ArrayBuilder the parent group builder.
      */
     public function buildInParent()
     {

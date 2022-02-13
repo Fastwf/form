@@ -143,15 +143,15 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
      */
     public function newGroupBuilder($name)
     {
-        $controls = &$this->controls;
+        $controlArray = &$this->controls;
         $index = \count($this->controls);
 
         return new GroupBuilder(
             $name,
             $this,
-            function ($formGroup) use ($index, &$controls) {
+            function ($formGroup) use ($index, &$controlArray) {
                 // Insert the form group at the creation position
-                \array_splice($controls, $index, 0, [$formGroup]);
+                \array_splice($controlArray, $index, 0, [$formGroup]);
             },
             $this->constraintBuilder,
         );

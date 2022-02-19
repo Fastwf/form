@@ -99,14 +99,15 @@ abstract class AGroupBuilder
             // Convert the 'assert' key, it's parameters and form control type as constraint
             // Apply corresponding html attributes
             $asserts = $options['assert'];
-            $this->constraintBuilder->from($control, $type, $asserts);
+            // The builder can return itself or a sub builder more specific to the current $control/$type form field
+            $builder = $this->constraintBuilder->from($control, $type, $asserts);
 
             foreach ($asserts as $name => $parameters)
             {
-                $this->constraintBuilder->add($name, $parameters, $asserts);
+                $builder->add($name, $parameters, $asserts);
             }
 
-            $result = $this->constraintBuilder->build();
+            $result = $builder->build();
 
             // Inject constraints and update html attributes
             $fieldOptions[self::CONSTRAINT] = $result[ConstraintBuilder::CSTRT];

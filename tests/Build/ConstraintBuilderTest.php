@@ -13,6 +13,19 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Constraints\RequiredField
      */
     public function testBuild()
@@ -38,6 +51,20 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\ColorConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\String\ColorFormat
@@ -55,6 +82,20 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\UrlConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Constraints\RequiredField
      */
@@ -71,6 +112,19 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\DateFactory
      * @covers Fastwf\Form\Build\Factory\NumericFactory
@@ -104,6 +158,19 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\DateTimeFactory
      * @covers Fastwf\Form\Build\Factory\NumericFactory
@@ -138,6 +205,19 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Build\Factory\NumericFactory
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\MonthFactory
@@ -169,8 +249,21 @@ class ConstraintBuilderTest extends TestCase
         $this->assertFalse($validator->validate('2022-04'));
     }
 
-    /**
+    /** 
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\IntegerField
      */
@@ -184,8 +277,55 @@ class ConstraintBuilderTest extends TestCase
         $this->assertTrue($validator->validate('15'));
     }
 
+    /** 
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\NumberFactory
+     * @covers Fastwf\Form\Constraints\RequiredField
+     * @covers Fastwf\Form\Constraints\DoubleField
+     * @covers Fastwf\Form\Constraints\Number\Step
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testBuildInputNumberStepString()
+    {
+        $asserts = ['step' => '0.1'];
+
+        $builder = ConstraintBuilder::getDefault()
+            ->from('input', 'number', $asserts)
+            ->add('step', '0.1', $asserts);
+
+        $validator = new Validator($builder->build()[ConstraintBuilder::CSTRT]);
+
+        $this->assertTrue($validator->validate('15.5'));
+    }
+
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Build\Factory\NumericFactory
      * @covers Fastwf\Form\Build\Factory\NumberFactory
      * @covers Fastwf\Form\Constraints\RequiredField
@@ -207,6 +347,19 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Build\Factory\NumericFactory
      * @covers Fastwf\Form\Build\Factory\TimeFactory
      * @covers Fastwf\Form\Constraints\RequiredField
@@ -239,6 +392,19 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Build\Factory\NumericFactory
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\WeekFactory
@@ -272,6 +438,49 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
+     * @covers Fastwf\Form\Constraints\RequiredField
+     * @covers Fastwf\Form\Constraints\StringField
+     */
+    public function testBuildInputEmail()
+    {
+        $this->assertTrue(
+            (new Validator(
+                ConstraintBuilder::getDefault()
+                    ->from('input', 'email', [])
+                    ->add('required', true, [])
+                    ->build()[ConstraintBuilder::CSTRT]
+            ))->validate('email1@test.com')
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Constraints\String\SplitModifier
@@ -291,6 +500,18 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\StringField
      */
@@ -307,6 +528,19 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      */
     public function testBuildSelectMultiple()
     {
@@ -331,6 +565,20 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\CheckboxConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      * @covers Fastwf\Form\Constraints\BooleanField
      */
     public function testBuildCheckboxSystemOnOff()
@@ -347,6 +595,21 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\CheckboxConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\CheckboxGroupConstraintBuilder
      * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Constraints\BooleanField
      * @covers Fastwf\Form\Constraints\RequiredField
@@ -365,6 +628,20 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\RadioGroupConstraintBuilder
      */
     public function testBuildRadioGroupSystem()
     {
@@ -382,6 +659,52 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\CheckboxGroupConstraintBuilder
+     */
+    public function testBuildCheckboxGroupSystem()
+    {
+        $constraint = ConstraintBuilder::getDefault()
+            ->from('checkbox-group')
+            ->add('enum', ['male', 'female', 'neutral'], [])
+            ->add('array', ['minItems' => 1, 'maxItems' => 2, 'uniqueItems' => true], [])
+            ->build();
+        
+        $validator = new Validator($constraint[ConstraintBuilder::CSTRT]);
+
+        // Auto set to required true -> so will be false
+        $this->assertFalse($validator->validate([null]));
+
+        $this->assertTrue($validator->validate(['male']));
+        $this->assertFalse($validator->validate(['invalid']));
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      */
     public function testNotFoundConstraint()
     {
@@ -394,30 +717,82 @@ class ConstraintBuilderTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      */
-    public function testRegisterUnregister()
+    public function testSetFactory()
     {
         $this->expectException(KeyError::class);
 
         ConstraintBuilder::getDefault()
-            ->register('ssh-key', function (...$_) {
+            ->setFactory('ssh-key', function (...$_) {
                 // no constraints
                 return null;
             })
-            ->unregister('ssh-key')
+            ->setFactory('ssh-key', null)
             ->from('textarea', null)
             ->add('ssh-key', null, []);
     }
 
     /**
      * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testSetGetBuilderWithNull()
+    {
+        // Remove an existing builder using null value
+        $this->assertNull(
+            ConstraintBuilder::getDefault()
+                ->setBuilder(null, 'select')
+                ->getBuilder('select')
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
      */
     public function testRegisterError()
     {
         $this->expectException(ValueError::class);
 
         ConstraintBuilder::getDefault()
-            ->register('ssh-key', 'not callable value');
+            ->setFactory('ssh-key', 'not callable value');
     }
 
 }

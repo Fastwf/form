@@ -15,6 +15,18 @@ class GroupBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\ContainerBuilder
      * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\Groups\GroupBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Control

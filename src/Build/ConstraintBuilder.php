@@ -119,11 +119,11 @@ class ConstraintBuilder extends StringConstraintBuilder
             ->setBuilder(new CheckboxGroupConstraintBuilder(), 'checkbox-group')
 
             // Add common factories
-            ->setFactory('enum', function ($unused1, $unused2, $enum) {
+            ->setFactory('enum', function ($_1, $_2, $enum) {
                 // Expect an array of string as enum
                 return [self::CSTRT => new Enum($enum)];
             })
-            ->setFactory('equals', function ($unused_1, $unused_2, $value) {
+            ->setFactory('equals', function ($_1, $_2, $value) {
                 // Constraint that check if the value provided is the same $value parameter
                 return [self::CSTRT => new Equals($value)];
             })

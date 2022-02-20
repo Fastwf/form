@@ -17,10 +17,10 @@ abstract class NumericConstraintBuilder extends TransformConstraintBuilder
         $numericFactory = $this->getNumericFactory();
 
         // Register factory functions for min/max/step constraints
-        $this->setFactory('min', function ($_1, $_2, $min, $_3) use ($numericFactory) {
+        $this->setFactory('min', function ($_1, $_2, $min) use ($numericFactory) {
                 return $numericFactory->min($min);
             })
-            ->setFactory('max', function ($_1, $_2, $max, $_3) use ($numericFactory) {
+            ->setFactory('max', function ($_1, $_2, $max) use ($numericFactory) {
                 return $numericFactory->max($max);
             })
             ->setFactory('step', function ($_1, $_2, $step, $constraints) use ($numericFactory) {

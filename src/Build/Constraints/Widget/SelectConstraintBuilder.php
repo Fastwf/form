@@ -30,10 +30,9 @@ class SelectConstraintBuilder extends ASelectConstraintBuilder
      * @param string $_1 (ignored) the control.
      * @param string|null $_2 (ignored) the control type.
      * @param boolean $multiple true to set as multiple, false otherwise.
-     * @param array $_3 (ignored) the array of other constrait applyed to the same control.
      * @return void
      */
-    public function multipleFactory($_1, $_2, $multiple, $_3)
+    public function multipleFactory($_1, $_2, $multiple)
     {
         $this->multiple = $multiple;
 

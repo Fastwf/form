@@ -44,10 +44,9 @@ class ASelectConstraintBuilder extends AConstraintBuilder
      * @param string $_1 (ignored) the control.
      * @param string|null $_2 (ignored) the control type.
      * @param boolean $array the array constraint description.
-     * @param array $_3 (ignored) the array of other constrait applyed to the same control.
      * @return void
      */
-    public function arrayFactory($_1, $_2, $array, $_3)
+    public function arrayFactory($_1, $_2, $array)
     {
         $htmlAttributes = [];
 

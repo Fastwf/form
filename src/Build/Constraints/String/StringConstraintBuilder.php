@@ -16,15 +16,15 @@ class StringConstraintBuilder extends TransformConstraintBuilder
 
     public function __construct()
     {
-        $this->setFactory('minLength', function ($_1, $_2, $length, $_3) {
+        $this->setFactory('minLength', function ($_1, $_2, $length) {
                 // Expect a length as options
                 return [self::CSTRT => new MinLength($length), self::ATTRS => ["minlength" => $length]];
             })
-            ->setFactory('maxLength', function ($_1, $_2, $length, $_3) {
+            ->setFactory('maxLength', function ($_1, $_2, $length) {
                 // Expect a length as options
                 return [self::CSTRT => new MaxLength($length), self::ATTRS => ["maxlength" => $length]];
             })
-            ->setFactory('pattern', function ($_1, $_2, $pattern, $_3) {
+            ->setFactory('pattern', function ($_1, $_2, $pattern) {
                 // Expect a pattern as options
                 return [self::CSTRT => new Pattern($pattern), self::ATTRS => ["pattern" => $pattern]];
             })

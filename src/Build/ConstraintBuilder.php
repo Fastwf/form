@@ -7,6 +7,7 @@ use Fastwf\Form\Constraints\String\Equals;
 use Fastwf\Constraint\Constraints\String\Enum;
 use Fastwf\Form\Build\Constraints\AConstraintBuilder;
 use Fastwf\Form\Build\Constraints\String\UrlConstraintBuilder;
+use Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder;
 use Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder;
 use Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder;
 use Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder;
@@ -14,12 +15,12 @@ use Fastwf\Form\Build\Constraints\String\ColorConstraintBuilder;
 use Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder;
 use Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder;
 use Fastwf\Form\Build\Constraints\String\StringConstraintBuilder;
-use Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder;
 use Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder;
 use Fastwf\Form\Build\Constraints\Widget\CheckboxConstraintBuilder;
 use Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder;
 use Fastwf\Form\Build\Constraints\Widget\RadioGroupConstraintBuilder;
 use Fastwf\Form\Build\Constraints\Widget\CheckboxGroupConstraintBuilder;
+use Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder;
 
 /**
  * Builder class that allows to create constraints and generate associated html 5 validation attributes.
@@ -112,7 +113,8 @@ class ConstraintBuilder extends StringConstraintBuilder
             ->setBuilder(new UrlConstraintBuilder(), 'input', 'url')
             ->setBuilder(new WeekConstraintBuilder(), 'input', 'week')
             ->setBuilder(new CheckboxConstraintBuilder(), 'input', 'checkbox')
-            ->setBuilder(new SelectConstraintBuilder(), 'select')
+            ->setBuilder(new FileConstraintBuilder(), 'input', 'file')
+            ->setBuilder(new FieldMultipleConstraintBuilder(), 'select')
 
             // Add widget
             ->setBuilder(new RadioGroupConstraintBuilder(), 'radio-group')

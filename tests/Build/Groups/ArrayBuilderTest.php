@@ -46,8 +46,9 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
@@ -84,8 +85,9 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
@@ -115,8 +117,9 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Control
@@ -147,8 +150,9 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\CheckboxConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
@@ -184,9 +188,10 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\CheckboxGroupConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Build\Groups\CheckboxGroupBuilder
      * @covers Fastwf\Form\Build\Groups\EntityGroupBuilder
@@ -224,9 +229,10 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\RadioGroupConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Build\Groups\EntityGroupBuilder
      * @covers Fastwf\Form\Build\Groups\RadioGroupBuilder
@@ -261,8 +267,9 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Build\Groups\EntityGroupBuilder
      * @covers Fastwf\Form\Build\Groups\RadioGroupBuilder
@@ -298,8 +305,9 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Build\Groups\GroupBuilder
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
@@ -347,8 +355,9 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\SelectConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Control

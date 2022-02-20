@@ -2,20 +2,12 @@
 
 namespace Fastwf\Form\Build\Constraints\Widget;
 
-use Fastwf\Constraint\Constraints\Chain;
-use Fastwf\Form\Constraints\StringField;
-use Fastwf\Constraint\Constraints\Nullable;
-use Fastwf\Constraint\Constraints\Arrays\Items;
-use Fastwf\Constraint\Constraints\Type\ArrayType;
-use Fastwf\Constraint\Constraints\Arrays\MaxItems;
-use Fastwf\Constraint\Constraints\Arrays\MinItems;
-use Fastwf\Constraint\Constraints\Arrays\UniqueItems;
-use Fastwf\Form\Build\Constraints\AConstraintBuilder;
+use Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder;
 
 /**
- * Builder for select form control.
+ * Builder for select or input[file] form control.
  */
-class SelectConstraintBuilder extends ASelectConstraintBuilder
+class FieldMultipleConstraintBuilder extends AOptionMultipleConstraintBuilder
 {
 
     public function __construct()
@@ -30,7 +22,7 @@ class SelectConstraintBuilder extends ASelectConstraintBuilder
      * @param string $_1 (ignored) the control.
      * @param string|null $_2 (ignored) the control type.
      * @param boolean $multiple true to set as multiple, false otherwise.
-     * @return void
+     * @return array
      */
     public function multipleFactory($_1, $_2, $multiple)
     {

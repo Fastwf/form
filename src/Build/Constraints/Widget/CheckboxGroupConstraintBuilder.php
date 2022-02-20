@@ -2,12 +2,12 @@
 
 namespace Fastwf\Form\Build\Constraints\Widget;
 
-use Fastwf\Form\Build\Constraints\Widget\ASelectConstraintBuilder;
+use Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder;
 
 /**
  * Builder for checkbox-group control.
  */
-class CheckboxGroupConstraintBuilder extends ASelectConstraintBuilder
+class CheckboxGroupConstraintBuilder extends AOptionMultipleConstraintBuilder
 {
 
     protected function resetMultipleFlag()

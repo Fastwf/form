@@ -13,9 +13,9 @@ use Fastwf\Constraint\Constraints\Arrays\UniqueItems;
 use Fastwf\Form\Build\Constraints\AConstraintBuilder;
 
 /**
- * Base Builder for select/checkbox-group form control.
+ * Base Builder for select/input[file]/checkbox-group form control.
  */
-class ASelectConstraintBuilder extends AConstraintBuilder
+class AOptionMultipleConstraintBuilder extends AConstraintBuilder
 {
 
     /**
@@ -44,7 +44,7 @@ class ASelectConstraintBuilder extends AConstraintBuilder
      * @param string $_1 (ignored) the control.
      * @param string|null $_2 (ignored) the control type.
      * @param boolean $array the array constraint description.
-     * @return void
+     * @return array
      */
     public function arrayFactory($_1, $_2, $array)
     {

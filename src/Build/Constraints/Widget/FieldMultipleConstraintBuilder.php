@@ -12,6 +12,8 @@ class FieldMultipleConstraintBuilder extends AOptionMultipleConstraintBuilder
 
     public function __construct()
     {
+        parent::__construct();
+
         // Register the factory to allows to update the $multiple factory
         $this->setFactory('multiple', [$this, 'multipleFactory']);
     }

@@ -7,6 +7,7 @@ use Fastwf\Constraint\Api\Validator;
 use Fastwf\Form\Exceptions\KeyError;
 use Fastwf\Form\Exceptions\ValueError;
 use Fastwf\Form\Build\ConstraintBuilder;
+use Fastwf\Form\Build\Constraints\AConstraintBuilder;
 
 class ConstraintBuilderTest extends TestCase
 {
@@ -816,6 +817,27 @@ class ConstraintBuilderTest extends TestCase
 
         ConstraintBuilder::getDefault()
             ->setFactory('ssh-key', 'not callable value');
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Constraints\RequiredField
+     */
+    public function testChainConstraints()
+    {
+        // Test there are no constraint when null is passed to chainConstraints
+        $builder = new ConstraintBuilder();
+        $params = $builder->setBuilder(new TestingConstraintBuilder(), 'testing')
+            ->from('testing')
+            ->build();
+        
+        // The constraint is only "not required field"
+        $this->assertTrue(
+            (new Validator($params[AConstraintBuilder::CSTRT]))
+                ->validate('')
+        );
     }
 
 }

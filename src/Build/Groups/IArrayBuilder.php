@@ -47,6 +47,14 @@ interface IArrayBuilder
     public function ofCheckbox($options);
 
     /**
+     * Use an input file form control that respect the specifications as array control.
+     *
+     * @param array $options the array of checkbox options.
+     * @return ArrayBuilder the array builder with control set.
+     */
+    public function ofInputFile($options);
+
+    /**
      * Use a checkbox group using choices to build each input checkbox as array control.
      *
      * @param array $options the array of checkbox group specifications.

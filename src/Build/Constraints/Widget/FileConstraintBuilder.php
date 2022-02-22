@@ -47,6 +47,8 @@ class FileConstraintBuilder extends FieldMultipleConstraintBuilder
 
     public function __construct()
     {
+        parent::__construct();
+
         $this->setFactory('extensions', [$this, 'factoryExtensions'])
             ->setFactory('contentTypes', [$this, 'factoryContentTypes'])
             ->setFactory('minSize', [$this, 'factoryMinSize'])

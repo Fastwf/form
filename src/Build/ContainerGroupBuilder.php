@@ -86,6 +86,21 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
     }
 
     /**
+     * Add input file form control that respect the specifications.
+     *
+     * @param string $name the name of the input.
+     * @param array $options the array of checkbox options.
+     * @return $this the current builder updated.
+     */
+    public function addInputFile($name, $options)
+    {
+        // Add checkbox control
+        \array_push($this->controls, $this->newInputFile($name, $options));
+
+        return $this;
+    }
+
+    /**
      * Add checkbox group using choices to build each input checkbox.
      *
      * @param string $name the name of the input.

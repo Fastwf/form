@@ -34,6 +34,7 @@ class GroupBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Entity\Html\InputFile
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testNewGroupBuilder()
@@ -44,6 +45,7 @@ class GroupBuilderTest extends TestCase
                 ->addInput('lane')
                 ->addInput('zip_code', 'number')
                 ->addInput('city')
+                ->addInputFile('map', [])
                 ->buildInParent()
             ->build();
         
@@ -53,6 +55,7 @@ class GroupBuilderTest extends TestCase
                     'lane' => null,
                     'zip_code' => null,
                     'city' => null,
+                    'map' => null,
                 ]
             ],
             $form->getData(),

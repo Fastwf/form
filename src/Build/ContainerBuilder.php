@@ -9,6 +9,7 @@ use Fastwf\Form\Entity\Html\Select;
 use Fastwf\Form\Build\AGroupBuilder;
 use Fastwf\Form\Entity\Html\Checkbox;
 use Fastwf\Form\Entity\Html\Textarea;
+use Fastwf\Form\Entity\Html\InputFile;
 use Fastwf\Form\Entity\Options\Option;
 use Fastwf\Form\Exceptions\BuildException;
 use Fastwf\Form\Entity\Options\OptionGroup;
@@ -108,7 +109,7 @@ abstract class ContainerBuilder extends AGroupBuilder
     /**
      * Create an input form control that respect the specifications.
      * 
-     * For 'radio' and 'checkbox' type use their specific method.
+     * For 'radio', 'checkbox' and 'file' type use their specific method.
      * 
      * @param string $name the control name.
      * @param string $type the input type.
@@ -180,7 +181,7 @@ abstract class ContainerBuilder extends AGroupBuilder
     /**
      * Create an input checkbox form control that respect the specifications.
      *
-     * @param string $name the name of the input
+     * @param string $name the name of the input.
      * @param array $options the array of checkbox options.
      * @return Checkbox the form control instance.
      */
@@ -218,6 +219,30 @@ abstract class ContainerBuilder extends AGroupBuilder
         $this->applyConstraints($fieldOptions, $options, 'input', 'checkbox');
 
         return new Checkbox($fieldOptions);
+    }
+
+    /**
+     * Create an input file form control that respect the specifications.
+     *
+     * @param string $name the name of the input.
+     * @param array $options the array of checkbox options.
+     * @return InputFile the form control instance.
+     */
+    protected function newInputFile($name, $options)
+    {
+        // Update the option array to create correct constraints
+        if (\array_key_exists('multiple', $options) && $options['multiple'] === true)
+        {
+            $assert = ArrayUtil::getSafe($options, 'assert', []);
+            $assert['multiple'] = true;
+            $options['assert'] = $assert;
+        }
+
+        // Create options
+        $fieldOptions = $this->createStandardOptions('input', 'file', $name, $options);
+
+        // Create input file control
+        return new InputFile($fieldOptions);
     }
 
     /**

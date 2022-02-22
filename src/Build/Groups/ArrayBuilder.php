@@ -77,6 +77,13 @@ class ArrayBuilder extends ContainerBuilder implements IArrayBuilder
         return $this;
     }
 
+    public function ofInputFile($options)
+    {
+        $this->control = $this->newInputFile(null, $options);
+
+        return $this;
+    }
+
     public function ofCheckboxGroup($options)
     {
         $this->control = $this->newCheckboxGroup(null, $options);

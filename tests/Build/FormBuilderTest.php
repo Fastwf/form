@@ -3,6 +3,7 @@
 namespace Fastwf\Tests\Build;
 
 use PHPUnit\Framework\TestCase;
+use Fastwf\Form\Entity\Html\Form;
 use Fastwf\Form\Build\FormBuilder;
 use Fastwf\Form\Entity\Html\Radio;
 use Fastwf\Form\Entity\Html\Button;
@@ -523,6 +524,7 @@ class FormBuilderTest extends TestCase
         $field = $form->getControlAt(0);
 
         $this->assertTrue($field instanceof InputFile);
+        $this->assertEquals(Form::FORM_MULTIPART, $form->getEnctype());
     }
 
     /**

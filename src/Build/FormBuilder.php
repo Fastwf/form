@@ -55,6 +55,18 @@ class FormBuilder extends ContainerGroupBuilder
         $this->securityPolicy = $securityPolicy === null ? new SecurityPolicy() : $securityPolicy;
     }
 
+    /// OVERRIDE METHODS
+
+    public function addInputFile($name, $options)
+    {
+        parent::addInputFile($name, $options);
+
+        // Reset the enctype to force to have 'multipart/form-data' body encoding.
+        $this->parameters['enctype'] = Form::FORM_MULTIPART;
+
+        return $this;
+    }
+
     /// PUBLIC METHODS
 
     /**
@@ -117,6 +129,8 @@ class FormBuilder extends ContainerGroupBuilder
 
         return new Form($parameters);
     }
+
+    /// STATIC METHODS
 
     /**
      * Create an instance of the form builder.

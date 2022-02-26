@@ -24,6 +24,23 @@ abstract class AFormGroup extends Control implements Container
         parent::__construct($parameters);
 
         $this->controls = ArrayUtil::get($parameters, 'controls');
+
+        $this->setupControls();
+    }
+
+    /**
+     * Allows to finalize setup controls inside this container.
+     *
+     * @return void
+     */
+    private function setupControls()
+    {
+        if ($this->controls)
+        {
+            foreach ($this->controls as $control) {
+                $control->setParent($this);
+            }
+        }
     }
 
     /// IMPLEMENT METHODS
@@ -38,6 +55,8 @@ abstract class AFormGroup extends Control implements Container
     public function setControls($controls)
     {
         $this->controls = $controls;
+
+        $this->setupControls();
     }
 
     public function getControls()
@@ -53,6 +72,8 @@ abstract class AFormGroup extends Control implements Container
      */
     public function addControl($control)
     {
+        $control->setParent($this);
+
         \array_push($this->controls, $control);
     }
 
@@ -65,6 +86,8 @@ abstract class AFormGroup extends Control implements Container
      */
     public function setControlAt($index, $control)
     {
+        $control->setParent($this);
+
         $this->controls[$index] = $control;
     }
 

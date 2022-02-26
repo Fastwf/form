@@ -43,6 +43,19 @@ class Select extends FormControl
         $this->setValue(ArrayUtil::getSafe($parameters, 'value', []));
     }
 
+    public function getFullName()
+    {
+        $name = parent::getFullName();
+
+        if ($this->multiple)
+        {
+            // When is set to multiple it's required to set the name as dynamic array
+            $name .= '[]';
+        }
+
+        return $name;
+    }
+
     /**
      * Update the option selection flag according to the select value.
      *

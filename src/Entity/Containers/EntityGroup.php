@@ -51,6 +51,20 @@ abstract class EntityGroup extends AFormGroup
         $this->violation = ArrayUtil::getSafe($parameters, 'violation');
     }
 
+    /**
+     * {@inheritDoc}
+     *
+     * EntityGroup is used to hold input[radio] and input[checkbox] using specific group implementation.  
+     * Radio and Checkbox Group have the same name of it's control, because to create the group we use form builder.  
+     * 
+     * So, to prevent to have doubled name in full name return directly the parent name.  
+     * > "parent[NAME][NAME]" will be "parent[NAME]"
+     */
+    public function getFullName()
+    {
+        return $this->parent->getFullName();
+    }
+
     /// IMPLEMENT METHODS
 
     public function getContainerType()

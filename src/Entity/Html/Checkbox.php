@@ -2,6 +2,7 @@
 
 namespace Fastwf\Form\Entity\Html;
 
+use Fastwf\Form\Entity\Containers\CheckboxGroup;
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Entity\Html\CheckableInput;
 
@@ -21,6 +22,21 @@ class Checkbox extends CheckableInput
         $this->valueAttribute = ArrayUtil::getSafe($this->attributes, 'value', 'on');
 
         parent::synchronizeValue($priority);
+    }
+
+    public function getFullName()
+    {
+        $name = parent::getFullName();
+
+        if ($this->parent instanceof CheckboxGroup)
+        {
+            // The checkbox can be used with checkbox group for multiple selection alternative.
+            // In that case checkboxes of this group must have the '[]' suffix to allows to collect multiple data using php builtin body
+            // parser.
+            $name .= '[]';
+        }
+
+        return $name;
     }
 
     /**

@@ -54,7 +54,7 @@ class SelectTest extends TestCase
         $this->assertFalse($options[3]->getOptions()[1]->isSelected());
     }
 
-    /**  
+    /**
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Select
@@ -98,6 +98,31 @@ class SelectTest extends TestCase
 
         $control->setValue(null);
         $this->assertEquals(null, $control->getData());
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Select
+     * @covers Fastwf\Form\Entity\Options\AOption
+     * @covers Fastwf\Form\Entity\Options\Option
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     */
+    public function testGetFullName()
+    {
+        $select = new Select([
+            'name' => 'select',
+            'options' => [
+                new Option(['value' => 'apple']),
+                new Option(['value' => 'banana']),
+                new Option(['value' => 'orange']),
+            ]
+        ]);
+
+        $this->assertEquals('select', $select->getFullName());
+
+        $select->setMultiple(true);
+        $this->assertEquals('select[]', $select->getFullName());
     }
 
 }

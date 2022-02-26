@@ -27,6 +27,19 @@ class InputFile extends Input
         $this->synchronizeMultiple();
     }
 
+    public function getFullName()
+    {
+        $name = parent::getFullName();
+
+        if ($this->multiple)
+        {
+            // When is set to multiple it's required to set the name as dynamic array
+            $name .= '[]';
+        }
+
+        return $name;
+    }
+
     /**
      * Update the HTML attributes to set the 'multiple' value.
      *
@@ -52,7 +65,7 @@ class InputFile extends Input
         $this->synchronizeMultiple();
     }
 
-    public function getMultiple()
+    public function isMultiple()
     {
         return $this->multiple;
     }

@@ -9,6 +9,7 @@ use Fastwf\Constraint\Constraints\Chain;
 use Fastwf\Form\Entity\Containers\Container;
 use Fastwf\Constraint\Constraints\Arrays\Items;
 use Fastwf\Constraint\Constraints\Type\ArrayType;
+use Fastwf\Form\Exceptions\KeyError;
 
 class FormArray extends Control implements Container
 {
@@ -34,13 +35,43 @@ class FormArray extends Control implements Container
      */
     protected $violation;
 
+    /**
+     * The minimum size of the form array (by default 1).
+     *
+     * @var integer
+     */
+    protected $minSize;
+
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);
 
+        // For form array, the name is required -> verify and throw an error when it is absent
+        if ($this->name === null)
+        {
+            throw new KeyError("The key 'name' is required for " . FormArray::class);
+        }
+
         $this->control = ArrayUtil::get($parameters, 'control');
         $this->value = ArrayUtil::getSafe($parameters, 'value', []);
         $this->violation = ArrayUtil::getSafe($parameters, 'violation');
+
+        $this->minSize = ArrayUtil::getSafe($parameters, 'min_size', 1);
+
+        $this->setupControl();
+    }
+
+    /**
+     * Allows to finalize setup controls inside this container.
+     *
+     * @return void
+     */
+    private function setupControl()
+    {
+        if ($this->control)
+        {
+            $this->control->setParent($this);
+        }
     }
 
     public function setValue($value)
@@ -56,6 +87,8 @@ class FormArray extends Control implements Container
     public function setControl($control)
     {
         $this->control = $control;
+
+        $this->setupControl();
     }
 
     public function getControl()
@@ -111,6 +144,22 @@ class FormArray extends Control implements Container
         return $data;
     }
 
+    /**
+     * Get the expected size of the form array.
+     *
+     * @return integer
+     */
+    public function getSize()
+    {
+        // Return the minimum size if value is not set or the number of values set in the array
+        return $this->value === null
+            ? $this->minSize
+            : \max($this->minSize, \count($this->value));
+    }
+
+    /**
+     * @return \Iterator
+     */
     public function getIterator(): \Traversable
     {
         return new FormArrayIterator($this);

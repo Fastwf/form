@@ -39,8 +39,18 @@ class FormArrayIterator implements \Iterator {
         $control = $this->group->getControl();
 
         // Set the control state using group informations
-        $control->setValue($this->group->getValue()[$this->index]);
+        //  Set the name
+        $control->setName((string) $this->index);
+
+        // Set the value if not null
+        $values = $this->group->getValue();
+        $control->setValue(
+            \array_key_exists($this->index, $values)
+                ? $values[$this->index]
+                : null
+        );
         
+        // Set violation if found
         $violation = $this->group->getViolation();
         $controlViolation = null;
         if ($violation !== null) {
@@ -65,7 +75,7 @@ class FormArrayIterator implements \Iterator {
 
     public function rewind(): void {
         $this->index = 0;
-        $this->length = \count($this->group->getValue());
+        $this->length = $this->group->getSize();
     }
 
     public function valid(): bool {

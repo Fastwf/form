@@ -4,7 +4,6 @@ namespace Fastwf\Form\Entity;
 
 use Fastwf\Form\Entity\Element;
 use Fastwf\Form\Utils\ArrayUtil;
-use Fastwf\Constraint\Api\Validator;
 use Fastwf\Constraint\Api\Constraint;
 use Fastwf\Constraint\Data\Violation;
 
@@ -13,6 +12,13 @@ use Fastwf\Constraint\Data\Violation;
  */
 abstract class Control implements Element
 {
+
+    /**
+     * The control node parent's.
+     *
+     * @var Control|null
+     */
+    protected $parent;
 
     /**
      * The name of the control.
@@ -30,8 +36,17 @@ abstract class Control implements Element
 
     public function __construct($parameters = [])
     {
+        $this->parent = ArrayUtil::getSafe($parameters, 'parent');
         $this->name = ArrayUtil::getSafe($parameters, 'name');
         $this->attributes = ArrayUtil::getSafe($parameters, 'attributes', []);
+    }
+
+    public function setParent($parent) {
+        $this->parent = $parent;
+    }
+
+    public function getParent() {
+        return $this->parent;
     }
 
     public function setName($name)
@@ -52,6 +67,36 @@ abstract class Control implements Element
     public function getAttributes()
     {
         return $this->attributes;
+    }
+
+    /**
+     * Identify the full name fo the control according of its position in the form.
+     * 
+     * It requires to have a control parent correctly set for the entire form.
+     *
+     * @return string|null the full name in the form context.
+     */
+    public function getFullName()
+    {
+        // By default return the current name
+        $fullName = $this->name;
+
+        if ($this->parent !== null)
+        {
+            // Try to compute the full name using the parent control name
+            $parentFullName = $this->parent->getFullName();
+
+            if ($parentFullName !== null)
+            {
+                $fullName = $this->name === null
+                    // $this->name can be null for parent group
+                    ? $parentFullName
+                    // else use the composition of the parent name and the control node name
+                    : "{$parentFullName}[{$this->name}]";
+            }
+        }
+
+        return $fullName;
     }
 
     /**

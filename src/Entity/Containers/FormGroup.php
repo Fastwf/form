@@ -32,12 +32,29 @@ class FormGroup extends AFormGroup
 
     public function setValue($value)
     {
-        foreach ($this->controls as $control) {
-            $name = $control->getName();
-
-            if (\array_key_exists($name, $value))
+        if ($value)
+        {
+            // When the value exists or is not empty it's required to associate the value for each controls
+            foreach ($this->controls as $control) {
+                $name = $control->getName();
+    
+                if (\array_key_exists($name, $value))
+                {
+                    $control->setValue($value[$name]);
+                }
+                else
+                {
+                    $control->setValue(null);
+                }
+            }
+        }
+        else
+        {
+            // This branch can be used when an array is not initialized
+            //  So reset to null each control values
+            foreach ($this->controls as $control)
             {
-                $control->setValue($value[$name]);
+                $control->setValue(null);
             }
         }
     }
@@ -80,15 +97,30 @@ class FormGroup extends AFormGroup
 
     public function setViolation($violation)
     {
-        // For group the children violation must be set
-        $children = $violation->getChildren();
-
-        foreach ($this->controls as $control) {
-            $name = $control->getName();
-
-            if (\array_key_exists($name, $children))
+        if ($violation !== null)
+        {
+            // For group the children violation must be set
+            $children = $violation->getChildren();
+    
+            foreach ($this->controls as $control) {
+                $name = $control->getName();
+    
+                if (\array_key_exists($name, $children))
+                {
+                    $control->setViolation($children[$name]);
+                }
+                else
+                {
+                    $control->setViolation(null);
+                }
+            }
+        }
+        else
+        {
+            // Reset the violation on each child
+            foreach ($this->controls as $control)
             {
-                $control->setViolation($children[$name]);
+                $control->setViolation(null);
             }
         }
     }

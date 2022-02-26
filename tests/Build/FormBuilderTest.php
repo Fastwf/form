@@ -5,7 +5,7 @@ namespace Fastwf\Tests\Build;
 use PHPUnit\Framework\TestCase;
 use Fastwf\Form\Entity\Html\Form;
 use Fastwf\Form\Build\FormBuilder;
-use Fastwf\Form\Entity\Html\Radio;
+use Fastwf\Form\Entity\FormControl;
 use Fastwf\Form\Entity\Html\Button;
 use Fastwf\Form\Entity\Html\Select;
 use Fastwf\Form\Utils\DateTimeUtil;
@@ -17,6 +17,7 @@ use Fastwf\Form\Entity\Options\OptionGroup;
 use Fastwf\Form\Entity\Containers\RadioGroup;
 use Fastwf\Form\Entity\Containers\CheckboxGroup;
 use Fastwf\Constraint\Constraints\String\Pattern;
+use Fastwf\Form\Entity\Html\Input;
 
 class FormBuilderTest extends TestCase
 {
@@ -125,6 +126,7 @@ class FormBuilderTest extends TestCase
         ]);
         $form->validate();
 
+        /** @var FormControl */
         $formControl = $form->getControlAt(0);
 
         $this->assertNotNull($formControl->getViolation());
@@ -363,6 +365,7 @@ class FormBuilderTest extends TestCase
             ])
             ->build();
 
+        /** @var Select */
         $field = $form->getControlAt(0);
 
         $this->assertTrue($field instanceof Select);
@@ -427,6 +430,7 @@ class FormBuilderTest extends TestCase
             )
             ->build();
 
+        /** @var Select */
         $field = $form->getControlAt(0);
 
         $this->assertTrue($field->getOptions()[0] instanceof OptionGroup);
@@ -578,8 +582,10 @@ class FormBuilderTest extends TestCase
             ])
             ->build();
 
-        $this->assertTrue($form->getControlAt(0) instanceof RadioGroup);
-        $this->assertEquals(2, \count($form->getControlAt(0)->getControls()));
+        /** @var RadioGroup */
+        $control = $form->getControlAt(0);
+        $this->assertTrue($control instanceof RadioGroup);
+        $this->assertEquals(2, \count($control->getControls()));
     }
 
     /**
@@ -637,8 +643,10 @@ class FormBuilderTest extends TestCase
             ])
             ->build();
 
-        $this->assertTrue($form->getControlAt(0) instanceof CheckboxGroup);
-        $this->assertEquals(3, \count($form->getControlAt(0)->getControls()));
+        /** @var CheckboxGroup */
+        $control = $form->getControlAt(0);
+        $this->assertTrue($control instanceof CheckboxGroup);
+        $this->assertEquals(3, \count($control->getControls()));
         $this->assertEquals(
             ['army' => $items],
             $form->getData(),
@@ -685,7 +693,9 @@ class FormBuilderTest extends TestCase
             ->setSecure(true, "application_seed", $token, "_csrf_token")
             ->build();
         
-        $this->assertEquals('hidden', $form->getControlAt(0)->getType());
+        /** @var Input */
+        $control = $form->getControlAt(0);
+        $this->assertEquals('hidden', $control->getType());
 
         $form->setValue(['_csrf_token' => '']);
         $this->assertFalse($form->validate());

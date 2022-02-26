@@ -112,7 +112,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
         // Add a checkbox group
         \array_push(
             $this->controls,
-            $this->newCheckboxGroup($name, $options),
+            $this->newCheckboxGroup($name, $options)
         );
 
         return $this;
@@ -130,7 +130,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
         // Add a radio group
         \array_push(
             $this->controls,
-            $this->newRadioGroup($name, $options),
+            $this->newRadioGroup($name, $options)
         );
 
         return $this;
@@ -168,7 +168,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
                 // Insert the form group at the creation position
                 \array_splice($controlArray, $index, 0, [$formGroup]);
             },
-            $this->constraintBuilder,
+            $this->constraintBuilder
         );
     }
 
@@ -189,7 +189,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
                 // Insert the form group at the creation position
                 \array_splice($controlArray, $index, 0, [$formArray]);
             },
-            $this->constraintBuilder,
+            $this->constraintBuilder
         );
     }
 

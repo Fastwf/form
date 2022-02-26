@@ -5,6 +5,9 @@ namespace Fastwf\Form\Entity\Html;
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Entity\Html\CheckableInput;
 
+/**
+ * Entity definition for "input[radio]" html element.
+ */
 class Radio extends CheckableInput
 {
 

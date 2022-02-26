@@ -6,10 +6,8 @@ use Fastwf\Form\Entity\Control;
 use Fastwf\Form\Build\FormBuilder;
 use Fastwf\Form\Entity\Html\Button;
 use Fastwf\Form\Build\ContainerBuilder;
-use Fastwf\Form\Build\Groups\ArrayBuilder;
 use Fastwf\Form\Build\Groups\GroupBuilder;
 use Fastwf\Form\Build\Groups\IArrayBuilder;
-use Fastwf\Form\Build\ContainerGroupBuilder;
 use Fastwf\Form\Entity\Containers\FormArray;
 
 /**
@@ -116,7 +114,7 @@ class ArrayBuilder extends ContainerBuilder implements IArrayBuilder
                 // Set the control as $formGroup value using its reference
                 $groupControl = $formGroup;
             },
-            $this->constraintBuilder,
+            $this->constraintBuilder
         );
     }
 
@@ -131,7 +129,7 @@ class ArrayBuilder extends ContainerBuilder implements IArrayBuilder
                 // Set the control as $formGroup value using its reference
                 $arrayControl = $formGroup;
             },
-            $this->constraintBuilder,
+            $this->constraintBuilder
         );
     }
 

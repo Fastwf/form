@@ -4,10 +4,12 @@ namespace Fastwf\Form\Entity;
 
 use Fastwf\Form\Entity\Control;
 use Fastwf\Form\Utils\ArrayUtil;
-use Fastwf\Constraint\Api\Validator;
 use Fastwf\Constraint\Api\Constraint;
 use Fastwf\Constraint\Data\Violation;
 
+/**
+ * Entity that define common properties of form control.
+ */
 abstract class FormControl extends Control
 {
 
@@ -17,20 +19,6 @@ abstract class FormControl extends Control
      * @var string
      */
     protected $label;
-
-    /**
-     * Allows to disable or not the form control.
-     *
-     * @var boolean
-     */
-    protected $disabled;
-
-    /**
-     * Allows to set the form control in readonly mode or not.
-     *
-     * @var boolean
-     */
-    protected $readonly;
 
     /**
      * The value of the form control.
@@ -65,9 +53,8 @@ abstract class FormControl extends Control
         parent::__construct($parameters);
 
         $this->label = ArrayUtil::getSafe($parameters, 'label', '');
-        $this->disabled = ArrayUtil::getSafe($parameters, 'disabled', false);
-        $this->readonly = ArrayUtil::getSafe($parameters, 'readonly', false);
         $this->value = ArrayUtil::getSafe($parameters, 'value');
+        $this->help = ArrayUtil::getSafe($parameters, 'help');
         $this->constraint = ArrayUtil::getSafe($parameters, 'constraint');
         $this->violation = ArrayUtil::getSafe($parameters, 'violation');
     }
@@ -80,26 +67,6 @@ abstract class FormControl extends Control
     public function getLabel()
     {
         return $this->label;
-    }
-
-    public function setDisabled($disabled)
-    {
-        $this->disabled = $disabled;
-    }
-
-    public function isDisabled()
-    {
-        return $this->disabled;
-    }
-
-    public function setReadonly($readonly)
-    {
-        $this->readonly = $readonly;
-    }
-
-    public function isReadonly()
-    {
-        return $this->readonly;
     }
 
     public function setValue($value)

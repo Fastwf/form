@@ -6,6 +6,11 @@ use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Entity\FormControl;
 use Fastwf\Form\Utils\DateTimeUtil;
 
+/**
+ * Entity definition for "input" html element.
+ * 
+ * Use specific child class for input file, radio or checkbox.
+ */
 class Input extends FormControl
 {
 

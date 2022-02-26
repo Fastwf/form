@@ -8,6 +8,9 @@ use Fastwf\Constraint\Api\Validator;
 use Fastwf\Constraint\Api\Constraint;
 use Fastwf\Constraint\Data\Violation;
 
+/**
+ * Base behavior of controls in form.
+ */
 abstract class Control implements Element
 {
 
@@ -65,6 +68,13 @@ abstract class Control implements Element
      * @return void
      */
     public abstract function setViolation($violation);
+
+    /**
+     * Get the violation set for the control node.
+     *
+     * @return Violation|null the violation set on node or null.
+     */
+    public abstract function getViolation();
 
     /**
      * Set the value attached to this control.

@@ -4,7 +4,6 @@ namespace Fastwf\Form\Build;
 
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Entity\Html\Form;
-use Fastwf\Form\Build\FormBuilder;
 use Fastwf\Form\Entity\Html\Input;
 use Fastwf\Constraint\Constraints\Chain;
 use Fastwf\Form\Constraints\StringField;

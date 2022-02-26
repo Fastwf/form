@@ -6,7 +6,7 @@ use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Entity\Html\Input;
 
 /**
- * Entity for input[file].
+ * Entity definition for "input[file]" html element.
  */
 class InputFile extends Input
 {

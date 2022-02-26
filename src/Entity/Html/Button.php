@@ -5,6 +5,9 @@ namespace Fastwf\Form\Entity\Html;
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Entity\FormControl;
 
+/**
+ * Entity definition for "button" html element.
+ */
 class Button extends FormControl
 {
 

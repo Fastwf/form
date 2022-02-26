@@ -7,6 +7,9 @@ use Fastwf\Constraint\Api\Validator;
 use Fastwf\Constraint\Api\Constraint;
 use Fastwf\Form\Entity\Containers\FormGroup;
 
+/**
+ * Entity definition for "form" html element.
+ */
 class Form extends FormGroup
 {
 

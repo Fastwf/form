@@ -6,6 +6,9 @@ use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Entity\FormControl;
 use Fastwf\Form\Entity\Options\OptionGroup;
 
+/**
+ * Entity definition for "select" html element.
+ */
 class Select extends FormControl
 {
 
@@ -70,21 +73,6 @@ class Select extends FormControl
                 $index++;
             }
         }
-    }
-
-    public function getName()
-    {
-        // For multiple mode, the name must be an array
-        $name = $this->name;
-        if ($this->multiple)
-        {
-            if (\preg_match('/^.+\\[\\]$/', $name) !== 1)
-            {
-                $name .= '[]';
-            }
-        }
-        
-        return $name;
     }
 
     public function setValue($value)

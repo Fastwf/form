@@ -4,6 +4,9 @@ namespace Fastwf\Form\Entity\Html;
 
 use Fastwf\Form\Entity\FormControl;
 
+/**
+ * Entity definition for "textarea" html element.
+ */
 class Textarea extends FormControl
 {
 

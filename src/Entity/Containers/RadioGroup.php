@@ -2,12 +2,6 @@
 
 namespace Fastwf\Form\Entity\Containers;
 
-use Fastwf\Form\Entity\Control;
-use Fastwf\Form\Utils\ArrayUtil;
-use Fastwf\Form\Entity\Html\Radio;
-use Fastwf\Constraint\Api\Constraint;
-use Fastwf\Constraint\Data\Violation;
-use Fastwf\Form\Entity\Containers\Container;
 use Fastwf\Form\Entity\Containers\EntityGroup;
 
 /**

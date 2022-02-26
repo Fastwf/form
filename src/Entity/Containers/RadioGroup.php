@@ -2,6 +2,7 @@
 
 namespace Fastwf\Form\Entity\Containers;
 
+use Fastwf\Form\Entity\Html\Radio;
 use Fastwf\Form\Entity\Containers\EntityGroup;
 
 /**
@@ -24,6 +25,7 @@ class RadioGroup extends EntityGroup
     public function getValue()
     {
         // Search for a checked radio input and return its value
+        /** @var Radio */
         foreach ($this->controls as $radio) {
             if ($radio->isChecked())
             {

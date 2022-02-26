@@ -2,7 +2,7 @@
 
 namespace Fastwf\Form\Entity\Containers;
 
-interface Container
+interface Container extends \IteratorAggregate
 {
 
     /**

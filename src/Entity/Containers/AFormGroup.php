@@ -15,7 +15,7 @@ abstract class AFormGroup extends Control implements Container
     /**
      * The array of controls.
      *
-     * @var array
+     * @var array<Control>
      */
     protected $controls;
 
@@ -78,6 +78,11 @@ abstract class AFormGroup extends Control implements Container
     public function getControlAt($index)
     {
         return ArrayUtil::get($this->controls, $index);
+    }
+
+    public function getIterator(): \Traversable
+    {
+        return new \ArrayIterator($this->controls);
     }
 
 }

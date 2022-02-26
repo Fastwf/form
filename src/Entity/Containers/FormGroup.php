@@ -6,6 +6,7 @@ use Fastwf\Constraint\Constraints\Chain;
 use Fastwf\Form\Entity\Containers\AFormGroup;
 use Fastwf\Constraint\Constraints\Objects\Schema;
 use Fastwf\Constraint\Constraints\Type\ObjectType;
+use Fastwf\Constraint\Data\Violation;
 
 class FormGroup extends AFormGroup
 {
@@ -73,7 +74,7 @@ class FormGroup extends AFormGroup
         return new Chain(
             true,
             new ObjectType(),
-            new Schema(['properties' => $properties]),
+            new Schema(['properties' => $properties])
         );
     }
 
@@ -90,6 +91,22 @@ class FormGroup extends AFormGroup
                 $control->setViolation($children[$name]);
             }
         }
+    }
+
+    public function getViolation()
+    {
+        // For each children extract the violation if exists
+        $children = [];
+        foreach ($this->controls as $control) {
+            $violation = $control->getViolation();
+
+            if ($violation !== null) {
+                $children[$control->getName()] = $violation;
+            }
+        }
+
+        // Recreate the violation from children data and violations
+        return new Violation($this->getData(), [], $children);
     }
 
     /**

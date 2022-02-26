@@ -91,7 +91,13 @@ class FormArray extends Control implements Container
         $this->violation = $violation;
     }
 
-    public function getData() {
+    public function getViolation()
+    {
+        return $this->violation;
+    }
+
+    public function getData()
+    {
         // Assign values to the control and perform data conversion.
         $data = [];
 
@@ -103,6 +109,11 @@ class FormArray extends Control implements Container
         }
 
         return $data;
+    }
+
+    public function getIterator(): \Traversable
+    {
+        return new FormArrayIterator($this);
     }
 
 }

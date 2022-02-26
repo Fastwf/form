@@ -16,6 +16,7 @@ class CheckboxGroup extends EntityGroup
     public function setValue($value)
     {
         // Each checkbox must be checked when the value is found in incomming array
+        /** @var Checkbox */
         foreach ($this->controls as $checkbox) {
             $index = \array_search($checkbox->getValueAttribute(), $value);
             if ($index !== false)
@@ -36,6 +37,7 @@ class CheckboxGroup extends EntityGroup
         // Collect the value of checkbox checked
         $value = [];
 
+        /** @var Checkbox */
         foreach ($this->controls as $checkbox) {
             if ($checkbox->isChecked())
             {

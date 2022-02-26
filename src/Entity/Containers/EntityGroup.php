@@ -14,6 +14,13 @@ abstract class EntityGroup extends AFormGroup
 {
 
     /**
+     * The string that define the label of the group widget.
+     *
+     * @var string|null
+     */
+    private $label;
+
+    /**
      * The string help associated to the radio group.
      *
      * @var string|null
@@ -38,6 +45,7 @@ abstract class EntityGroup extends AFormGroup
     {
         parent::__construct($parameters);
 
+        $this->label = ArrayUtil::getSafe($parameters, 'label');
         $this->help = ArrayUtil::getSafe($parameters, 'help');
         $this->constraint = ArrayUtil::getSafe($parameters, 'constraint');
         $this->violation = ArrayUtil::getSafe($parameters, 'violation');
@@ -61,6 +69,16 @@ abstract class EntityGroup extends AFormGroup
     }
 
     /// PUBLIC METHODS
+
+    public function setLabel($label)
+    {
+        $this->label = $label;
+    }
+
+    public function getLabel()
+    {
+        return $this->label;
+    }
 
     public function setHelp($help)
     {

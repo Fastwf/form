@@ -55,7 +55,7 @@ abstract class EntityGroupBuilder extends AGroupBuilder
     {
         // Initialize entity group options
         $this->groupOptions = ['name' => $this->name];
-        ArrayUtil::merge($options, $this->groupOptions, [self::ATTRIBUTES, "help"]);
+        ArrayUtil::merge($options, $this->groupOptions, [self::ATTRIBUTES, "help", "label"]);
 
         // Create assert if it is required for value accepted
         $assert = ArrayUtil::getSafe($options, 'assert', []);
@@ -92,7 +92,7 @@ abstract class EntityGroupBuilder extends AGroupBuilder
         {
             $fieldOptions = $this->createCommonOptions(
                 $this->name,
-                \array_merge(ArrayUtil::getSafe($options, 'common', []), $specifications),
+                \array_merge(ArrayUtil::getSafe($options, 'common', []), $specifications)
             );
             // Inject html attributes created by constraint builder into field options
             $fieldOptions[self::ATTRIBUTES] = \array_merge(

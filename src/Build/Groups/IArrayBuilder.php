@@ -2,6 +2,7 @@
 
 namespace Fastwf\Form\Build\Groups;
 
+use Fastwf\Form\Entity\Html\Button;
 use Fastwf\Form\Build\Groups\ArrayBuilder;
 use Fastwf\Form\Build\Groups\GroupBuilder;
 

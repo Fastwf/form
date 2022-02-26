@@ -122,8 +122,10 @@ class ArrayBuilder extends ContainerBuilder implements IArrayBuilder
     {
         $arrayControl = &$this->control;
 
+        // The name is required but because it will be used inside FormArray, the name will be overriden when iterate on FormArray.
+        //  So use an empty name.
         return new ArrayBuilder(
-            null,
+            '',
             $this,
             function ($formGroup) use (&$arrayControl) {
                 // Set the control as $formGroup value using its reference

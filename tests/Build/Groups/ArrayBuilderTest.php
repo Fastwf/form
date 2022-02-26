@@ -68,7 +68,9 @@ class ArrayBuilderTest extends TestCase
                 ->buildInParent()
             ->build();
         
-        $this->assertTrue($form->getControlAt(0)->getControl() instanceof Input);
+        /** @var FormArray */
+        $control = $form->getControlAt(0);
+        $this->assertTrue($control->getControl() instanceof Input);
     }
 
     /**

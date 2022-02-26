@@ -18,7 +18,7 @@ class FormArrayTest extends TestCase
      */
     public function testSetValue()
     {
-        $array = new FormArray(['control' => null]);
+        $array = new FormArray(['name' => 'array', 'control' => null]);
 
         $array->setControl(
             new Input(['type' => 'text', 'name' => 'username']),
@@ -41,7 +41,7 @@ class FormArrayTest extends TestCase
      */
     public function testGetTag()
     {
-        $container = new FormArray(['control' => null]);
+        $container = new FormArray(['name' => 'array', 'control' => null]);
 
         $this->assertNull($container->getTag());
     }
@@ -53,7 +53,7 @@ class FormArrayTest extends TestCase
      */
     public function testGetContainerType()
     {
-        $container = new FormArray(['control' => null]);
+        $container = new FormArray(['name' => 'array', 'control' => null]);
 
         $this->assertEquals('array', $container->getContainerType());
     }
@@ -68,6 +68,7 @@ class FormArrayTest extends TestCase
     public function testGetData()
     {
         $container = new FormArray([
+            'name' => 'array',
             'value' => ['1', '2', '3'],
             'control' => new Input(['type' => 'number', 'name' => 'username']),
         ]);

@@ -143,7 +143,7 @@ abstract class ContainerBuilder extends AGroupBuilder
                 null,
                 $name,
                 $options
-            ),
+            )
         );
     }
 
@@ -231,8 +231,11 @@ abstract class ContainerBuilder extends AGroupBuilder
     protected function newInputFile($name, $options)
     {
         // Update the option array to create correct constraints
+        $multiple = false;
         if (\array_key_exists('multiple', $options) && $options['multiple'] === true)
         {
+            $multiple = true;
+
             $assert = ArrayUtil::getSafe($options, 'assert', []);
             $assert['multiple'] = true;
             $options['assert'] = $assert;
@@ -240,6 +243,7 @@ abstract class ContainerBuilder extends AGroupBuilder
 
         // Create options
         $fieldOptions = $this->createStandardOptions('input', 'file', $name, $options);
+        $fieldOptions['multiple'] = $multiple;
 
         // Create input file control
         return new InputFile($fieldOptions);

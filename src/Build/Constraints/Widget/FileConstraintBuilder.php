@@ -196,16 +196,17 @@ class FileConstraintBuilder extends FieldMultipleConstraintBuilder
     {
         // Update html attributes to inject extensions and accepted content types
         //  While working $this->htmlAttributes['accept'] when is set is considered as an array
-        $this->htmlAttributes['accept'] = \implode(
-            ',',
-            \array_unique(
-                \array_merge(
-                    ArrayUtil::getSafe($this->htmlAttributes, 'accept', []),
-                    $this->extensions,
-                    $this->contentTypes,
-                ),
+        $accept = \array_unique(
+            \array_merge(
+                ArrayUtil::getSafe($this->htmlAttributes, 'accept', []),
+                $this->extensions,
+                $this->contentTypes,
             ),
         );
+        // Add the accept html attribute when there is at least 1 accept item
+        if ($accept) {
+            $this->htmlAttributes['accept'] = \implode(',', $accept);
+        }
 
         // Create the entry constraint
         $options = [

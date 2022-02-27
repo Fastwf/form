@@ -15,18 +15,30 @@ class CheckboxGroup extends EntityGroup
 
     public function setValue($value)
     {
-        // Each checkbox must be checked when the value is found in incomming array
-        /** @var Checkbox */
-        foreach ($this->controls as $checkbox) {
-            $index = \array_search($checkbox->getValueAttribute(), $value);
-            if ($index !== false)
-            {
-                // Remove the value from the array and check the checkbox
-                \array_splice($value, $index, 1);
-                $checkbox->setChecked(true);
+        if ($value)
+        {
+            // Each checkbox must be checked when the value is found in incomming array
+            /** @var Checkbox */
+            foreach ($this->controls as $checkbox) {
+                $index = \array_search($checkbox->getValueAttribute(), $value);
+                if ($index !== false)
+                {
+                    // Remove the value from the array and check the checkbox
+                    \array_splice($value, $index, 1);
+                    $checkbox->setChecked(true);
+                }
+                else
+                {
+                    // The checkbox value is not found in selection value array, so uncheck the widget
+                    $checkbox->setChecked(false);
+                }
             }
-            else
-            {
+        }
+        else
+        {
+            // No value provided, uncheck all widgets
+            /** @var Checkbox */
+            foreach ($this->controls as $checkbox) {
                 $checkbox->setChecked(false);
             }
         }

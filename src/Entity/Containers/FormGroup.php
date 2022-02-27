@@ -50,7 +50,7 @@ class FormGroup extends AFormGroup
         }
         else
         {
-            // This branch can be used when an array is not initialized
+            // This branch can be used when an array is not initialized or data is not set
             //  So reset to null each control values
             foreach ($this->controls as $control)
             {

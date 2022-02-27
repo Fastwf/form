@@ -131,8 +131,6 @@ class ConstraintBuilder extends StringConstraintBuilder
             })
             ;
 
-        // TODO: input file
-
         return $builder;
     }
 

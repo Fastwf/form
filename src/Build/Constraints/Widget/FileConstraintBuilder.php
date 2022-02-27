@@ -68,8 +68,8 @@ class FileConstraintBuilder extends FieldMultipleConstraintBuilder
         $pattern = null;
         if (!empty($this->extensions))
         {
-            $extensions = \implode("|", \array_map(function ($item) { return \substr($item, 1); }, $this->extensions));
-            $pattern = [new Pattern("^.+\\.($extensions)$", 'i')];
+            $extensionAlternatives = \implode("|", \array_map(function ($item) { return \substr($item, 1); }, $this->extensions));
+            $pattern = [new Pattern("^.+\\.($extensionAlternatives)$", 'i')];
         }
 
         return self::buildTypedConstraint(

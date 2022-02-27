@@ -14,6 +14,7 @@ class InputFileTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\InputFile
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testGetFullName()
     {
@@ -30,6 +31,7 @@ class InputFileTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\InputFile
+     * @covers Fastwf\Form\Utils\EntityUtil
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testSynchronizeMultiple()
@@ -49,6 +51,7 @@ class InputFileTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\InputFile
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testIsMultiple()
     {

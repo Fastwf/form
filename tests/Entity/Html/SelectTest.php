@@ -18,6 +18,7 @@ class SelectTest extends TestCase
      * @covers Fastwf\Form\Entity\Options\Option
      * @covers Fastwf\Form\Entity\Options\OptionGroup
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testConstructorAndUpdateSelection()
     {
@@ -59,6 +60,7 @@ class SelectTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Select
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testGetTag()
     {
@@ -74,6 +76,7 @@ class SelectTest extends TestCase
      * @covers Fastwf\Form\Entity\Options\AOption
      * @covers Fastwf\Form\Entity\Options\Option
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testGetData()
     {
@@ -107,6 +110,7 @@ class SelectTest extends TestCase
      * @covers Fastwf\Form\Entity\Options\AOption
      * @covers Fastwf\Form\Entity\Options\Option
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testGetFullName()
     {

@@ -346,6 +346,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Options\AOption
      * @covers Fastwf\Form\Entity\Options\Option
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testAddSelectSingle()
     {
@@ -401,6 +402,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Options\Option
      * @covers Fastwf\Form\Entity\Options\OptionGroup
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testAddSelectMultiple()
     {
@@ -513,6 +515,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\InputFile
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testAddInputFile()
     {

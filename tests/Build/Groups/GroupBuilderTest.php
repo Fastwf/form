@@ -36,6 +36,7 @@ class GroupBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\InputFile
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testNewGroupBuilder()
     {

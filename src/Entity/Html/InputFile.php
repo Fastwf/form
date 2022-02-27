@@ -3,6 +3,7 @@
 namespace Fastwf\Form\Entity\Html;
 
 use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Form\Utils\EntityUtil;
 use Fastwf\Form\Entity\Html\Input;
 
 /**
@@ -24,7 +25,7 @@ class InputFile extends Input
 
         $this->multiple = ArrayUtil::getSafe($parameters, 'multiple', false);
 
-        $this->synchronizeMultiple();
+        EntityUtil::synchronizeMultiple($this->multiple, $this->attributes);
     }
 
     public function getFullName()
@@ -40,29 +41,11 @@ class InputFile extends Input
         return $name;
     }
 
-    /**
-     * Update the HTML attributes to set the 'multiple' value.
-     *
-     * @return void
-     */
-    private function synchronizeMultiple()
-    {
-        if ($this->multiple)
-        {
-            $this->attributes['multiple'] = true;
-        }
-        else if (\array_key_exists('multiple', $this->attributes))
-        {
-            // multiple === false => remove the multiple attribute
-            unset($this->attributes['multiple']);
-        }
-    }
-
     public function setMultiple($multiple)
     {
         $this->multiple = $multiple;
 
-        $this->synchronizeMultiple();
+        EntityUtil::synchronizeMultiple($this->multiple, $this->attributes);
     }
 
     public function isMultiple()

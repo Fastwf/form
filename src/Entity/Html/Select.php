@@ -3,6 +3,7 @@
 namespace Fastwf\Form\Entity\Html;
 
 use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Form\Utils\EntityUtil;
 use Fastwf\Form\Entity\FormControl;
 use Fastwf\Form\Entity\Options\OptionGroup;
 
@@ -41,6 +42,7 @@ class Select extends FormControl
         $this->options = ArrayUtil::get($parameters, 'options');
 
         $this->setValue(ArrayUtil::getSafe($parameters, 'value', []));
+        EntityUtil::synchronizeMultiple($this->multiple, $this->attributes);
     }
 
     public function getFullName()
@@ -114,6 +116,8 @@ class Select extends FormControl
     public function setMultiple($multiple)
     {
         $this->multiple = $multiple;
+
+        EntityUtil::synchronizeMultiple($this->multiple, $this->attributes);
     }
 
     public function isMultiple()

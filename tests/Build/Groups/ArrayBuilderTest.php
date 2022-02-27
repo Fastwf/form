@@ -129,6 +129,7 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Select
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testOfSelect()
     {
@@ -159,6 +160,7 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\CheckboxConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
+     * @covers Fastwf\Form\Constraints\BooleanField
      * @covers Fastwf\Form\Constraints\String\Equals
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Control
@@ -201,6 +203,7 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\InputFile
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testOfInputFile()
     {
@@ -356,6 +359,7 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Options\AOption
      * @covers Fastwf\Form\Entity\Options\Option
      * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testOfGroup()
     {

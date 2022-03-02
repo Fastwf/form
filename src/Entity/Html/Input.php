@@ -21,6 +21,11 @@ class Input extends FormControl
      */
     protected $type;
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @param array{type:string} $parameters The input parameters that extends {@see FormControl::__construct} parameters.
+     */
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);

@@ -19,6 +19,11 @@ class InputFile extends Input
      */
     protected $multiple;
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @param array{multiple?:boolean} $parameters The input file parameters that extends {@see Input::__construct} parameters.
+     */
     public function __construct($parameters)
     {
         parent::__construct(\array_merge($parameters, ['type' => 'file']));

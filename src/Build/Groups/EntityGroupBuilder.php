@@ -5,7 +5,6 @@ namespace Fastwf\Form\Build\Groups;
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Build\AGroupBuilder;
 use Fastwf\Form\Build\ConstraintBuilder;
-use Fastwf\Form\Entity\Html\CheckableInput;
 use Fastwf\Form\Entity\Containers\EntityGroup;
 
 /**
@@ -22,13 +21,6 @@ abstract class EntityGroupBuilder extends AGroupBuilder
     protected $name;
 
     /**
-     * The array of named arguments of the RadioGroup.
-     *
-     * @var array
-     */
-    protected $groupOptions;
-
-    /**
      * The array containing html attributes and the constraint object associated to the entity group and its form controls.
      *
      * @var array
@@ -42,7 +34,7 @@ abstract class EntityGroupBuilder extends AGroupBuilder
      */
     public function __construct($constraintBuilder = null)
     {
-        parent::__construct($constraintBuilder);
+        parent::__construct(['constraintBuilder' => $constraintBuilder]);
     }
 
     /**
@@ -54,8 +46,8 @@ abstract class EntityGroupBuilder extends AGroupBuilder
     protected function setup(&$options)
     {
         // Initialize entity group options
-        $this->groupOptions = ['name' => $this->name];
-        ArrayUtil::merge($options, $this->groupOptions, [self::ATTRIBUTES, "help", "label"]);
+        $this->parameters['name'] = $this->name;
+        ArrayUtil::merge($options, $this->parameters, [self::ATTRIBUTES, self::HELP, self::LABEL]);
 
         // Create assert if it is required for value accepted
         $assert = ArrayUtil::getSafe($options, 'assert', []);
@@ -75,7 +67,7 @@ abstract class EntityGroupBuilder extends AGroupBuilder
         $this->applyConstraints($this->constraintControlOptions, $options, $this->getWidgetName());
 
         // Constraints will be applayed only on entity group
-        $this->groupOptions[self::CONSTRAINT] = $this->constraintControlOptions[self::CONSTRAINT];
+        $this->parameters[self::CONSTRAINT] = $this->constraintControlOptions[self::CONSTRAINT];
     }
 
     /**
@@ -105,9 +97,9 @@ abstract class EntityGroupBuilder extends AGroupBuilder
             $fieldOptions[self::ATTRIBUTES]['value'] = $value;
 
             // Set the label is is not set using radio value
-            if (!\array_key_exists('label', $fieldOptions))
+            if (!\array_key_exists(self::LABEL, $fieldOptions))
             {
-                $fieldOptions['label'] = $value;
+                $fieldOptions[self::LABEL] = $value;
             }
 
             \array_push($controls, $this->buildFormControl($fieldOptions));
@@ -120,7 +112,7 @@ abstract class EntityGroupBuilder extends AGroupBuilder
      * Set the name of the entity group widget.
      *
      * @param string $name the name of the group to build.
-     * @return EntityGroupBuilder the builder updated.
+     * @return $this the builder updated.
      */
     public function setName($name)
     {
@@ -139,10 +131,10 @@ abstract class EntityGroupBuilder extends AGroupBuilder
     {
         $this->setup($options);
 
-        $this->groupOptions['controls'] = $this->buildControls($options);
+        $this->parameters['controls'] = $this->buildControls($options);
 
         // Build the group and assign the default value when it's provided
-        $group = $this->buildEntityGroup($this->groupOptions);
+        $group = $this->buildEntityGroup($this->parameters);
         if (\array_key_exists('defaultValue', $options))
         {
             $group->setValue($options['defaultValue']);

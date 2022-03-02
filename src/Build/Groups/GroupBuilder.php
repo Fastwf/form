@@ -7,6 +7,7 @@ use Fastwf\Form\Build\ContainerBuilder;
 use Fastwf\Form\Build\Groups\ArrayBuilder;
 use Fastwf\Form\Build\ContainerGroupBuilder;
 use Fastwf\Form\Entity\Containers\FormGroup;
+use Fastwf\Form\Utils\ArrayUtil;
 
 /**
  * The builder able to generate FormGroup containers.
@@ -24,16 +25,26 @@ class GroupBuilder extends ContainerGroupBuilder
     /**
      * The callback to call when this builder call the "buildInParent" method.
      *
-     * @var callable
+     * @var Callable<FormGroup>
      */
     protected $onBuildCallback;
     
-    public function __construct($name, $builder, $onBuildCallback = null, $constraintBuilder = null)
+    /**
+     * {@inheritDoc}
+     *
+     * @param string $name the group name.
+     * @param ContainerBuilder $builder the parent builder name
+     * @param array{
+     *      constraintBuilder?:ConstraintBuilder,
+     *      onBuildCallback?: Callable<FormGroup>
+     * } $options
+     */
+    public function __construct($name, $builder, $options = [])
     {
-        parent::__construct($name, $constraintBuilder);
+        parent::__construct($name, $options);
 
         $this->builder = $builder;
-        $this->onBuildCallback = $onBuildCallback;
+        $this->onBuildCallback = ArrayUtil::getSafe($options, 'onBuildCallback');
     }
 
     /// IMPLEMENTATION

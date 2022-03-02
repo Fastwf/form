@@ -47,6 +47,11 @@ abstract class CheckableInput extends Input
      */
     protected $valueAttribute;
 
+    /**
+     * {@inheritDoc}
+     * 
+     * @param array{checked?:boolean} $parameters The CheckableInput parameters that extends {@see Input::__construct} parameters.
+     */
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);

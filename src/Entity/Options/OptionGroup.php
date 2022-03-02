@@ -3,6 +3,7 @@
 namespace Fastwf\Form\Entity\Options;
 
 use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Form\Entity\Options\Option;
 use Fastwf\Form\Entity\Options\AOption;
 
 class OptionGroup extends AOption
@@ -11,10 +12,15 @@ class OptionGroup extends AOption
     /**
      * The list of options hold by this group.
      *
-     * @var array
+     * @var array<Option>
      */
     protected $options;
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param array{options:array<Option>} $parameters The option group parameters that extends {@see AOption::__construct} parameters.
+     */
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);

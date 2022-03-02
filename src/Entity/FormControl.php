@@ -14,25 +14,11 @@ abstract class FormControl extends Control
 {
 
     /**
-     * The label value associated to the form control.
-     *
-     * @var string
-     */
-    protected $label;
-
-    /**
      * The value of the form control.
      *
      * @var string
      */
     protected $value;
-
-    /**
-     * The help message or description of this current form control.
-     *
-     * @var string
-     */
-    protected $help;
 
     /**
      * The constraint to use to validate the value.
@@ -48,25 +34,22 @@ abstract class FormControl extends Control
      */
     protected $violation = [];
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param array{
+     *      value?:mixed,
+     *      constraint?:Constraint,
+     *      violation?:Violation
+     * } $parameters the form control parameters that extends {@see Control::__construct} parameters.
+     */
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);
 
-        $this->label = ArrayUtil::getSafe($parameters, 'label', '');
         $this->value = ArrayUtil::getSafe($parameters, 'value');
-        $this->help = ArrayUtil::getSafe($parameters, 'help');
         $this->constraint = ArrayUtil::getSafe($parameters, 'constraint');
         $this->violation = ArrayUtil::getSafe($parameters, 'violation');
-    }
-
-    public function setLabel($label)
-    {
-        $this->label = $label;
-    }
-
-    public function getLabel()
-    {
-        return $this->label;
     }
 
     public function setValue($value)
@@ -77,16 +60,6 @@ abstract class FormControl extends Control
     public function getValue()
     {
         return $this->value;
-    }
-
-    public function setHelp($help)
-    {
-        $this->help = $help;
-    }
-
-    public function getHelp()
-    {
-        return $this->help;
     }
 
     public function setConstraint($constraint)

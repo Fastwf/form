@@ -29,7 +29,7 @@ interface IArrayBuilder
      * @param array $options the array of textarea options.
      * @return ArrayBuilder the array builder with control set.
      */
-    public function ofTextarea($options);
+    public function ofTextarea($options = []);
 
     /**
      * Use a select form control that respect the specifications as array control.
@@ -45,7 +45,7 @@ interface IArrayBuilder
      * @param array $options the array of checkbox options.
      * @return ArrayBuilder the array builder with control set.
      */
-    public function ofCheckbox($options);
+    public function ofCheckbox($options = []);
 
     /**
      * Use an input file form control that respect the specifications as array control.
@@ -53,7 +53,7 @@ interface IArrayBuilder
      * @param array $options the array of checkbox options.
      * @return ArrayBuilder the array builder with control set.
      */
-    public function ofInputFile($options);
+    public function ofInputFile($options = []);
 
     /**
      * Use a checkbox group using choices to build each input checkbox as array control.
@@ -83,15 +83,17 @@ interface IArrayBuilder
     /**
      * Create a new group builder to set the array control as FormGroup.
      *
+     * @param array $options the option array containing group specifications (for details {@see GroupBuilder::__construct}).
      * @return GroupBuilder the sub builder to use to create the control.
      */
-    public function ofGroup();
+    public function ofGroup($options = []);
 
     /**
      * Create a new array builder to set the array control as FormArray.
      *
+     * @param array $options the option array containing group specifications (for details {@see ArrayBuilder::__construct}).
      * @return IArrayBuilder the sub builder to use to create the control.
      */
-    public function ofArray();
+    public function ofArray($options = []);
 
 }

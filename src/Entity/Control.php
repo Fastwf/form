@@ -34,11 +34,38 @@ abstract class Control implements Element
      */
     protected $attributes;
 
+    /**
+     * The label value associated to the form control.
+     *
+     * @var string
+     */
+    protected $label;
+
+    /**
+     * The help message or description of this current form control.
+     *
+     * @var string
+     */
+    protected $help;
+
+    /**
+     * Constructor.
+     *
+     * @param array{
+     *      parent?:Control,
+     *      name?:string,
+     *      attributes?:array<string,string|string[]|boolean>,
+     *      value?:mixed,
+     *      help?:string
+     * } $parameters the form control parameters.
+     */
     public function __construct($parameters = [])
     {
         $this->parent = ArrayUtil::getSafe($parameters, 'parent');
         $this->name = ArrayUtil::getSafe($parameters, 'name');
         $this->attributes = ArrayUtil::getSafe($parameters, 'attributes', []);
+        $this->label = ArrayUtil::getSafe($parameters, 'label', '');
+        $this->help = ArrayUtil::getSafe($parameters, 'help');
     }
 
     public function setParent($parent) {
@@ -67,6 +94,26 @@ abstract class Control implements Element
     public function getAttributes()
     {
         return $this->attributes;
+    }
+
+    public function setLabel($label)
+    {
+        $this->label = $label;
+    }
+
+    public function getLabel()
+    {
+        return $this->label;
+    }
+
+    public function setHelp($help)
+    {
+        $this->help = $help;
+    }
+
+    public function getHelp()
+    {
+        return $this->help;
     }
 
     /**

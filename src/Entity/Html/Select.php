@@ -5,6 +5,8 @@ namespace Fastwf\Form\Entity\Html;
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Utils\EntityUtil;
 use Fastwf\Form\Entity\FormControl;
+use Fastwf\Form\Entity\Options\Option;
+use Fastwf\Form\Entity\Options\AOption;
 use Fastwf\Form\Entity\Options\OptionGroup;
 
 /**
@@ -30,10 +32,18 @@ class Select extends FormControl
     /**
      * The list of abstract option implementations (options <and>or option groups).
      *
-     * @var array
+     * @var array<AOption>
      */
     protected $options;
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param array{
+     *      options:array<AOption>,
+     *      multiple?:boolean
+     * } $parameters the select parameters that extends {@see FormControl::__construct} parameters.
+     */
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);
@@ -81,7 +91,7 @@ class Select extends FormControl
 
                 \array_splice($optionsCopy, $index, 1, $childOptions);
             }
-            else
+            else if ($option instanceof Option)
             {
                 // This is an instance of Option -> update selection
                 $option->setSelected(\in_array($option->getValue(), $this->value));

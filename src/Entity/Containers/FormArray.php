@@ -11,6 +11,23 @@ use Fastwf\Constraint\Constraints\Arrays\Items;
 use Fastwf\Constraint\Constraints\Type\ArrayType;
 use Fastwf\Form\Exceptions\KeyError;
 
+/**
+ * Form group that allows to create a collection of same control.
+ * 
+ * To create an array of pseudo that represent a team member in a form like next exemple:
+ * ```html
+ * <!-- ... -->
+ * <form action="" method="post">
+ *   <input type="text" name="members[0]" />
+ *   <input type="text" name="members[1]" />
+ *   <input type="text" name="members[2]" />
+ *   <input type="text" name="members[3]" />
+ *   <button>Save</button>
+ * </form>
+ * ```
+ * 
+ * Use this class with an Input control named members.
+ */
 class FormArray extends Control implements Container
 {
 
@@ -42,6 +59,16 @@ class FormArray extends Control implements Container
      */
     protected $minSize;
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param array{
+     *      control:Control,
+     *      value?:array,
+     *      violation?:Violation,
+     *      min_size?:integer
+     * } $parameters The form array parameters that extends {@see Control::__construct} parameters.
+     */
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);
@@ -158,7 +185,9 @@ class FormArray extends Control implements Container
     }
 
     /**
-     * @return \Iterator
+     * {@inheritDoc}
+     * 
+     * @return \Iterator An iterator that form each control with name, value and violation. 
      */
     public function getIterator(): \Traversable
     {

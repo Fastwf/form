@@ -11,6 +11,7 @@ use Fastwf\Form\Entity\Html\Checkbox;
 use Fastwf\Form\Entity\Html\Textarea;
 use Fastwf\Form\Entity\Html\InputFile;
 use Fastwf\Form\Entity\Options\Option;
+use Fastwf\Form\Build\ConstraintBuilder;
 use Fastwf\Form\Exceptions\BuildException;
 use Fastwf\Form\Entity\Options\OptionGroup;
 use Fastwf\Form\Build\Groups\RadioGroupBuilder;
@@ -21,17 +22,23 @@ abstract class ContainerBuilder extends AGroupBuilder
 {
 
     /**
-     * The array of parameters to use to create instance of FormGroup.
+     * {@inheritDoc}
      *
-     * @var array
+     * @param string|null $name the group name.
+     * @param array{
+     *      constraintBuilder?:ConstraintBuilder,
+     *      attributes:array,
+     *      label?:string,
+     *      help?:string
+     * } $options The builder parameters.
      */
-    protected $parameters;
-
-    public function __construct($name, $constraintBuilder = null)
+    public function __construct($name, $options = [])
     {
-        parent::__construct($constraintBuilder);
+        parent::__construct($options);
 
-        $this->parameters = $name === null ? [] : ['name' => $name];
+        if ($name !== null) {
+            $this->parameters['name'] = $name;
+        }
     }
 
     /// PROTECTED METHODS
@@ -134,7 +141,7 @@ abstract class ContainerBuilder extends AGroupBuilder
      * @param array $options the array of textarea options.
      * @return Textarea the form control instance.
      */
-    protected function newTextarea($name, $options)
+    protected function newTextarea($name, $options = [])
     {
         // Create textarea control
         return new Textarea(
@@ -153,6 +160,7 @@ abstract class ContainerBuilder extends AGroupBuilder
      * @param string $name the control name.
      * @param array $options the array of select specifications.
      * @return Select the form control instance.
+     * @throws KeyError when an option required is missing.
      */
     protected function newSelect($name, $options)
     {
@@ -185,7 +193,7 @@ abstract class ContainerBuilder extends AGroupBuilder
      * @param array $options the array of checkbox options.
      * @return Checkbox the form control instance.
      */
-    protected function newCheckbox($name, $options)
+    protected function newCheckbox($name, $options = [])
     {
         $fieldOptions = $this->createCommonOptions($name, $options);
 
@@ -228,7 +236,7 @@ abstract class ContainerBuilder extends AGroupBuilder
      * @param array $options the array of checkbox options.
      * @return InputFile the form control instance.
      */
-    protected function newInputFile($name, $options)
+    protected function newInputFile($name, $options = [])
     {
         // Update the option array to create correct constraints
         $multiple = false;
@@ -255,6 +263,7 @@ abstract class ContainerBuilder extends AGroupBuilder
      * @param string $name the name of the input.
      * @param array $options the array of checkbox group specifications.
      * @return CheckboxGroup the form control instance.
+     * @throws KeyError when an option required is missing.
      */
     protected function newCheckboxGroup($name, $options)
     {
@@ -269,6 +278,7 @@ abstract class ContainerBuilder extends AGroupBuilder
      * @param string $name the name of the input.
      * @param array $options the array of radio group specifications.
      * @return RadioGroup the form control instance.
+     * @throws KeyError when an option required is missing.
      */
     protected function newRadioGroup($name, $options)
     {

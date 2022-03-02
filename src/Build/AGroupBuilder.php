@@ -4,7 +4,6 @@ namespace Fastwf\Form\Build;
 
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Build\ConstraintBuilder;
-use Fastwf\Form\Exceptions\BuildException;
 
 /**
  * Common properties and methods to use to build a group of controls.
@@ -23,14 +22,24 @@ abstract class AGroupBuilder
     protected const CONSTRAINT = 'constraint';
 
     /**
+     * The option key for label option.
+     */
+    protected const LABEL = 'label';
+
+    /**
+     * The option key for help option.
+     */
+    protected const HELP = 'help';
+
+    /**
      * The common options names.
      */
     private const COMMON_OPTIONS = [
         self::ATTRIBUTES,
         "disabled",
         "readonly",
-        "label",
-        "help",
+        self::LABEL,
+        self::HELP,
     ];
 
     /**
@@ -41,13 +50,34 @@ abstract class AGroupBuilder
     protected $constraintBuilder;
 
     /**
+     * The array of parameters to use to create instance of Container.
+     *
+     * @var array<string,mixed>
+     */
+    protected $parameters;
+
+    /**
      * Constructor.
      * 
-     * @param ConstraintBuilder $constraintBuilder the constraint builder to use to add constraints to form controls
+     * 
+     * $options:
+     * - `constraintBuilder` (default null): The constraint builder to use to add constraints to form controls  
+     * - `attributes` (default []) : The array of html attributes  
+     * - `label` (default "string") : The string label of the group  
+     * - `help` (default "string") : The string help message of the group  
+     * 
+     * For more details on options {@see Control::__construct} parameters.
+     * 
+     * @param array{constraintBuilder?:ConstraintBuilder,attributes:array,label?:string,help?:string} $options the base group options.
      */
-    public function __construct($constraintBuilder = null)
+    public function __construct($options = [])
     {
+        $constraintBuilder = ArrayUtil::getSafe($options, 'constraintBuilder');
+
         $this->constraintBuilder = $constraintBuilder === null ? ConstraintBuilder::getDefault() : $constraintBuilder;
+
+        $this->parameters = [];
+        ArrayUtil::merge($options, $this->parameters, [self::ATTRIBUTES, self::LABEL, self::HELP]);
     }
 
     /**

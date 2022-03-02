@@ -29,7 +29,7 @@ class ArrayBuilderTest extends TestCase
 
     protected function setUp(): void
     {
-        $this->builder = new ArrayBuilder('test', null, null, null);
+        $this->builder = new ArrayBuilder('test', null);
     }
 
     /**
@@ -63,7 +63,7 @@ class ArrayBuilderTest extends TestCase
     public function testOfInput()
     {
         $form = FormBuilder::new("test")
-            ->newArrayBuilder('emails')
+            ->newArrayBuilder('emails', ['defaultValue' => ['', '']])
                 ->ofInput('email')
                 ->buildInParent()
             ->build();

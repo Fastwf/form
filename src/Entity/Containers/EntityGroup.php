@@ -14,20 +14,6 @@ abstract class EntityGroup extends AFormGroup
 {
 
     /**
-     * The string that define the label of the group widget.
-     *
-     * @var string|null
-     */
-    private $label;
-
-    /**
-     * The string help associated to the radio group.
-     *
-     * @var string|null
-     */
-    private $help;
-
-    /**
      * The constraint to use to validate values
      *
      * @var Constraint
@@ -41,12 +27,18 @@ abstract class EntityGroup extends AFormGroup
      */
     private $violation;
 
-    public function __construct($parameters)
+    /**
+     * {@inheritDoc}
+     *
+     * @param array{
+     *      constraint?:Constraint,
+     *      violation?:Violation
+     * } $parameters The entity group parameters that extends {@see AFormGroup::__construct} parameters.
+     */
+    public function __construct($parameters = [])
     {
         parent::__construct($parameters);
 
-        $this->label = ArrayUtil::getSafe($parameters, 'label');
-        $this->help = ArrayUtil::getSafe($parameters, 'help');
         $this->constraint = ArrayUtil::getSafe($parameters, 'constraint');
         $this->violation = ArrayUtil::getSafe($parameters, 'violation');
     }
@@ -83,26 +75,6 @@ abstract class EntityGroup extends AFormGroup
     }
 
     /// PUBLIC METHODS
-
-    public function setLabel($label)
-    {
-        $this->label = $label;
-    }
-
-    public function getLabel()
-    {
-        return $this->label;
-    }
-
-    public function setHelp($help)
-    {
-        $this->help = $help;
-    }
-
-    public function getHelp()
-    {
-        return $this->help;
-    }
 
     /**
      * Set the constraint to be used by entity group.

@@ -48,7 +48,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
      * @param array $options the array of textarea options.
      * @return $this the current form builder updated.
      */
-    public function addTextarea($name, $options)
+    public function addTextarea($name, $options = [])
     {
         \array_push($this->controls, $this->newTextarea($name, $options));
 
@@ -77,7 +77,7 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
      * @param array $options the array of checkbox options.
      * @return $this the current form builder updated.
      */
-    public function addCheckbox($name, $options)
+    public function addCheckbox($name, $options = [])
     {
         // Add checkbox control
         \array_push($this->controls, $this->newCheckbox($name, $options));
@@ -89,10 +89,10 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
      * Add input file form control that respect the specifications.
      *
      * @param string $name the name of the input.
-     * @param array $options the array of checkbox options.
+     * @param array $options the array of input file options.
      * @return $this the current builder updated.
      */
-    public function addInputFile($name, $options)
+    public function addInputFile($name, $options = [])
     {
         // Add checkbox control
         \array_push($this->controls, $this->newInputFile($name, $options));
@@ -154,43 +154,43 @@ abstract class ContainerGroupBuilder extends ContainerBuilder
     /**
      * Create a new group builder to allows to add a FormGroup.
      *
+     * @param string|null $name the name of the group to add.
+     * @param array $options the group option to set for FormGroup (for details {@see GroupBuilder::__construct}).
      * @return GroupBuilder
      */
-    public function newGroupBuilder($name)
+    public function newGroupBuilder($name, $options = [])
     {
         $controlArray = &$this->controls;
         $index = \count($this->controls);
 
-        return new GroupBuilder(
-            $name,
-            $this,
-            function ($formGroup) use ($index, &$controlArray) {
-                // Insert the form group at the creation position
-                \array_splice($controlArray, $index, 0, [$formGroup]);
-            },
-            $this->constraintBuilder
-        );
+        $options['constraintBuilder'] = $this->constraintBuilder;
+        $options['onBuildCallback'] = function ($formGroup) use ($index, &$controlArray) {
+            // Insert the form group at the creation position
+            \array_splice($controlArray, $index, 0, [$formGroup]);
+        };
+
+        return new GroupBuilder($name, $this, $options);
     }
 
     /**
      * Create a new array builder to allows to add a FormArray.
      *
+     * @param string|null $name the name of the array to add.
+     * @param array $options the array option to set for FormArray (for details {@see ArrayBuilder::__construct}).
      * @return IArrayBuilder a new instance of array builder.
      */
-    public function newArrayBuilder($name)
+    public function newArrayBuilder($name, $options = [])
     {
         $controlArray = &$this->controls;
         $index = \count($this->controls);
 
-        return new ArrayBuilder(
-            $name,
-            $this,
-            function ($formArray) use ($index, &$controlArray) {
-                // Insert the form group at the creation position
-                \array_splice($controlArray, $index, 0, [$formArray]);
-            },
-            $this->constraintBuilder
-        );
+        $options['constraintBuilder'] = $this->constraintBuilder;
+        $options['onBuildCallback'] = function ($formArray) use ($index, &$controlArray) {
+            // Insert the form group at the creation position
+            \array_splice($controlArray, $index, 0, [$formArray]);
+        };
+
+        return new ArrayBuilder($name, $this, $options);
     }
 
 }

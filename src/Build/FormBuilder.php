@@ -32,31 +32,34 @@ class FormBuilder extends ContainerGroupBuilder
     private $csrfOptions;
 
     /**
-     * Constructor.
+     * {@inheritDoc}
      *
      * @param string $action the action url
-     * @param string $method the method to use to submit
-     * @param string $encodingType the encoding type of the form (used when the method is Form::METHOD_POST)
-     * @param ConstraintBuilder $constraintBuilder the constraint builder to use to add constraints to form controls
-     * @param ISecurityPolicy $securityPolicy the policy to use to securize the form
+     * @param array{
+     *      constraintBuilder?:ConstraintBuilder,
+     *      name?:string,
+     *      attributes:array,
+     *      label?:string,
+     *      help?:string,
+     *      method?:string,
+     *      enctype?string,
+     *      securityPolicy?:SecurityPolicy
+     * } $options The builder parameters (see {@see Form::__construct} parameters).
      */
-    public function __construct($action, $method, $encodingType, $constraintBuilder = null, $securityPolicy = null)
+    public function __construct($action, $options = [])
     {
-        parent::__construct(null, $constraintBuilder);
+        parent::__construct(ArrayUtil::getSafe($options, 'name'), $options);
 
-        $formParameters = [
-            'action' => $action,
-            'method' => $method,
-            'enctype' => $encodingType,
-        ];
-        ArrayUtil::merge($formParameters, $this->parameters);
+        $options['action'] = $action;
+        ArrayUtil::merge($options, $this->parameters, ['action', 'method', 'enctype']);
 
+        $securityPolicy = ArrayUtil::getSafe($options, 'securityPolicy');
         $this->securityPolicy = $securityPolicy === null ? new SecurityPolicy() : $securityPolicy;
     }
 
     /// OVERRIDE METHODS
 
-    public function addInputFile($name, $options)
+    public function addInputFile($name, $options = [])
     {
         parent::addInputFile($name, $options);
 
@@ -134,14 +137,13 @@ class FormBuilder extends ContainerGroupBuilder
     /**
      * Create an instance of the form builder.
      *
-     * @param string $action the action url
-     * @param string $method the method to use to submit
-     * @param string $encodingType the encoding type of the form (used when the method is Form::METHOD_POST)
-     * @return FormBuilder the builder generated
+     * @param string $action the action url.
+     * @param array $options {@see FormBuilder::__construct} for option details
+     * @return FormBuilder the builder generated.
      */
-    public static function new($action, $method = Form::METHOD_GET, $encodingType = Form::FORM_URL_ENCODED)
+    public static function new($action, $options = [])
     {
-        return new FormBuilder($action, $method, $encodingType);
+        return new FormBuilder($action, $options);
     }
 
 }

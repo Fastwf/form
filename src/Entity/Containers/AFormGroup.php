@@ -19,6 +19,11 @@ abstract class AFormGroup extends Control implements Container
      */
     protected $controls;
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param array{controls:array<Control>} $parameters The AFormGroup parameters that extends {@see Control::__construct} parameters.
+     */
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);

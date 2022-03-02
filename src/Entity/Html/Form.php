@@ -35,6 +35,15 @@ class Form extends FormGroup
 
     protected $enctype;
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param array{
+     *      action:string,
+     *      method?:string,
+     *      enctype?:string
+     * } $parameters The form parameters that extends {@see FormGroup::__construct}.
+     */
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);

@@ -22,6 +22,11 @@ class Option extends AOption
      */
     protected $value;
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param array{value:string} $parameters The option parameters that extends {@see AOption::__construct} parameters.
+     */
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);

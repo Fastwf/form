@@ -22,6 +22,11 @@ class Button extends FormControl
      */
     protected $type;
 
+    /**
+     * {@inheritDoc}
+     *
+     * @param array{type?:string} $parameters The button parameters that extends {@see FormControl::__construct} parameters.
+     */
     public function __construct($parameters = [])
     {
         parent::__construct($parameters);

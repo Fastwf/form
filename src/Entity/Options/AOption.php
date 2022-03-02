@@ -5,6 +5,9 @@ namespace Fastwf\Form\Entity\Options;
 use Fastwf\Form\Entity\Element;
 use Fastwf\Form\Utils\ArrayUtil;
 
+/**
+ * Abstract class that define common base of option and option group classes.
+ */
 abstract class AOption implements Element
 {
 
@@ -22,6 +25,11 @@ abstract class AOption implements Element
      */
     protected $disabled;
 
+    /**
+     * Constructor.
+     *
+     * @param array{label?:string,disabled?:boolean} $parameters The base option/option group parameters.
+     */
     public function __construct($parameters = [])
     {
         $this->label = (string) ArrayUtil::getSafe($parameters, 'label', null);

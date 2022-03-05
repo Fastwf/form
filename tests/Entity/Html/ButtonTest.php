@@ -25,6 +25,7 @@ class ButtonTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Button
+     * @covers Fastwf\Form\Parsing\StringParser
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetData()

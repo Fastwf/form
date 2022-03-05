@@ -735,6 +735,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\StringParser
      * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\SecurityUtil
      */

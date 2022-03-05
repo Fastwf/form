@@ -25,6 +25,7 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\StringParser
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetDataColor()
@@ -40,6 +41,8 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\AParser
+     * @covers Fastwf\Form\Parsing\NumberParser
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetDataNumber()
@@ -61,6 +64,8 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\AParser
+     * @covers Fastwf\Form\Parsing\NumberParser
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetDataRange()
@@ -76,6 +81,8 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\AParser
+     * @covers Fastwf\Form\Parsing\DateParser
      * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
@@ -95,6 +102,8 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\AParser
+     * @covers Fastwf\Form\Parsing\DateTimeParser
      * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
@@ -108,6 +117,85 @@ class InputTest extends TestCase
 
         $control = new Input(['type' => 'datetime-local']);
         $this->assertNull($control->getData());
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\AParser
+     * @covers Fastwf\Form\Parsing\MonthParser
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testGetDataMonth()
+    {
+        $control = new Input(['type' => 'month', 'value' => "2021-01"]);
+        $this->assertEquals(strtotime("2021-01-01 00:00:00"), $control->getData()->getTimestamp());
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\AParser
+     * @covers Fastwf\Form\Parsing\TimeParser
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\DateIntervalUtil
+     */
+    public function testGetDataTime()
+    {
+        $control = new Input(['type' => 'time', 'value' => "10:00"]);
+        $this->assertEquals(new \DateInterval("PT10H"), $control->getData());
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\AParser
+     * @covers Fastwf\Form\Parsing\WeekParser
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testGetDataWeek()
+    {
+        $control = new Input(['type' => 'week', 'value' => "2021-W10"]);
+        $this->assertEquals(strtotime("2021-03-08 00:00:00"), $control->getData()->getTimestamp());
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\AParser
+     * @covers Fastwf\Form\Parsing\DateParser
+     * @covers Fastwf\Form\Parsing\DateTimeParser
+     * @covers Fastwf\Form\Parsing\MonthParser
+     * @covers Fastwf\Form\Parsing\NumberParser
+     * @covers Fastwf\Form\Parsing\StringParser
+     * @covers Fastwf\Form\Parsing\TimeParser
+     * @covers Fastwf\Form\Parsing\WeekParser
+     * @covers Fastwf\Form\Utils\ArrayUtil
+     * @covers Fastwf\Form\Utils\DateIntervalUtil
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testGetSValue()
+    {
+        $controls = [
+            new Input(['type' => 'text']),
+            new Input(['type' => 'date', 'value' => new \DateTime("2022-03-05")]),
+            new Input(['type' => 'datetime-local', 'value' => new \DateTime("2022-03-05 12:30:15.123")]),
+            new Input(['type' => 'month', 'value' => new \DateTime("2022-03-01 00:00:00.000")]),
+            new Input(['type' => 'range', 'value' => 3.14]),
+            new Input(['type' => 'time', 'value' => new \DateInterval("PT10H")]),
+            new Input(['type' => 'week', 'value' => new \DateTime("2021-03-08 00:00:00")])
+        ];
+
+        $this->assertSame(
+            ['', '2022-03-05', '2022-03-05T12:30:15.123', '2022-03', '3.14', '10:00', '2021-W10'],
+            \array_map(function ($control) { return $control->getSValue(); }, $controls)
+        );
     }
 
 }

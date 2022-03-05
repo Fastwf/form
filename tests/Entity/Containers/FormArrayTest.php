@@ -62,7 +62,9 @@ class FormArrayTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Containers\FormArray
-     * @covers Fastwf\Form\Entity\Html\Input  
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\AParser
+     * @covers Fastwf\Form\Parsing\NumberParser
      * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetData()

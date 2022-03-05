@@ -4,7 +4,12 @@ namespace Fastwf\Form\Entity\Html;
 
 use Fastwf\Form\Utils\ArrayUtil;
 use Fastwf\Form\Entity\FormControl;
-use Fastwf\Form\Utils\DateTimeUtil;
+use Fastwf\Form\Parsing\DateParser;
+use Fastwf\Form\Parsing\DateTimeParser;
+use Fastwf\Form\Parsing\MonthParser;
+use Fastwf\Form\Parsing\NumberParser;
+use Fastwf\Form\Parsing\TimeParser;
+use Fastwf\Form\Parsing\WeekParser;
 
 /**
  * Entity definition for "input" html element.
@@ -33,33 +38,36 @@ class Input extends FormControl
         $this->type = ArrayUtil::get($parameters, 'type');
     }
 
-    /**
-     * Try to parse the value as an integer according to the step value.
-     *
-     * @param string|null $value the value to parse
-     * @param string $step the step set on input field
-     * @return int|double|null
-     */
-    private function getNumberOf($value, $step)
+    protected function getDefaultParser($parameters)
     {
-        // Control nullity of the value
-        if ($value === null)
+        switch (ArrayUtil::getSafe($parameters, 'type'))
         {
-            return null;
+            case 'date':
+                $parser = new DateParser();
+                break;
+            case 'datetime':
+            case 'datetime-local':
+                $parser = new DateTimeParser();
+                break;
+            case 'month':
+                $parser = new MonthParser();
+                break;
+            case 'number':
+            case 'range':
+                $parser = new NumberParser();
+                break;
+            case 'time':
+                $parser = new TimeParser();
+                break;
+            case 'week':
+                $parser = new WeekParser();
+                break;
+            default:
+                $parser = parent::getDefaultParser($parameters);
+                break;
         }
 
-        // Evaluate if the field is an integer value or a double
-        $matches = [];
-        if (\preg_match("/^(\\d+)(?:(\\.\\d+))?$/", (string) $step, $matches) === 1)
-        {
-            // When the array have 2 elements, the floating point party is empty so it's an integer and not a double
-            $isInteger = \count($matches) === 2;
-        }
-        else {
-            $isInteger = true;
-        }
-
-        return $isInteger ? (int) $value : (double) $value;
+        return $parser;
     }
 
     public function setType($type)
@@ -75,36 +83,6 @@ class Input extends FormControl
     public function getTag()
     {
         return 'input';
-    }
-
-    /**
-     * The value returned depend on the input type.
-     * 
-     * Warning: no control are performed so parsing can result in bad value or error (validate the form before).
-     *
-     * @return mixed
-     */
-    public function getData()
-    {
-        switch ($this->type)
-        {
-            case 'date':
-                $data = DateTimeUtil::getDate($this->value, DateTimeUtil::HTML_DATE_FORMAT);
-                break;
-            case 'number':
-            case 'range':
-                $data = $this->getNumberOf($this->value, ArrayUtil::getSafe($this->attributes, 'step', '1'));
-                break;
-            case 'datetime':
-            case 'datetime-local':
-                $data = DateTimeUtil::getDateTime($this->value, DateTimeUtil::HTML_DATETIME_FORMAT);
-                break;
-            default:
-                $data = $this->value;
-                break;
-        }
-
-        return $data;
     }
 
 }

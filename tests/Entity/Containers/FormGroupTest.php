@@ -55,6 +55,10 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\AParser
+     * @covers Fastwf\Form\Parsing\DateParser
+     * @covers Fastwf\Form\Parsing\NumberParser
+     * @covers Fastwf\Form\Parsing\StringParser
      * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */

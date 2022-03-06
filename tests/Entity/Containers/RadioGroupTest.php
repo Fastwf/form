@@ -235,7 +235,7 @@ class RadioGroupTest extends TestCase
      */
     public function testGetFullNameRadioInsideGroup()
     {
-        $form = FormBuilder::new('test')
+        $form = FormBuilder::new('id', 'test')
             ->addRadioGroup('gender', [
                 'choices' => [
                     [ 'value' => 'male', 'label' => 'Male' ],

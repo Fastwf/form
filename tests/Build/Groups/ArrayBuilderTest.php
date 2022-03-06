@@ -62,7 +62,7 @@ class ArrayBuilderTest extends TestCase
      */
     public function testOfInput()
     {
-        $form = FormBuilder::new("test")
+        $form = FormBuilder::new('id', "test")
             ->newArrayBuilder('emails', ['defaultValue' => ['', '']])
                 ->ofInput('email')
                 ->buildInParent()

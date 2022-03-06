@@ -105,7 +105,7 @@ class CheckboxGroupTest extends TestCase
      */
     public function testGetFullNameRadioInsideGroup()
     {
-        $form = FormBuilder::new('test')
+        $form = FormBuilder::new('id', 'test')
             ->addCheckboxGroup('fruits', [
                 'choices' => [
                     ['value' => 'kiwi'],

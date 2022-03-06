@@ -18,9 +18,12 @@ use Fastwf\Form\Entity\Containers\RadioGroup;
 use Fastwf\Form\Entity\Containers\CheckboxGroup;
 use Fastwf\Constraint\Constraints\String\Pattern;
 use Fastwf\Form\Entity\Html\Input;
+use Fastwf\Tests\Build\Security\TestingSecurityPolicy;
 
 class FormBuilderTest extends TestCase
 {
+
+    private const FORM_ID = "form_id";
 
     /**
      * @covers Fastwf\Form\Build\FormBuilder
@@ -52,7 +55,7 @@ class FormBuilderTest extends TestCase
      */
     public function testAddInputWithConstraint()
     {
-        $form = FormBuilder::new("test")
+        $form = FormBuilder::new(self::FORM_ID, "test")
             ->addInput(
                 'amount',
                 'text',
@@ -106,7 +109,7 @@ class FormBuilderTest extends TestCase
      */
     public function testAddInput()
     {
-        $form = FormBuilder::new("test")
+        $form = FormBuilder::new(self::FORM_ID, "test")
             ->addInput(
                 'birthDate',
                 'date',
@@ -164,7 +167,7 @@ class FormBuilderTest extends TestCase
     {
         $body = 'Hello world!';
 
-        $form = FormBuilder::new("test")
+        $form = FormBuilder::new(self::FORM_ID, "test")
             ->addTextarea(
                 'body',
                 [
@@ -217,7 +220,7 @@ class FormBuilderTest extends TestCase
      */
     public function testAddCheckboxOnOff()
     {
-        $form = FormBuilder::new('test')
+        $form = FormBuilder::new(self::FORM_ID, 'test')
             ->addCheckbox('accept_cookies', [])
             ->build();
         
@@ -262,7 +265,7 @@ class FormBuilderTest extends TestCase
      */
     public function testAddCheckboxValue()
     {
-        $form = FormBuilder::new('test')
+        $form = FormBuilder::new(self::FORM_ID, 'test')
             ->addCheckbox(
                 'fruit',
                 [
@@ -306,7 +309,7 @@ class FormBuilderTest extends TestCase
     {
         $body = 'Hello world!';
 
-        $form = FormBuilder::new("test")
+        $form = FormBuilder::new(self::FORM_ID, "test")
             ->addButton(
                 'body',
                 ['label' => 'Submit'],
@@ -350,7 +353,7 @@ class FormBuilderTest extends TestCase
      */
     public function testAddSelectSingle()
     {
-        $form = FormBuilder::new("test")
+        $form = FormBuilder::new(self::FORM_ID, "test")
             ->addSelect(
                 'gender', [
                 'choices' => [
@@ -406,7 +409,7 @@ class FormBuilderTest extends TestCase
      */
     public function testAddSelectMultiple()
     {
-        $form = FormBuilder::new("test")
+        $form = FormBuilder::new(self::FORM_ID, "test")
             ->addSelect(
                 'fruits',
                 [
@@ -468,7 +471,7 @@ class FormBuilderTest extends TestCase
     {
         $this->expectException(BuildException::class);
 
-        FormBuilder::new("test")
+        FormBuilder::new(self::FORM_ID, "test")
             ->addSelect(
                 'groups',
                 [
@@ -519,7 +522,7 @@ class FormBuilderTest extends TestCase
      */
     public function testAddInputFile()
     {
-        $form = FormBuilder::new("test")
+        $form = FormBuilder::new(self::FORM_ID, "test")
             ->addInputFile(
                 'file',
                 [
@@ -570,7 +573,7 @@ class FormBuilderTest extends TestCase
      */
     public function testAddRadioGroup()
     {
-        $form = FormBuilder::new("test")
+        $form = FormBuilder::new(self::FORM_ID, "test")
             ->addRadioGroup('gender', [
                 'choices' => [
                     [
@@ -629,7 +632,7 @@ class FormBuilderTest extends TestCase
     {
         $items = ['Archer', 'Knight'];
 
-        $form = FormBuilder::new("test")
+        $form = FormBuilder::new(self::FORM_ID, "test")
             ->addCheckboxGroup('army', [
                 'choices' => [
                     [
@@ -676,7 +679,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\ContainerBuilder
      * @covers Fastwf\Form\Build\ContainerGroupBuilder
-     * @covers Fastwf\Form\Build\Security\SecurityPolicy
+     * @covers Fastwf\Form\Build\Security\ASecurityPolicy
      * @covers Fastwf\Form\Constraints\String\Equals
      * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
@@ -690,66 +693,22 @@ class FormBuilderTest extends TestCase
      */
     public function testSetSecureForm()
     {
-        $token = null;
+        $policy = new TestingSecurityPolicy(null, '_csrf_token', 'application_seed');
 
-        $form = FormBuilder::new("test")
-            ->setSecure(true, "application_seed", $token, "_csrf_token")
+        $form = FormBuilder::new(self::FORM_ID, "test", ['securityPolicy' => $policy])
             ->build();
+        
+        // Setup a new CSRF token in form
+        $policy->newCsrfToken(self::FORM_ID, );
         
         /** @var Input */
         $control = $form->getControlAt(0);
         $this->assertEquals('hidden', $control->getType());
 
-        $form->setValue(['_csrf_token' => '']);
-        $this->assertFalse($form->validate());
-
-        $form->setValue(['_csrf_token' => $token]);
-        $this->assertTrue($form->validate());
-    }
-
-    /**
-     * @covers Fastwf\Form\Build\FormBuilder
-     * @covers Fastwf\Form\Build\AGroupBuilder
-     * @covers Fastwf\Form\Build\ConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
-     * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
-     * @covers Fastwf\Form\Build\ContainerBuilder
-     * @covers Fastwf\Form\Build\ContainerGroupBuilder
-     * @covers Fastwf\Form\Build\Security\SecurityPolicy
-     * @covers Fastwf\Form\Constraints\String\Equals
-     * @covers Fastwf\Form\Constraints\StringField
-     * @covers Fastwf\Form\Entity\Containers\AFormGroup
-     * @covers Fastwf\Form\Entity\Containers\FormGroup
-     * @covers Fastwf\Form\Entity\Control
-     * @covers Fastwf\Form\Entity\FormControl
-     * @covers Fastwf\Form\Entity\Html\Form
-     * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Parsing\StringParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
-     * @covers Fastwf\Form\Utils\SecurityUtil
-     */
-    public function testSetSecureFormUsingExistingToken()
-    {
-        $token = "test_token";
-
-        $form = FormBuilder::new("test")
-            ->setSecure(true, null, $token)
-            ->build();
-
+        // Verify that the value is set with generated CSRF token
         $this->assertEquals(
-            ['__token' => $token],
-            $form->getData(),
+            ['_csrf_token' => $policy->getLastToken()],
+            $form->getValue()
         );
     }
 
@@ -772,26 +731,30 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\ContainerBuilder
      * @covers Fastwf\Form\Build\ContainerGroupBuilder
-     * @covers Fastwf\Form\Build\Security\SecurityPolicy
+     * @covers Fastwf\Form\Build\Security\ASecurityPolicy
      * @covers Fastwf\Form\Constraints\String\Equals
+     * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\StringParser
      * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\SecurityUtil
      */
-    public function testSetInsecureForm()
+    public function testSetSecureFormUsingExistingToken()
     {
-        $token = null;
+        $token = "test_token";
+        $policy = new TestingSecurityPolicy($token);
 
-        $form = FormBuilder::new("test")
-            ->setSecure(true, "application_seed", $token, "_token")
-            ->setSecure(false)
+        $form = FormBuilder::new(self::FORM_ID, "test", ['securityPolicy' => $policy])
             ->build();
         
-        $this->assertEquals([], $form->getControls());
+        $form->setValue(['__token' => $token]);
+
+        $this->assertTrue($form->validate());
     }
 
 }

@@ -43,7 +43,7 @@ class GroupBuilderTest extends TestCase
      */
     public function testNewGroupBuilder()
     {
-        $form = FormBuilder::new('test')
+        $form = FormBuilder::new("id", 'test')
             ->newGroupBuilder('address')
                 ->setAttributes(['class' => 'app-formgroup app-form--address'])
                 ->addInput('lane')

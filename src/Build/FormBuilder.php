@@ -9,7 +9,7 @@ use Fastwf\Constraint\Constraints\Chain;
 use Fastwf\Form\Constraints\StringField;
 use Fastwf\Form\Constraints\String\Equals;
 use Fastwf\Form\Build\ContainerGroupBuilder;
-use Fastwf\Form\Build\Security\SecurityPolicy;
+use Fastwf\Form\Build\Security\SecurityPolicyInterface;
 
 /**
  * The builder class pattern that allows to create form entity.
@@ -18,22 +18,23 @@ class FormBuilder extends ContainerGroupBuilder
 {
 
     /**
+     * The id to use to build the form.
+     *
+     * @var string
+     */
+    private $id;
+
+    /**
      * The security policy implementation to use to build CSRF tokens.
      *
-     * @var ISecurityPolicy
+     * @var SecurityPolicyInterface
      */
     private $securityPolicy;
 
     /**
-     * The csrf specifications to use to inject CSRF token.
-     *
-     * @var array
-     */
-    private $csrfOptions;
-
-    /**
      * {@inheritDoc}
      *
+     * @param string $id a unique id that represent the form to build.
      * @param string $action the action url
      * @param array{
      *      constraintBuilder?:ConstraintBuilder,
@@ -46,15 +47,16 @@ class FormBuilder extends ContainerGroupBuilder
      *      securityPolicy?:SecurityPolicy
      * } $options The builder parameters (see {@see Form::__construct} parameters).
      */
-    public function __construct($action, $options = [])
+    public function __construct($id, $action, $options = [])
     {
         parent::__construct(ArrayUtil::getSafe($options, 'name'), $options);
+
+        $this->id = $id;
 
         $options['action'] = $action;
         ArrayUtil::merge($options, $this->parameters, ['action', 'method', 'enctype']);
 
-        $securityPolicy = ArrayUtil::getSafe($options, 'securityPolicy');
-        $this->securityPolicy = $securityPolicy === null ? new SecurityPolicy() : $securityPolicy;
+        $this->securityPolicy = ArrayUtil::getSafe($options, 'securityPolicy');
     }
 
     /// OVERRIDE METHODS
@@ -69,40 +71,6 @@ class FormBuilder extends ContainerGroupBuilder
         return $this;
     }
 
-    /// PUBLIC METHODS
-
-    /**
-     * Set the form secure or not by injecting an hidden field that hold a CSRF token.
-     *
-     * @param boolean $secure true to add csrf token protected or false otherwise.
-     * @param string $seed the seed to use to generate the CSRF token.
-     * @param string|null (in/out) the token to use or to fill and inject in the form.
-     * @return $this the current form builder updated.
-     */
-    public function setSecure($secure, $seed = null, &$token = null, $name = "__token")
-    {
-        if ($secure)
-        {
-            if ($token === null)
-            {
-                // Generate the token
-                $token = $this->securityPolicy->newCsrfToken($seed === null ? \random_bytes(8) : $seed);
-            }
-
-            $this->csrfOptions = [
-                'token' => $token,
-                'name' => $name,
-            ];
-        }
-        else
-        {
-            // Remove all options
-            $this->csrfOptions = null;
-        }
-
-        return $this;
-    }
-
     /// IMPLEMENTATION
 
     /**
@@ -112,18 +80,21 @@ class FormBuilder extends ContainerGroupBuilder
      */
     public function build()
     {
-        // Set the security in form if it's required.
-        if ($this->csrfOptions !== null)
+        // Set the security in form if it's required (securityPolicy provided).
+        if ($this->securityPolicy !== null)
         {
-            \array_unshift(
-                $this->controls,
-                new Input([
-                    'name' => $this->csrfOptions['name'],
-                    'type' => 'hidden',
-                    'value' => $this->csrfOptions['token'],
-                    'constraint' => new Chain(false, new StringField(), new Equals($this->csrfOptions['token'])),
-                ])
-            );
+            $csrfInput = new Input([
+                'name' => $this->securityPolicy->getFieldName(),
+                'type' => 'hidden',
+                'constraint' => new Chain(
+                    false,
+                    new StringField(),
+                    new Equals($this->securityPolicy->getVerificationCsrfToken($this->id))
+                )
+            ]);
+            $this->securityPolicy->setControl($csrfInput);
+
+            \array_unshift($this->controls, $csrfInput);
         }
 
         $parameters = $this->parameters;
@@ -137,13 +108,14 @@ class FormBuilder extends ContainerGroupBuilder
     /**
      * Create an instance of the form builder.
      *
+     * @param string $id a unique id that represent the form to build.
      * @param string $action the action url.
      * @param array $options {@see FormBuilder::__construct} for option details
      * @return FormBuilder the builder generated.
      */
-    public static function new($action, $options = [])
+    public static function new($id, $action, $options = [])
     {
-        return new FormBuilder($action, $options);
+        return new FormBuilder($id, $action, $options);
     }
 
 }

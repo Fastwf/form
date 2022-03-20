@@ -2,7 +2,7 @@
 
 namespace Fastwf\Form\Build;
 
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Form\Constraints\String\Equals;
 use Fastwf\Constraint\Constraints\String\Enum;
 use Fastwf\Form\Build\Constraints\AConstraintBuilder;

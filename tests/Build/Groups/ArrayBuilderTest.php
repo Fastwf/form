@@ -58,7 +58,6 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testOfInput()
     {
@@ -95,7 +94,6 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Textarea
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testOfTextarea()
     {
@@ -128,7 +126,6 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Select
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testOfSelect()
@@ -168,7 +165,6 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testOfCheckbox()
     {
@@ -202,7 +198,6 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\InputFile
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testOfInputFile()
@@ -244,7 +239,6 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testOfCheckboxGroup()
     {
@@ -282,7 +276,6 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testOfRadioGroup()
     {
@@ -319,7 +312,6 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Button
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testOfButton()
     {
@@ -358,7 +350,6 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Select
      * @covers Fastwf\Form\Entity\Options\AOption
      * @covers Fastwf\Form\Entity\Options\Option
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testOfGroup()
@@ -404,7 +395,6 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testOfArray()
     {

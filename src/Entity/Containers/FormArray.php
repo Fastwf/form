@@ -2,14 +2,14 @@
 
 namespace Fastwf\Form\Entity\Containers;
 
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Form\Entity\Control;
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Exceptions\KeyError;
 use Fastwf\Constraint\Data\Violation;
 use Fastwf\Constraint\Constraints\Chain;
 use Fastwf\Form\Entity\Containers\Container;
 use Fastwf\Constraint\Constraints\Arrays\Items;
 use Fastwf\Constraint\Constraints\Type\ArrayType;
-use Fastwf\Form\Exceptions\KeyError;
 
 /**
  * Form group that allows to create a collection of same control.

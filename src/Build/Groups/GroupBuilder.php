@@ -7,7 +7,7 @@ use Fastwf\Form\Build\ContainerBuilder;
 use Fastwf\Form\Build\Groups\ArrayBuilder;
 use Fastwf\Form\Build\ContainerGroupBuilder;
 use Fastwf\Form\Entity\Containers\FormGroup;
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 
 /**
  * The builder able to generate FormGroup containers.

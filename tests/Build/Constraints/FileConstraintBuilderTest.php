@@ -28,7 +28,6 @@ class FileConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Constraints\String\Equals
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testStandardConstraints()
     {
@@ -53,7 +52,6 @@ class FileConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Constraints\String\Equals
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testOnlyPngFiles()
     {

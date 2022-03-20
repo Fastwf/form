@@ -2,7 +2,7 @@
 
 namespace Fastwf\Form\Build\Groups;
 
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Form\Build\AGroupBuilder;
 use Fastwf\Form\Build\ConstraintBuilder;
 use Fastwf\Form\Entity\Containers\EntityGroup;

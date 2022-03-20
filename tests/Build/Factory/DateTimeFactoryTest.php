@@ -54,7 +54,6 @@ class DateTimeFactoryTest extends TestCase
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\DateTimeFactory
      * @covers Fastwf\Form\Constraints\Date\StepDateTime
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testStep()

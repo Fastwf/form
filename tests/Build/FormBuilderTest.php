@@ -51,7 +51,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testAddInputWithConstraint()
     {
@@ -104,7 +103,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testAddInput()
@@ -161,7 +159,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Textarea
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testAddTextarea()
     {
@@ -206,7 +203,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\ContainerBuilder
      * @covers Fastwf\Form\Build\ContainerGroupBuilder
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Constraints\BooleanField
      * @covers Fastwf\Form\Constraints\String\Equals
      * @covers Fastwf\Form\Entity\Containers\FormGroup
@@ -261,7 +257,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testAddCheckboxValue()
     {
@@ -303,7 +298,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Button
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testAddButton()
     {
@@ -348,7 +342,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Select
      * @covers Fastwf\Form\Entity\Options\AOption
      * @covers Fastwf\Form\Entity\Options\Option
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testAddSelectSingle()
@@ -404,7 +397,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Options\AOption
      * @covers Fastwf\Form\Entity\Options\Option
      * @covers Fastwf\Form\Entity\Options\OptionGroup
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testAddSelectMultiple()
@@ -465,7 +457,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Select
      * @covers Fastwf\Form\Entity\Options\AOption
      * @covers Fastwf\Form\Entity\Options\OptionGroup
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testAddSelectBadChoices()
     {
@@ -517,7 +508,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\InputFile
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testAddInputFile()
@@ -569,7 +559,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testAddRadioGroup()
     {
@@ -626,7 +615,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Checkbox
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testAddCheckboxGroup()
     {
@@ -688,7 +676,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\SecurityUtil
      */
     public function testSetSecureForm()
@@ -741,7 +728,6 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Parsing\StringParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\SecurityUtil
      */
     public function testSetSecureFormUsingExistingToken()

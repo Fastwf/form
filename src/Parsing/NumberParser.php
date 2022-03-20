@@ -3,7 +3,7 @@
 namespace Fastwf\Form\Parsing;
 
 use Fastwf\Form\Parsing\AParser;
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use phpDocumentor\Reflection\Types\Integer;
 
 /**

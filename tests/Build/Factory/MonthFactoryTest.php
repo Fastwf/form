@@ -54,7 +54,6 @@ class MonthFactoryTest extends TestCase
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\MonthFactory
      * @covers Fastwf\Form\Constraints\Date\StepMonth
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testStep()
     {
@@ -73,7 +72,6 @@ class MonthFactoryTest extends TestCase
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\MonthFactory
      * @covers Fastwf\Form\Constraints\Date\StepMonth
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testStepWithMin()

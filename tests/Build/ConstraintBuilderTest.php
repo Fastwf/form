@@ -4,8 +4,8 @@ namespace Fastwf\Tests\Build;
 
 use PHPUnit\Framework\TestCase;
 use Fastwf\Constraint\Api\Validator;
-use Fastwf\Form\Exceptions\KeyError;
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\KeyError;
+use Fastwf\Api\Exceptions\ValueError;
 use Fastwf\Form\Build\ConstraintBuilder;
 use Fastwf\Form\Build\Constraints\AConstraintBuilder;
 
@@ -305,7 +305,6 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\DoubleField
      * @covers Fastwf\Form\Constraints\Number\Step
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testBuildInputNumberStepString()
     {
@@ -341,7 +340,6 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\DoubleField
      * @covers Fastwf\Form\Constraints\Number\Step
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testBuildInputRange()
     {
@@ -782,7 +780,6 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testSetGetBuilderWithNull()
     {

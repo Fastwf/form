@@ -19,7 +19,6 @@ class CheckboxGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testSetValue()
     {
@@ -52,7 +51,6 @@ class CheckboxGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetValueGetData()
     {
@@ -101,7 +99,6 @@ class CheckboxGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetFullNameRadioInsideGroup()
     {

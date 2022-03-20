@@ -24,7 +24,6 @@ class NumberParserTest extends TestCase
     /**
      * @covers Fastwf\Form\Parsing\AParser
      * @covers Fastwf\Form\Parsing\NumberParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
@@ -45,7 +44,6 @@ class NumberParserTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testStringifyDouble()
     {
@@ -63,7 +61,6 @@ class NumberParserTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testParseInteger()
     {
@@ -83,7 +80,6 @@ class NumberParserTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testParseDouble()
     {
@@ -103,7 +99,6 @@ class NumberParserTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testParseNull()
     {
@@ -121,7 +116,6 @@ class NumberParserTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testParseBadFormat()
     {

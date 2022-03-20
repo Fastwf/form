@@ -2,9 +2,9 @@
 
 namespace Fastwf\Form\Build\Constraints;
 
-use Fastwf\Form\Exceptions\KeyError;
+use Fastwf\Api\Exceptions\KeyError;
 use Fastwf\Constraint\Api\Constraint;
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\ValueError;
 use Fastwf\Constraint\Constraints\Chain;
 use Fastwf\Form\Constraints\RequiredField;
 

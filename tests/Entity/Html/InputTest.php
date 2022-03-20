@@ -12,7 +12,6 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetTag()
     {
@@ -26,7 +25,6 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Parsing\StringParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetDataColor()
     {
@@ -43,7 +41,6 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Parsing\AParser
      * @covers Fastwf\Form\Parsing\NumberParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetDataNumber()
     {
@@ -66,7 +63,6 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Parsing\AParser
      * @covers Fastwf\Form\Parsing\NumberParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetDataRange()
     {
@@ -83,7 +79,6 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Parsing\AParser
      * @covers Fastwf\Form\Parsing\DateParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testGetDataDate()
@@ -104,7 +99,6 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Parsing\AParser
      * @covers Fastwf\Form\Parsing\DateTimeParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testGetDataDateTime()
@@ -125,7 +119,6 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Parsing\AParser
      * @covers Fastwf\Form\Parsing\MonthParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testGetDataMonth()
@@ -140,7 +133,6 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Parsing\AParser
      * @covers Fastwf\Form\Parsing\TimeParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateIntervalUtil
      */
     public function testGetDataTime()
@@ -155,7 +147,6 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Parsing\AParser
      * @covers Fastwf\Form\Parsing\WeekParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testGetDataWeek()
@@ -176,7 +167,6 @@ class InputTest extends TestCase
      * @covers Fastwf\Form\Parsing\StringParser
      * @covers Fastwf\Form\Parsing\TimeParser
      * @covers Fastwf\Form\Parsing\WeekParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateIntervalUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */

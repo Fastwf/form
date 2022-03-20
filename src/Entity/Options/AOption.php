@@ -3,7 +3,7 @@
 namespace Fastwf\Form\Entity\Options;
 
 use Fastwf\Form\Entity\Element;
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 
 /**
  * Abstract class that define common base of option and option group classes.

@@ -2,7 +2,7 @@
 
 namespace Fastwf\Form\Build;
 
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Form\Entity\Html\Input;
 use Fastwf\Form\Entity\Html\Button;
 use Fastwf\Form\Entity\Html\Select;

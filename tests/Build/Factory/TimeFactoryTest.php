@@ -3,7 +3,7 @@
 namespace Fastwf\Tests\Build\Factory;
 
 use PHPUnit\Framework\TestCase;
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\ValueError;
 use Fastwf\Form\Utils\DateIntervalUtil;
 use Fastwf\Form\Build\ConstraintBuilder;
 use Fastwf\Form\Build\Factory\TimeFactory;

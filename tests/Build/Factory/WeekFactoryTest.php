@@ -54,7 +54,6 @@ class WeekFactoryTest extends TestCase
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\Date\StepDateTime
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testStep()
     {

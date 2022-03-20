@@ -4,7 +4,7 @@ namespace Fastwf\Form\Build\Security;
 
 use Fastwf\Form\Entity\FormControl;
 use Fastwf\Form\Utils\SecurityUtil;
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\ValueError;
 use Fastwf\Form\Build\Security\SecurityPolicyInterface;
 
 /**

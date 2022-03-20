@@ -18,7 +18,6 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetFullNameBasic() {
         $control = new Input(['name' => self::FIRST_NAME, 'type' => 'text']);
@@ -50,7 +49,6 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetFullNameForm() {
         $form = FormBuilder::new(self::FORM_ID, 'test')
@@ -88,7 +86,6 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetFullNameInsideGroup() {
         $form = FormBuilder::new(self::FORM_ID, 'test')
@@ -130,7 +127,6 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetFullNameGroupInsideGroup() {
         $form = FormBuilder::new(self::FORM_ID, 'test')
@@ -176,7 +172,6 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetFullNameGroupInsideUnamedGroup() {
         $form = FormBuilder::new(self::FORM_ID, 'test')
@@ -224,7 +219,6 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetFullNameInsideArray() {
         $form = FormBuilder::new(self::FORM_ID, 'test')
@@ -277,7 +271,6 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetFullNameGroupInsideArray() {
         $form = FormBuilder::new(self::FORM_ID, 'test')

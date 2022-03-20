@@ -2,7 +2,7 @@
 
 namespace Fastwf\Form\Entity\Html;
 
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Constraint\Api\Validator;
 use Fastwf\Constraint\Api\Constraint;
 use Fastwf\Form\Entity\Containers\FormGroup;

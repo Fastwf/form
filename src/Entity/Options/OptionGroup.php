@@ -2,7 +2,7 @@
 
 namespace Fastwf\Form\Entity\Options;
 
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Form\Entity\Options\Option;
 use Fastwf\Form\Entity\Options\AOption;
 

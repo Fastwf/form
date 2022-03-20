@@ -14,7 +14,6 @@ class CheckboxTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testSynchronizeValueConstructAttributePriority()
     {
@@ -51,7 +50,6 @@ class CheckboxTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testCheckboxGetData()
     {
@@ -76,7 +74,6 @@ class CheckboxTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testSynchronizeValueValuePriorityAndIsChecked()
     {
@@ -93,7 +90,6 @@ class CheckboxTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testSynchronizeValueCheckedPriority()
     {

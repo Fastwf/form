@@ -45,7 +45,6 @@ class NumberFactoryTest extends TestCase
      * @covers Fastwf\Form\Build\Factory\NumberFactory
      * @covers Fastwf\Form\Build\Factory\NumericFactory
      * @covers Fastwf\Form\Constraints\Number\Step
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testStep()
     {

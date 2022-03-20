@@ -3,7 +3,7 @@
 namespace Fastwf\Form\Constraints\Time;
 
 use Fastwf\Constraint\Api\Constraint;
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\ValueError;
 use Fastwf\Form\Utils\DateIntervalUtil;
 
 /**

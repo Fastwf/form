@@ -3,7 +3,7 @@
 namespace Fastwf\Tests\Constraints\Time;
 
 use Fastwf\Constraint\Data\Node;
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\ValueError;
 use Fastwf\Form\Constraints\Time\StepTime;
 use Fastwf\Tests\Constraints\ConstraintTestCase;
 

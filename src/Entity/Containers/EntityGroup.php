@@ -2,7 +2,7 @@
 
 namespace Fastwf\Form\Entity\Containers;
 
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Constraint\Api\Constraint;
 use Fastwf\Constraint\Data\Violation;
 use Fastwf\Form\Entity\Containers\AFormGroup;

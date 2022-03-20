@@ -3,7 +3,7 @@
 namespace Fastwf\Form\Entity;
 
 use Fastwf\Form\Entity\Element;
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Constraint\Api\Constraint;
 use Fastwf\Constraint\Data\Violation;
 

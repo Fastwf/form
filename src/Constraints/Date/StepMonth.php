@@ -3,7 +3,7 @@
 namespace Fastwf\Form\Constraints\Date;
 
 use Fastwf\Constraint\Api\Constraint;
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\ValueError;
 
 /**
  * Constraint that verify the step based on mount number.

@@ -3,7 +3,7 @@
 namespace Fastwf\Tests\Constraints\Number;
 
 use Fastwf\Constraint\Data\Node;
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\ValueError;
 use Fastwf\Form\Constraints\Number\Step;
 use Fastwf\Tests\Constraints\ConstraintTestCase;
 

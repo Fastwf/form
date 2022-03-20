@@ -4,7 +4,7 @@ namespace Fastwf\Tests\Entity\Html;
 
 use PHPUnit\Framework\TestCase;
 use Fastwf\Form\Entity\Html\Radio;
-use Fastwf\Form\Exceptions\KeyError;
+use Fastwf\Api\Exceptions\KeyError;
 
 class RadioTest extends TestCase
 {
@@ -17,7 +17,6 @@ class RadioTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Radio
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testKeyError()
     {
@@ -32,7 +31,6 @@ class RadioTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Radio
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetData()
     {
@@ -50,7 +48,6 @@ class RadioTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Radio
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testSetChecked()
     {
@@ -66,7 +63,6 @@ class RadioTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Radio
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testIsChecked()
     {

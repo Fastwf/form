@@ -12,7 +12,6 @@ class TextareaTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Textarea
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetTag()
     {
@@ -25,7 +24,6 @@ class TextareaTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
      * @covers Fastwf\Form\Entity\Html\Textarea
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetData()
     {

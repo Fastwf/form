@@ -2,7 +2,7 @@
 
 namespace Fastwf\Form\Build\Factory;
 
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Form\Build\ConstraintBuilder;
 use Fastwf\Form\Constraints\Number\Step;
 use Fastwf\Form\Build\Factory\NumericFactory;

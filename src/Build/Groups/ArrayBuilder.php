@@ -9,7 +9,7 @@ use Fastwf\Form\Build\ContainerBuilder;
 use Fastwf\Form\Build\Groups\GroupBuilder;
 use Fastwf\Form\Build\Groups\IArrayBuilder;
 use Fastwf\Form\Entity\Containers\FormArray;
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 
 /**
  * The builder able to generate FormArray containers.

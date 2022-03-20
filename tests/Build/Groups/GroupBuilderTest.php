@@ -38,7 +38,6 @@ class GroupBuilderTest extends TestCase
      * @covers Fastwf\Form\Parsing\StringParser
      * @covers Fastwf\Form\Parsing\AParser
      * @covers Fastwf\Form\Parsing\NumberParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\EntityUtil
      */
     public function testNewGroupBuilder()

@@ -23,7 +23,6 @@ class RadioGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testSetGetConstraint()
     {
@@ -51,7 +50,6 @@ class RadioGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testSetGetValidation()
     {
@@ -83,7 +81,6 @@ class RadioGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testSetGetHelp()
     {
@@ -112,7 +109,6 @@ class RadioGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetContainerType()
     {
@@ -132,7 +128,6 @@ class RadioGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testSetValue()
     {
@@ -162,7 +157,6 @@ class RadioGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetValue()
     {
@@ -186,7 +180,6 @@ class RadioGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetDataNull()
     {
@@ -231,7 +224,6 @@ class RadioGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetFullNameRadioInsideGroup()
     {

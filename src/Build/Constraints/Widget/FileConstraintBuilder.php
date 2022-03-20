@@ -2,7 +2,7 @@
 
 namespace Fastwf\Form\Build\Constraints\Widget;
 
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Constraint\Api\Constraint;
 use Fastwf\Constraint\Constraints\Chain;
 use Fastwf\Form\Constraints\String\Equals;

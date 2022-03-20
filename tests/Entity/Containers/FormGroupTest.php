@@ -14,7 +14,6 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetTag()
     {
@@ -27,7 +26,6 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetContainerType()
     {
@@ -40,7 +38,6 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testFindControlFail()
     {
@@ -59,7 +56,6 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Parsing\DateParser
      * @covers Fastwf\Form\Parsing\NumberParser
      * @covers Fastwf\Form\Parsing\StringParser
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testGetData()
@@ -88,7 +84,6 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Radio
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetDataRadio()
     {
@@ -114,7 +109,6 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testGetSetControl()
@@ -134,7 +128,6 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testAddControl()
@@ -152,7 +145,6 @@ class FormGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Html\Input
-     * @covers Fastwf\Form\Utils\ArrayUtil
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testSetControlAt()

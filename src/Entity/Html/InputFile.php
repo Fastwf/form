@@ -2,7 +2,7 @@
 
 namespace Fastwf\Form\Entity\Html;
 
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Form\Utils\EntityUtil;
 use Fastwf\Form\Entity\Html\Input;
 

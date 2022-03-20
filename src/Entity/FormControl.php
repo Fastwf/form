@@ -3,11 +3,11 @@
 namespace Fastwf\Form\Entity;
 
 use Fastwf\Form\Entity\Control;
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Constraint\Api\Constraint;
 use Fastwf\Constraint\Data\Violation;
 use Fastwf\Form\Parsing\StringParser;
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\ValueError;
 use Fastwf\Form\Parsing\ParserInterface;
 
 /**

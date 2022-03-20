@@ -3,14 +3,13 @@
 namespace Fastwf\Tests\Build\Security;
 
 use PHPUnit\Framework\TestCase;
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\ValueError;
 
 class ASecurityPolicyTest extends TestCase
 {
 
     /**
      * @covers Fastwf\Form\Build\Security\ASecurityPolicy
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testNewCsrfTokenError()
     {

@@ -3,7 +3,7 @@
 namespace Fastwf\Form\Entity\Html;
 
 use Fastwf\Form\Entity\Containers\CheckboxGroup;
-use Fastwf\Form\Utils\ArrayUtil;
+use Fastwf\Api\Utils\ArrayUtil;
 use Fastwf\Form\Entity\Html\CheckableInput;
 
 /**

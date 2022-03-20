@@ -3,7 +3,7 @@
 namespace Fastwf\Form\Constraints\Number;
 
 use Fastwf\Constraint\Api\Constraint;
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\ValueError;
 
 class Step implements Constraint
 {

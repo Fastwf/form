@@ -2,7 +2,7 @@
 
 namespace Fastwf\Form\Build\Factory;
 
-use Fastwf\Form\Exceptions\ValueError;
+use Fastwf\Api\Exceptions\ValueError;
 use Fastwf\Form\Build\ConstraintBuilder;
 use Fastwf\Form\Constraints\Date\MaxDateTime;
 use Fastwf\Form\Constraints\Date\MinDateTime;

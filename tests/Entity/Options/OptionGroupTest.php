@@ -11,7 +11,6 @@ class OptionGroupTest extends TestCase
     /**
      * @covers Fastwf\Form\Entity\Options\AOption
      * @covers Fastwf\Form\Entity\Options\OptionGroup
-     * @covers Fastwf\Form\Utils\ArrayUtil
      */
     public function testGetTag()
     {

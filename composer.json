@@ -6,6 +6,10 @@
     "repositories": [
         {
             "type": "vcs",
+            "url": "https://github.com/Fastwf/api"
+        },
+        {
+            "type": "vcs",
             "url": "https://github.com/Fastwf/constraint"
         }
     ],
@@ -26,9 +30,12 @@
         }
     ],
     "require": {
-        "fastwf/constraint": "dev-master"
+        "fastwf/constraint": "dev-master",
+        "psr/http-message": "^1.0",
+        "fastwf/api": "dev-master"
     },
     "require-dev": {
-        "phpunit/phpunit": "^9.5"
+        "phpunit/phpunit": "^9.5",
+        "guzzlehttp/psr7": "^2.1"
     }
 }

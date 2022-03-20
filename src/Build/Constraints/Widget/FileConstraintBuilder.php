@@ -211,11 +211,9 @@ class FileConstraintBuilder extends FieldMultipleConstraintBuilder
         // Create the entry constraint
         $options = [
             'properties' => [
-                'name' => self::buildPropertyConstraint($this->getNameConstraint()),
-                'type' => self::buildPropertyConstraint($this->getTypeConstraint()),
+                'clientFilename' => self::buildPropertyConstraint($this->getNameConstraint()),
+                'clientMediaType' => self::buildPropertyConstraint($this->getTypeConstraint()),
                 'size' => self::buildPropertyConstraint($this->getSizeConstraint()),
-                // For 'path', the property is required and must not be null
-                'path' => self::buildPropertyConstraint(null),
                 // For 'error', the property must be 0 (UPLOAD_ERR_OK), if it's null or any other error const, the validation failed
                 'error' => new Equals(\UPLOAD_ERR_OK),
             ],

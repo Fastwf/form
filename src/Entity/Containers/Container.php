@@ -10,7 +10,7 @@ interface Container extends \IteratorAggregate
      * 
      * Warning: this method makes sense only when getTag() return null.
      *
-     * @return string the container name (array or object)
+     * @return string the container name (array, object or widget)
      */
     public function getContainerType();
 

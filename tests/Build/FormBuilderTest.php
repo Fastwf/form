@@ -213,6 +213,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\CheckboxParser
      */
     public function testAddCheckboxOnOff()
     {
@@ -257,6 +258,7 @@ class FormBuilderTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Form
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\CheckboxParser
      */
     public function testAddCheckboxValue()
     {

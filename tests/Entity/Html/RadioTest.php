@@ -22,7 +22,7 @@ class RadioTest extends TestCase
     {
         $this->expectException(KeyError::class);
 
-        $control = new Radio(['value' => 'apple']);
+        new Radio(['value' => 'apple']);
     }
 
     /**
@@ -31,6 +31,7 @@ class RadioTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Radio
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\RadioParser
      */
     public function testGetData()
     {
@@ -71,6 +72,21 @@ class RadioTest extends TestCase
 
         $control->setValue('apple');
         $this->assertTrue($control->isChecked());
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\CheckableInput
+     * @covers Fastwf\Form\Entity\Html\Radio
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\RadioParser
+     */
+    public function testGetSValue()
+    {
+        $control = new Radio(['attributes' => ['value' => 'apple']]);
+
+        $this->assertEquals('apple', $control->getSValue());
     }
 
 }

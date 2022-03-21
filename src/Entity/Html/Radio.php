@@ -3,6 +3,7 @@
 namespace Fastwf\Form\Entity\Html;
 
 use Fastwf\Api\Utils\ArrayUtil;
+use Fastwf\Form\Parsing\RadioParser;
 use Fastwf\Form\Entity\Html\CheckableInput;
 
 /**
@@ -14,6 +15,11 @@ class Radio extends CheckableInput
     public function __construct($parameters = [])
     {
         parent::__construct(\array_merge($parameters, ['type' => 'radio']));
+    }
+
+    protected function getDefaultParser($parameters)
+    {
+        return new RadioParser();
     }
 
     protected function synchronizeValue($priority)
@@ -28,11 +34,6 @@ class Radio extends CheckableInput
         parent::setChecked($checked);
 
         $this->value = $this->valueAttribute;
-    }
-
-    public function getData()
-    {
-        return $this->checked ? $this->valueAttribute : null;
     }
 
 }

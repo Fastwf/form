@@ -157,6 +157,7 @@ class RadioGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Input
      * @covers Fastwf\Form\Entity\Html\Radio
+     * @covers Fastwf\Form\Parsing\RadioParser
      */
     public function testGetValue()
     {

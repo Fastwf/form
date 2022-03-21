@@ -50,6 +50,7 @@ class CheckboxTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\CheckboxParser
      */
     public function testCheckboxGetData()
     {
@@ -90,6 +91,7 @@ class CheckboxTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\CheckableInput
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\CheckboxParser
      */
     public function testSynchronizeValueCheckedPriority()
     {
@@ -99,6 +101,23 @@ class CheckboxTest extends TestCase
 
         $this->assertEquals('on', $control->getValue());
         $this->assertTrue($control->getData());
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\CheckableInput
+     * @covers Fastwf\Form\Entity\Html\Checkbox
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\CheckboxParser
+     */
+    public function testGetSValue()
+    {
+        $control = new Checkbox(['attributes' => ['value' => 'on']]);
+        $this->assertEquals('on', $control->getSValue());
+
+        $control = new Checkbox(['attributes' => ['value' => 'category']]);
+        $this->assertEquals('category', $control->getSValue());
     }
 
 }

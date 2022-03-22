@@ -14,7 +14,7 @@ class MaxDateTimeTest extends ConstraintTestCase
      */
     public function testValid()
     {
-        $constraint = new MaxDateTime(new \DateTime('2022-02-01'));
+        $constraint = new MaxDateTime(new \DateTime('2022-02-01'), 'date');
         $node = Node::from(['value' => new \DateTime('2022-01-10T12:00')]);
 
         $this->assertNull($constraint->validate($node, $this->context));
@@ -25,7 +25,7 @@ class MaxDateTimeTest extends ConstraintTestCase
      */
     public function testInvalid()
     {
-        $constraint = new MaxDateTime(new \DateTime('2021-01-01'));
+        $constraint = new MaxDateTime(new \DateTime('2021-01-01'), 'date');
         $node = Node::from(['value' => new \DateTime('2022-01-01T00:00')]);
 
         $this->assertNotNull($constraint->validate($node, $this->context));

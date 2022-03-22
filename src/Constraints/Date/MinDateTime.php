@@ -7,11 +7,30 @@ use Fastwf\Constraint\Api\Constraint;
 class MinDateTime implements Constraint
 {
 
+    /**
+     * An identifier to know what kind of date is evaluated (date, date time, week, month).
+     *
+     * @var string
+     */
+    private $type;
+
+    /**
+     * The limit to use for validation.
+     *
+     * @var \DateTime
+     */
     private $dateTime;
 
-    public function __construct($dateTime)
+    /**
+     * Constructor.
+     *
+     * @param \DateTime $dateTime the limit datetime.
+     * @param string $type the kind of datetime evaluated (date, date time, week, month).
+     */
+    public function __construct($dateTime, $type)
     {
         $this->dateTime = $dateTime;
+        $this->type = $type;
     }
 
     public function validate($node, $context)
@@ -20,7 +39,7 @@ class MinDateTime implements Constraint
         $value = $node->get();
         
         return $value < $this->dateTime
-            ?  $context->violation($value, 'min-datetime', ['dateTime' => $this->dateTime])
+            ?  $context->violation($value, 'min-datetime', ['dateTime' => $this->dateTime, 'type' => $this->type])
             : null;
     }
 

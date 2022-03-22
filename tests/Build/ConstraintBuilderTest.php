@@ -28,6 +28,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\RequiredField
      */
     public function testBuild()
@@ -68,6 +73,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\String\ColorFormat
@@ -100,6 +110,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Constraints\RequiredField
      */
@@ -133,6 +148,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\DateFactory
      * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\Date\ADateTimeField
      * @covers Fastwf\Form\Constraints\Date\DateField
@@ -186,6 +206,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Constraints\Date\MaxDateTime
      * @covers Fastwf\Form\Constraints\Date\MinDateTime
      * @covers Fastwf\Form\Constraints\Date\StepDateTime
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testBuildNumericDateTimeConstraint()
@@ -233,6 +258,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Constraints\Date\MonthField
      * @covers Fastwf\Form\Constraints\Date\StepMonth
      * @covers Fastwf\Form\Constraints\RequiredField
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
     public function testBuildNumericMonthConstraint()
@@ -272,6 +302,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\IntegerField
      */
@@ -302,6 +337,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Factory\NumberFactory
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\DoubleField
      * @covers Fastwf\Form\Constraints\Number\Step
@@ -337,6 +377,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Factory\NumericFactory
      * @covers Fastwf\Form\Build\Factory\NumberFactory
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\DoubleField
      * @covers Fastwf\Form\Constraints\Number\Step
@@ -371,6 +416,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Factory\NumericFactory
      * @covers Fastwf\Form\Build\Factory\TimeFactory
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\Time\TimeField
      * @covers Fastwf\Form\Constraints\Time\MinTime
@@ -418,6 +468,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Factory\NumericFactory
      * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\WeekFactory
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\Date\WeekField
      * @covers Fastwf\Form\Constraints\Date\MinDateTime
@@ -462,6 +517,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\StringField
      */
@@ -493,6 +553,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Constraints\String\SplitModifier
@@ -525,6 +590,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\RequiredField
      * @covers Fastwf\Form\Constraints\StringField
      */
@@ -555,6 +625,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      */
     public function testBuildSelectMultiple()
     {
@@ -594,6 +669,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\CheckboxConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\BooleanField
      */
     public function testBuildCheckboxSystemOnOff()
@@ -626,6 +706,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\CheckboxGroupConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\StringField
      * @covers Fastwf\Form\Constraints\BooleanField
      * @covers Fastwf\Form\Constraints\RequiredField
@@ -659,6 +744,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\RadioGroupConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      */
     public function testBuildRadioGroupSystem()
     {
@@ -690,6 +780,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\CheckboxGroupConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      */
     public function testBuildCheckboxGroupSystem()
     {
@@ -724,6 +819,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      */
     public function testNotFoundConstraint()
     {
@@ -750,6 +850,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      */
     public function testSetFactory()
     {
@@ -780,6 +885,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      */
     public function testSetGetBuilderWithNull()
     {
@@ -807,6 +917,11 @@ class ConstraintBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      */
     public function testRegisterError()
     {

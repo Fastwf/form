@@ -17,7 +17,7 @@ class ColorFormat extends PcreFormat
 
     protected function getName()
     {
-        return 'field-color';
+        return 'color-field';
     }
 
 }

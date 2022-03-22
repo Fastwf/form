@@ -52,6 +52,11 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Control
@@ -90,6 +95,11 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
@@ -122,6 +132,11 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
@@ -157,6 +172,11 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\CheckboxConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\BooleanField
      * @covers Fastwf\Form\Constraints\String\Equals
      * @covers Fastwf\Form\Entity\Containers\FormArray
@@ -193,6 +213,11 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\ContainerBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
@@ -230,6 +255,11 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Build\Groups\CheckboxGroupBuilder
      * @covers Fastwf\Form\Build\Groups\EntityGroupBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Constraints\String\Equals
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Containers\EntityGroup
@@ -270,6 +300,11 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Build\Groups\EntityGroupBuilder
      * @covers Fastwf\Form\Build\Groups\RadioGroupBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Containers\EntityGroup
      * @covers Fastwf\Form\Entity\Containers\FormArray
@@ -306,6 +341,11 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Build\Groups\EntityGroupBuilder
      * @covers Fastwf\Form\Build\Groups\RadioGroupBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Containers\EntityGroup
      * @covers Fastwf\Form\Entity\Containers\FormArray
@@ -342,6 +382,11 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Build\Groups\GroupBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Control
@@ -391,6 +436,11 @@ class ArrayBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl

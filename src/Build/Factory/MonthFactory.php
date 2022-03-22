@@ -13,6 +13,11 @@ use Fastwf\Form\Constraints\Date\StepMonth;
 class MonthFactory extends ADateFactory
 {
 
+    public function __construct()
+    {
+        parent::__construct('month');
+    }
+
     /// Not required implementation
 
     protected function getViolationCode()

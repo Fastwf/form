@@ -217,6 +217,11 @@ class RadioGroupTest extends TestCase
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\Groups\EntityGroupBuilder
      * @covers Fastwf\Form\Build\Groups\RadioGroupBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Containers\EntityGroup
      * @covers Fastwf\Form\Entity\Control

@@ -89,6 +89,11 @@ class CheckboxGroupTest extends TestCase
      * @covers Fastwf\Form\Build\ContainerBuilder
      * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\FormBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Build\Groups\CheckboxGroupBuilder
      * @covers Fastwf\Form\Build\Groups\EntityGroupBuilder
      * @covers Fastwf\Form\Entity\Containers\AFormGroup

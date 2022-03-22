@@ -27,22 +27,22 @@ class StepMonth implements Constraint
     /**
      * The step to verify.
      *
-     * @var double
+     * @var int
      */
     protected $step;
 
     /**
      * The offset to use to validate the step.
      *
-     * @var double
+     * @var \DateTime
      */
     protected $from;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param int|double $step the step in seconds 
-     * @param \DateTime $from
+     * @param int $step The step in months. 
+     * @param \DateTime $from The start time to use to validate the step.
      */
     public function __construct($step, $from = null)
     {

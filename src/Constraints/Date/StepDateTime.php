@@ -18,7 +18,7 @@ class StepDateTime implements Constraint
     /**
      * The offset to use to validate the step.
      *
-     * @var double
+     * @var \DateTime
      */
     protected $from;
 
@@ -30,10 +30,10 @@ class StepDateTime implements Constraint
     private $violationCode;
 
     /**
-     * Constructor
+     * Constructor.
      *
-     * @param int|double $step the step in seconds 
-     * @param \DateTime $from
+     * @param int|double $step The step in seconds.
+     * @param \DateTime $from The start time to use to validate the step.
      */
     public function __construct($step, $from = null, $violationCode = "step-datetime")
     {

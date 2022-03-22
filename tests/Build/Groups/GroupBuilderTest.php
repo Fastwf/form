@@ -28,6 +28,11 @@ class GroupBuilderTest extends TestCase
      * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
      * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Containers\FormGroup
      * @covers Fastwf\Form\Entity\Control

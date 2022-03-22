@@ -44,6 +44,11 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Build\ContainerBuilder
      * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\FormBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
@@ -81,6 +86,11 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\Groups\GroupBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
@@ -122,6 +132,11 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\Groups\GroupBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
@@ -167,6 +182,11 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\Groups\GroupBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Control
      * @covers Fastwf\Form\Entity\FormControl
@@ -212,6 +232,11 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Build\ContainerGroupBuilder
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Containers\FormArrayIterator
@@ -263,6 +288,11 @@ class ControlTest extends TestCase {
      * @covers Fastwf\Form\Build\FormBuilder
      * @covers Fastwf\Form\Build\Groups\ArrayBuilder
      * @covers Fastwf\Form\Build\Groups\GroupBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
      * @covers Fastwf\Form\Entity\Containers\AFormGroup
      * @covers Fastwf\Form\Entity\Containers\FormArray
      * @covers Fastwf\Form\Entity\Containers\FormArrayIterator

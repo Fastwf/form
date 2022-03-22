@@ -11,6 +11,11 @@ use Fastwf\Form\Build\Factory\ADateFactory;
 class WeekFactory extends ADateFactory
 {
 
+    public function __construct()
+    {
+        parent::__construct('week');
+    }
+
     protected function getViolationCode()
     {
         return 'step-week';

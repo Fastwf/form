@@ -27,6 +27,7 @@ class NumericFactoryTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\DateFactory
      */
     public function testOfDate()
@@ -36,6 +37,7 @@ class NumericFactoryTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\DateTimeFactory
      */
     public function testOfDateTime()
@@ -54,6 +56,7 @@ class NumericFactoryTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\MonthFactory
      */
     public function testOfMonth()
@@ -63,6 +66,7 @@ class NumericFactoryTest extends TestCase
 
     /**
      * @covers Fastwf\Form\Build\Factory\NumericFactory
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
      * @covers Fastwf\Form\Build\Factory\WeekFactory
      */
     public function testOfWeek()

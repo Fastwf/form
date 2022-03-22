@@ -11,6 +11,11 @@ use Fastwf\Form\Build\Factory\ADateFactory;
 class DateFactory extends ADateFactory
 {
 
+    public function __construct()
+    {
+        parent::__construct('date');
+    }
+
     protected function getViolationCode()
     {
         return 'step-date';

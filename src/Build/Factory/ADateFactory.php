@@ -15,6 +15,18 @@ abstract class ADateFactory extends NumericFactory
 {
 
     /**
+     * The date time type (date, date time, month, week)
+     *
+     * @var string
+     */
+    protected $type;
+
+    public function __construct($type)
+    {
+        $this->type = $type;
+    }
+
+    /**
      * According to the implementation, return the step violation code to use.
      *
      * @return string
@@ -68,7 +80,7 @@ abstract class ADateFactory extends NumericFactory
         $date = $this->getDateTimeOf($min);
 
         return [
-            ConstraintBuilder::CSTRT => new MinDateTime($date),
+            ConstraintBuilder::CSTRT => new MinDateTime($date, $this->type),
             ConstraintBuilder::ATTRS => ["min" => $this->toString($date)]
         ];
     }
@@ -78,7 +90,7 @@ abstract class ADateFactory extends NumericFactory
         $date = $this->getDateTimeOf($max);
 
         return [
-            ConstraintBuilder::CSTRT => new MaxDateTime($date),
+            ConstraintBuilder::CSTRT => new MaxDateTime($date, $this->type),
             ConstraintBuilder::ATTRS => ["max" => $this->toString($date)]
         ];
     }

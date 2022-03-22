@@ -29,7 +29,7 @@ class StepTime implements Constraint
     /**
      * Constructor
      *
-     * @param int|double $step the step in seconds 
+     * @param int|double $step the step in seconds.
      * @param \DateInterval $from
      */
     public function __construct($step, $from = null)

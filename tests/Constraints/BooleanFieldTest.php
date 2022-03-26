@@ -13,6 +13,18 @@ class BooleanFieldTest extends ConstraintTestCase
     /**
      * @covers Fastwf\Form\Constraints\BooleanField
      */
+    public function testValidBoolean()
+    {
+        $constraint = new BooleanField();
+        $node = Node::from(['value' => true]);
+
+        $this->assertNull($constraint->validate($node, $this->context));
+        $this->assertEquals(true, $node->get());
+    }
+
+    /**
+     * @covers Fastwf\Form\Constraints\BooleanField
+     */
     public function testValidTrue()
     {
         $constraint = new BooleanField();

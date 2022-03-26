@@ -19,7 +19,11 @@ class BooleanField implements Constraint {
         $value = $node->get();
 
         $violation = null;
-        if (\in_array($value, self::POSITIVE_VALUES))
+        if (is_bool($value))
+        {
+            $node->set(['value' => $value]);
+        }
+        else if (\in_array($value, self::POSITIVE_VALUES))
         {
             // Set value to true
             $node->set(['value' => true]);

@@ -4,6 +4,7 @@ namespace Fastwf\Tests\Constraints\Date;
 
 use Fastwf\Constraint\Data\Node;
 use Fastwf\Form\Constraints\Date\WeekField;
+use Fastwf\Form\Utils\DateTimeUtil;
 use Fastwf\Tests\Constraints\ConstraintTestCase;
 
 class WeekFieldTest extends ConstraintTestCase
@@ -22,6 +23,24 @@ class WeekFieldTest extends ConstraintTestCase
         $this->assertEquals(
             \strtotime('2021-01-04'),
             $node->get()->getTimestamp()
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Constraints\Date\WeekField
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
+    public function testValidWithDateTime()
+    {
+        $dateTime = DateTimeUtil::getWeek('2021-W01');
+
+        $constraint = new WeekField();
+        $node = Node::from(['value' => $dateTime]);
+
+        $this->assertNull($constraint->validate($node, $this->context));
+        $this->assertSame(
+            $dateTime,
+            $node->get()
         );
     }
 

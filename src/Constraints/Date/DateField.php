@@ -23,7 +23,9 @@ class DateField extends ADateTimeField
 
     protected function parse($value)
     {
-        return DateTimeUtil::getDate($value, $this->format);
+        return $value instanceof \DateTime
+            ? $value
+            : DateTimeUtil::getDate($value, $this->format);
     }
 
 }

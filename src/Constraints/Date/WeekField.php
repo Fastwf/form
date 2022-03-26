@@ -15,7 +15,9 @@ class WeekField implements Constraint
     {
         $value = $node->get();
         
-        $date = DateTimeUtil::getWeek($value);
+        $date = $value instanceof \DateTime
+            ? $value
+            : DateTimeUtil::getWeek($value);
         
         if ($date === null)
         {

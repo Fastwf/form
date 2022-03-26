@@ -15,7 +15,9 @@ class MonthField implements Constraint
     {
         $value = $node->get();
         
-        $date = DateTimeUtil::getMonth($value);
+        $date = $value instanceof \DateTime
+            ? $value
+            : DateTimeUtil::getMonth($value);
         
         if ($date === null)
         {

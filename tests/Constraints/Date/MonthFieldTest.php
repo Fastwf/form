@@ -29,6 +29,24 @@ class MonthFieldTest extends ConstraintTestCase
      * @covers Fastwf\Form\Constraints\Date\MonthField
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
+    public function testValidWithDateTime()
+    {
+        $dateTime = new \DateTime('2021-01-01');
+
+        $constraint = new MonthField();
+        $node = Node::from(['value' => $dateTime]);
+
+        $this->assertNull($constraint->validate($node, $this->context));
+        $this->assertSame(
+            $dateTime,
+            $node->get()
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Constraints\Date\MonthField
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
     public function testInvalid()
     {
         $constraint = new MonthField();

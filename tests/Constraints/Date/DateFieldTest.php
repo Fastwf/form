@@ -31,6 +31,25 @@ class DateFieldTest extends ConstraintTestCase
      * @covers Fastwf\Form\Constraints\Date\ADateTimeField
      * @covers Fastwf\Form\Utils\DateTimeUtil
      */
+    public function testValidWithDateTime()
+    {
+        $dateTime = new \DateTime('2021-01-20');
+
+        $constraint = new DateField();
+        $node = Node::from(['value' => $dateTime]);
+
+        $this->assertNull($constraint->validate($node, $this->context));
+        $this->assertSame(
+            $dateTime,
+            $node->get()
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Constraints\Date\DateField
+     * @covers Fastwf\Form\Constraints\Date\ADateTimeField
+     * @covers Fastwf\Form\Utils\DateTimeUtil
+     */
     public function testInvalid()
     {
         $constraint = new DateField();

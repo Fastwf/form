@@ -92,15 +92,15 @@ class Form extends FormGroup
      */
     public function validate($constraint = null, $validator = null)
     {
-        if ($constraint === null)
-        {
-            // Collect constraints from each control nodes
-            $constraint = $this->getConstraint();
-        }
-
         // Create/use Validator instance and validate value
         if ($validator === null)
         {
+            if ($constraint === null)
+            {
+                // Collect constraints from each control nodes
+                $constraint = $this->getConstraint();
+            }
+
             $validator = new Validator($constraint);
         }
         $isValid = $validator->validate($this->getValue());

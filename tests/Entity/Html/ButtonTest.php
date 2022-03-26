@@ -33,4 +33,20 @@ class ButtonTest extends TestCase
         $this->assertEquals('button', $html->getData());
     }
 
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Button
+     * @covers Fastwf\Form\Parsing\StringParser
+     */
+    public function testSetGetType()
+    {
+        $html = new Button();
+
+        $this->assertEquals(Button::TYPE_SUBMIT, $html->getType());
+
+        $html->setType(Button::TYPE_BUTTON);
+        $this->assertEquals(Button::TYPE_BUTTON, $html->getType());
+    }
+
 }

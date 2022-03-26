@@ -2,6 +2,7 @@
 
 namespace Fastwf\Tests\Entity;
 
+use Fastwf\Constraint\Constraints\Required;
 use PHPUnit\Framework\TestCase;
 use Fastwf\Form\Build\FormBuilder;
 use Fastwf\Form\Entity\Html\Input;
@@ -64,6 +65,8 @@ class ControlTest extends TestCase {
 
         $form->setName('parent');
         $this->assertEquals("parent[" . self::FIRST_NAME . "]", $form->getControlAt(0)->getFullName());
+
+        $this->assertEquals($form, $form->getControlAt(0)->getParent());
     }
 
     /**
@@ -326,6 +329,54 @@ class ControlTest extends TestCase {
 
         $form->setName('graph');
         $this->assertEquals("graph[positions][0][x]", $control->getFullName());
+    }
+
+    /**
+     * @covers Fastwf\Form\Build\AGroupBuilder
+     * @covers Fastwf\Form\Build\ConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\AConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\DateTimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\MonthConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumberConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\NumericConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\TimeConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Numeric\WeekConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\EmailConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\String\StringConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\TransformConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\AOptionMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FieldMultipleConstraintBuilder
+     * @covers Fastwf\Form\Build\Constraints\Widget\FileConstraintBuilder
+     * @covers Fastwf\Form\Build\ContainerBuilder
+     * @covers Fastwf\Form\Build\ContainerGroupBuilder
+     * @covers Fastwf\Form\Build\Factory\ADateFactory
+     * @covers Fastwf\Form\Build\Factory\DateFactory
+     * @covers Fastwf\Form\Build\Factory\DateTimeFactory
+     * @covers Fastwf\Form\Build\Factory\MonthFactory
+     * @covers Fastwf\Form\Build\Factory\NumberFactory
+     * @covers Fastwf\Form\Build\Factory\WeekFactory
+     * @covers Fastwf\Form\Build\FormBuilder
+     * @covers Fastwf\Form\Constraints\RequiredField
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Form
+     * @covers Fastwf\Form\Entity\Html\Input
+     */
+    public function testReplaceConstraint()
+    {
+        $form = FormBuilder::new(self::FORM_ID, 'test')
+            ->addInput('x', 'number', ['assert' => ['min' => 10]])
+            ->build();
+        
+        /** @var Input */
+        $control = $form->getControlAt(0);
+
+        $constraint = new Required(true);
+        $control->setConstraint($constraint);
+
+        $this->assertSame($constraint, $control->getConstraint());
     }
 
 }

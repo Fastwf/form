@@ -188,4 +188,19 @@ class InputTest extends TestCase
         );
     }
 
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\Input
+     * @covers Fastwf\Form\Parsing\StringParser
+     */
+    public function testSetGetType()
+    {
+        $control = new Input(['type' => 'text']);
+        $this->assertEquals('text', $control->getType());
+
+        $control->setType('password');
+        $this->assertEquals('password', $control->getType());
+    }
+
 }

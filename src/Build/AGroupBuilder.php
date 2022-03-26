@@ -40,6 +40,7 @@ abstract class AGroupBuilder
         "readonly",
         self::LABEL,
         self::HELP,
+        "parser"
     ];
 
     /**

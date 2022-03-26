@@ -15,8 +15,10 @@ class TimeField implements Constraint
     {
         $value = $node->get();
         
-        $time = DateIntervalUtil::getTime($value);
-        
+        $time = $value instanceof \DateInterval
+            ? $value
+            : DateIntervalUtil::getTime($value);
+
         if ($time === null)
         {
             $violation = $context->violation($value, 'time-field', []);

@@ -21,13 +21,18 @@ class DateIntervalUtil
     /**
      * Parse the time and convert it to date interval.
      *
-     * @param string $time the time to parse as HTML time format.
+     * @param string|null $time the time to parse as HTML time format.
      * @param boolean $isDayTime true to indicate that the time is in [00:00:00.000, 24:00:00:00.000[ interval, false for unlimited
      *                duration.
      * @return \DateInterval|null the date interval or null if parsing failed.
      */
     public static function getTime($time, $isDayTime = true)
     {
+        if ($time === null)
+        {
+            return null;
+        }
+
         $timeResult = null;
 
         $matches = [];

@@ -80,7 +80,7 @@ class FormArray extends Control implements Container
         }
 
         $this->control = ArrayUtil::get($parameters, 'control');
-        $this->value = ArrayUtil::getSafe($parameters, 'value', []);
+        $this->setValue(ArrayUtil::getSafe($parameters, 'value', []));
         $this->violation = ArrayUtil::getSafe($parameters, 'violation');
 
         $this->minSize = ArrayUtil::getSafe($parameters, 'min_size', 1);
@@ -103,7 +103,7 @@ class FormArray extends Control implements Container
 
     public function setValue($value)
     {
-        $this->value = $value;
+        $this->value = $value === null ? [] : $value;
     }
 
     public function getValue()
@@ -138,7 +138,7 @@ class FormArray extends Control implements Container
         $constraints = [new ArrayType()];
 
         $constraint = $this->control->getConstraint();
-        if ($constraint === null)
+        if ($constraint !== null)
         {
             \array_push($constraints, new Items($constraint));
         }
@@ -179,7 +179,7 @@ class FormArray extends Control implements Container
     public function getSize()
     {
         // Return the minimum size if value is not set or the number of values set in the array
-        return $this->value === null
+        return empty($this->value)
             ? $this->minSize
             : \max($this->minSize, \count($this->value));
     }

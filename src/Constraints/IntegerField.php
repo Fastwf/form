@@ -13,7 +13,7 @@ class IntegerField implements Constraint {
     {
         $value = $node->get();
 
-        if (\ctype_digit($value))
+        if (is_int($value) || \ctype_digit($value))
         {
             $violation = null;
 

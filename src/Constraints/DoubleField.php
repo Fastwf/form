@@ -13,7 +13,7 @@ class DoubleField implements Constraint {
     {
         $value = $node->get();
 
-        if (\preg_match('/^\\d+(\\.\\d*)?$/', $value) === 1)
+        if (is_double($value) || \preg_match('/^\\d+(\\.\\d*)?$/', $value) === 1)
         {
             $violation = null;
 

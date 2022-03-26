@@ -2,6 +2,8 @@
 
 namespace Fastwf\Tests\Entity\Containers;
 
+use Fastwf\Constraint\Data\Violation;
+use Fastwf\Constraint\Data\ViolationConstraint;
 use PHPUnit\Framework\TestCase;
 use Fastwf\Form\Entity\Html\Input;
 use Fastwf\Form\Entity\Html\Radio;
@@ -9,6 +11,36 @@ use Fastwf\Form\Entity\Containers\FormGroup;
 
 class FormGroupTest extends TestCase
 {
+
+    /// Tests AFormGroup
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Html\Form
+     * @covers Fastwf\Form\Entity\Html\Input  
+     */
+    public function testGetIterator()
+    {
+        $group = new FormGroup([
+            'controls' => [
+                new Input(['type' => 'text', 'name' => 'username']),
+                new Input(['type' => 'email', 'name' => 'email']),
+            ],
+        ]);
+
+        // Test the class
+        $this->assertInstanceOf(\ArrayIterator::class, $group->getIterator());
+
+        // Test iteration using foreach
+        foreach ($group as $control) {
+            $this->assertInstanceOf('Fastwf\Form\Entity\Control', $control);
+        }
+    }
+
+    /// Tests FormGroup
 
     /**
      * @covers Fastwf\Form\Entity\Control
@@ -158,4 +190,69 @@ class FormGroupTest extends TestCase
         $this->assertEquals('email', $container->getControlAt(0)->getName());
     }
 
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Html\Input
+     */
+    public function testSetValue()
+    {
+        $container = new FormGroup(['controls' => [
+            new Input(['name' => 'username', 'type' => 'text', 'value' => 'user']),
+            new Input(['name' => 'email', 'type' => 'email', 'value' => 'mail@test.com']),
+        ]]);
+
+        $container->setValue([
+            'username' => 'username'
+        ]);
+
+        $this->assertEquals(
+            [
+                'username' => 'username',
+                'email' => null,
+            ],
+            $container->getValue()
+        );
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Containers\FormGroup
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Html\Input
+     */
+    public function testSetViolations()
+    {
+        $container = new FormGroup(['controls' => [
+            new Input(['name' => 'username', 'type' => 'text']),
+            new Input(['name' => 'email', 'type' => 'email'])
+        ]]);
+
+        // Set the violation only on username
+        $container->setViolation(new Violation(
+            null,
+            [],
+            [
+                'username' => new ViolationConstraint('test', []),
+            ]
+        ));
+
+        $this->assertNotNull($container->getControlAt(0)->getViolation());
+        $this->assertNull($container->getControlAt(1)->getViolation());
+
+        // Set the violation only on email
+        $container->setViolation(new Violation(
+            null,
+            [],
+            [
+                'email' => new ViolationConstraint('test', []),
+            ]
+        ));
+
+        $this->assertNull($container->getControlAt(0)->getViolation());
+        $this->assertNotNull($container->getControlAt(1)->getViolation());
+    }
 }

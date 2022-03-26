@@ -52,6 +52,43 @@ class CheckboxGroupTest extends TestCase
      * @covers Fastwf\Form\Entity\Html\Checkbox
      * @covers Fastwf\Form\Entity\Html\Input
      */
+    public function testSetValueNull()
+    {
+        $group = new CheckboxGroup([
+            'name' => 'test',
+            'controls' => [
+                new Checkbox(['checked' => true, 'attributes' => ['value' => 'kiwi']]),
+                new Checkbox(['checked' => true, 'attributes' => ['value' => 'pear']]),
+                new Checkbox(['checked' => true, 'attributes' => ['value' => 'banana']]),
+            ],
+        ]);
+
+        $group->setValue(null);
+
+        // All checkbox must be unchecked
+        /** @var Checkbox */
+        $control = $group->getControlAt(0);
+        $this->assertFalse($control->isChecked());
+        
+        /** @var Checkbox */
+        $control = $group->getControlAt(1);
+        $this->assertFalse($control->isChecked());
+        
+        /** @var Checkbox */
+        $control = $group->getControlAt(2);
+        $this->assertFalse($control->isChecked());
+    }
+
+    /**
+     * @covers Fastwf\Form\Entity\Containers\AFormGroup
+     * @covers Fastwf\Form\Entity\Containers\CheckboxGroup
+     * @covers Fastwf\Form\Entity\Containers\EntityGroup
+     * @covers Fastwf\Form\Entity\Control
+     * @covers Fastwf\Form\Entity\FormControl
+     * @covers Fastwf\Form\Entity\Html\CheckableInput
+     * @covers Fastwf\Form\Entity\Html\Checkbox
+     * @covers Fastwf\Form\Entity\Html\Input
+     */
     public function testGetValueGetData()
     {
         $group = new CheckboxGroup([
